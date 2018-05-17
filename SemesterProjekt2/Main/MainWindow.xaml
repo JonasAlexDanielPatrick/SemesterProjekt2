@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button Content="Salgsstatistikker" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button Content="Kvm. Priser" HorizontalAlignment="Left" Margin="160,10,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button Content="Pris Beregner" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button Content="CRUD" HorizontalAlignment="Left" Margin="460,10,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button Content="Åbent Hus" HorizontalAlignment="Left" Margin="610,10,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button Content="UR" HorizontalAlignment="Left" Margin="762,10,0,0" VerticalAlignment="Top" Width="20"/>
+        <DataGrid HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="460" Margin="310,50,0,0"/>
     </Grid>
 </Window>
