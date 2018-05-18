@@ -36,7 +36,7 @@
         </Canvas>
 
         <Canvas x:Name="CanvasPrisBeregner" Grid.ColumnSpan="6" Grid.Row="1">
-
+            <Button Content="Test Blah blah" Width="100" Height="50" Canvas.Left="102" Canvas.Top="264" />
         </Canvas>
 
         <Canvas x:Name="CanvasCRUD" Grid.ColumnSpan="6" Grid.Row="1">
