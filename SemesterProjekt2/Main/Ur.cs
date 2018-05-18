@@ -14,7 +14,8 @@ namespace Main
         {
             while (true)
             {
-                string hour = DateTime.Now.Hour.ToString("00");
+                int temp = DateTime.Now.Hour - 1;
+                string hour = temp.ToString("00");
                 string minute = DateTime.Now.Minute.ToString("00");
 
                 london = String.Format("London: {0}:{1}", hour, minute);
