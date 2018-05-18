@@ -32,7 +32,7 @@
         </Canvas>
 
         <Canvas x:Name="CanvasKvmPris" Grid.ColumnSpan="6" Grid.Row="1">
-
+            <Button Content="Udskriv" Canvas.Left="655" Canvas.Top="291" Width="100" Height="50" />
         </Canvas>
 
         <Canvas x:Name="CanvasPrisBeregner" Grid.ColumnSpan="6" Grid.Row="1">
