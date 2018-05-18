@@ -23,6 +23,9 @@ namespace Main
         public MainWindow()
         {
             InitializeComponent();
+
+            Connection.Connect();
+
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
