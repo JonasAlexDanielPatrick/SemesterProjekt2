@@ -28,7 +28,7 @@
         <Label Content="København: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
 
         <Canvas x:Name="CanvasSalgstatistik" Grid.ColumnSpan="6" Grid.Row="1">
-
+            <Button Content="Alex lugter" Width="100" Height="50" Canvas.Left="349" Canvas.Top="157" />
         </Canvas>
 
         <Canvas x:Name="CanvasKvmPris" Grid.ColumnSpan="6" Grid.Row="1">
