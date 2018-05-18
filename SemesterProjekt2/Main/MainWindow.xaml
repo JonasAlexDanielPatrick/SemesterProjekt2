@@ -7,28 +7,46 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Salgsstatistikker" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Kvm. Priser" HorizontalAlignment="Left" Margin="160,10,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Pris Beregner" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button Content="CRUD" HorizontalAlignment="Left" Margin="460,10,0,0" VerticalAlignment="Top" Width="100" Background="#FF898989" />
-        <Button Content="Åbent Hus" HorizontalAlignment="Left" Margin="610,10,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button Content="UR" HorizontalAlignment="Left" Margin="762,10,0,0" VerticalAlignment="Top" Width="20"/>
-        <DataGrid HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="460" Margin="310,50,0,0" SelectionChanged="DataGrid_SelectionChanged"/>
-        <Button Content="Ejendom" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Width="100" Background="#FF8F8F8F"/>
-        <Button Content="Husejer" HorizontalAlignment="Left" Margin="110,50,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Ejendomsmægler" HorizontalAlignment="Left" Margin="210,50,0,0" VerticalAlignment="Top" Width="100"/>
-        <Label Content="XXXXX" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,100,0,0" />
-        <Label Content="XXXXX" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,150,0,0"/>
-        <Label Content="XXXXX" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,200,0,0"/>
-        <Label Content="XXXXX" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,250,0,0"/>
-        <Label Content="XXXXX" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,300,0,0"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="XXXXX" VerticalAlignment="Top" Width="120" Margin="110,100,0,0"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="XXXXX" VerticalAlignment="Top" Width="120" Margin="110,150,0,0"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="XXXXX" VerticalAlignment="Top" Width="120" Margin="110,200,0,0"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="XXXXX" VerticalAlignment="Top" Width="120" Margin="110,250,0,0"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="XXXXX" VerticalAlignment="Top" Width="120" Margin="110,300,0,0"/>
-        <Button Content="Create" HorizontalAlignment="Left" Margin="10,380,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="110,380,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="210,380,0,0" VerticalAlignment="Top" Width="100"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Button Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Content="Salgsstatistik" Margin="4" />
+        <Button Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1" Content="Kvm. Pris" Margin="4" />
+        <Button Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="1" Content="Pris Beregner" Margin="4" />
+        <Button Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="1" Content="CRUD" Margin="4" />
+        <Button Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="1" Content="Åbent hus" Margin="4" />
+        <Label Content="London: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label Content="København: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+
+        <Canvas x:Name="CanvasSalgstatistik" Grid.ColumnSpan="6" Grid.Row="1">
+
+        </Canvas>
+
+        <Canvas x:Name="CanvasKvmPris" Grid.ColumnSpan="6" Grid.Row="1">
+
+        </Canvas>
+
+        <Canvas x:Name="CanvasPrisBeregner" Grid.ColumnSpan="6" Grid.Row="1">
+
+        </Canvas>
+
+        <Canvas x:Name="CanvasCRUD" Grid.ColumnSpan="6" Grid.Row="1">
+
+        </Canvas>
+
+        <Canvas x:Name="CanvasÅbentHus" Grid.ColumnSpan="6" Grid.Row="1">
+
+        </Canvas>
+
+
     </Grid>
 </Window>
