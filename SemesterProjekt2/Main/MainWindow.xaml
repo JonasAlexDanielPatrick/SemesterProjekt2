@@ -24,20 +24,19 @@
         <Button Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="1" Content="Pris Beregner" Margin="4" />
         <Button Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="1" Content="CRUD" Margin="4" />
         <Button Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="1" Content="Åbent hus" Margin="4" />
-        <Label Content="London: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <Label Content="København: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+        <Label x:Name="LabelLondon" Content="London: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label x:Name="LabelKøbenhavn" Content="København: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
 
         <Canvas x:Name="CanvasSalgstatistik" Grid.ColumnSpan="6" Grid.Row="1">
-            <Button Content="Alex lugter" Width="100" Height="50" Canvas.Left="349" Canvas.Top="157" />
+            
         </Canvas>
 
         <Canvas x:Name="CanvasKvmPris" Grid.ColumnSpan="6" Grid.Row="1">
-            <Button Content="Udskriv" Canvas.Left="655" Canvas.Top="291" Width="100" Height="50" />
+            
         </Canvas>
 
         <Canvas x:Name="CanvasPrisBeregner" Grid.ColumnSpan="6" Grid.Row="1">
-            <Button Content="Test Blah blah" Width="100" Height="50" Canvas.Left="102" Canvas.Top="264" />
-            <Button Content="Aberøv" Canvas.Left="170" Canvas.Top="121" Width="100" Height="50"/>
+
         </Canvas>
 
         <Canvas x:Name="CanvasCRUD" Grid.ColumnSpan="6" Grid.Row="1">
