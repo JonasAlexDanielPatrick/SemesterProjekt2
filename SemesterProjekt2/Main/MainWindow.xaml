@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Main"
         mc:Ignorable="d"
-        Title="SweetHome" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="SweetHome - Salgsstatistik" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -28,23 +28,23 @@
         <Label x:Name="LabelKøbenhavn" Content="København: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
 
         <Canvas x:Name="CanvasSalgstatistik" Grid.ColumnSpan="6" Grid.Row="1">
-            <Label Content="Salgsstatisik" Canvas.Left="360" Canvas.Top="5"/>
+            
         </Canvas>
 
         <Canvas x:Name="CanvasKvmPris" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
-            <Label Content="Kvm. Pris" Canvas.Left="360" Canvas.Top="5"/>
+            
         </Canvas>
 
         <Canvas x:Name="CanvasPrisBeregner" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
-            <Label Content="Pris Beregner" Canvas.Left="360" Canvas.Top="5"/>
+            
         </Canvas>
 
         <Canvas x:Name="CanvasCRUD" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
-            <Label Content="CRUD" Canvas.Left="360" Canvas.Top="5"/>
+            
         </Canvas>
 
         <Canvas x:Name="CanvasÅbentHus" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
-            <Label Content="Åbent Hus" Canvas.Left="360" Canvas.Top="5"/>
+            
         </Canvas>
 
 
