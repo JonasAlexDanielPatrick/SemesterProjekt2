@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Main"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="SweetHome" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -19,32 +19,32 @@
             <RowDefinition Height="40" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Content="Salgsstatistik" Margin="4" />
-        <Button Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1" Content="Kvm. Pris" Margin="4" />
-        <Button Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="1" Content="Pris Beregner" Margin="4" />
-        <Button Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="1" Content="CRUD" Margin="4" />
-        <Button Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="1" Content="Åbent hus" Margin="4" />
+        <Button x:Name="ButtonSalgsstatistik" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Content="Salgsstatistik" Margin="4" Click="ButtonSalgsstatistik_Click" />
+        <Button x:Name="ButtonKvmPris" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1" Content="Kvm. Pris" Margin="4" Click="ButtonKvmPris_Click" />
+        <Button x:Name="ButtonPrisBeregner" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="1" Content="Pris Beregner" Margin="4" Click="ButtonPrisBeregner_Click" />
+        <Button x:Name="ButtonCRUD" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="1" Content="CRUD" Margin="4" Click="ButtonCRUD_Click" />
+        <Button x:Name="ButtonÅbentHus" Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="1" Content="Åbent hus" Margin="4" Click="ButtonÅbentHus_Click" />
         <Label x:Name="LabelLondon" Content="London: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Label x:Name="LabelKøbenhavn" Content="København: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
 
         <Canvas x:Name="CanvasSalgstatistik" Grid.ColumnSpan="6" Grid.Row="1">
-            
+            <Label Content="Salgsstatisik" Canvas.Left="360" Canvas.Top="5"/>
         </Canvas>
 
-        <Canvas x:Name="CanvasKvmPris" Grid.ColumnSpan="6" Grid.Row="1">
-            
+        <Canvas x:Name="CanvasKvmPris" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
+            <Label Content="Kvm. Pris" Canvas.Left="360" Canvas.Top="5"/>
         </Canvas>
 
-        <Canvas x:Name="CanvasPrisBeregner" Grid.ColumnSpan="6" Grid.Row="1">
-
+        <Canvas x:Name="CanvasPrisBeregner" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
+            <Label Content="Pris Beregner" Canvas.Left="360" Canvas.Top="5"/>
         </Canvas>
 
-        <Canvas x:Name="CanvasCRUD" Grid.ColumnSpan="6" Grid.Row="1">
-
+        <Canvas x:Name="CanvasCRUD" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
+            <Label Content="CRUD" Canvas.Left="360" Canvas.Top="5"/>
         </Canvas>
 
-        <Canvas x:Name="CanvasÅbentHus" Grid.ColumnSpan="6" Grid.Row="1">
-
+        <Canvas x:Name="CanvasÅbentHus" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
+            <Label Content="Åbent Hus" Canvas.Left="360" Canvas.Top="5"/>
         </Canvas>
 
 

@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Threading;
-
+using System.ComponentModel;
 
 namespace Main
 {
@@ -19,8 +19,8 @@ namespace Main
 
             Connection.Connect();
 
-            Thread threadLondonUr = new Thread(new ThreadStart(Ur.London));
-            Thread threadKøbenhavnUr = new Thread(new ThreadStart(Ur.København));
+            Thread threadLondonUr = new Thread(new ThreadStart(ControllerUr.London));
+            Thread threadKøbenhavnUr = new Thread(new ThreadStart(ControllerUr.København));
 
             threadLondonUr.Start();
             threadKøbenhavnUr.Start();
@@ -38,6 +38,49 @@ namespace Main
             set { Dispatcher.Invoke(new Action(() => { LabelKøbenhavn.Content = value; })); }
         }
 
+        private void ButtonSalgsstatistik_Click(object sender, RoutedEventArgs e)
+        {
+            CanvasSalgstatistik.Visibility = System.Windows.Visibility.Visible;
+            CanvasKvmPris.Visibility = System.Windows.Visibility.Hidden;
+            CanvasPrisBeregner.Visibility = System.Windows.Visibility.Hidden;
+            CanvasCRUD.Visibility = System.Windows.Visibility.Hidden;
+            CanvasÅbentHus.Visibility = System.Windows.Visibility.Hidden;
+        }
 
+        private void ButtonKvmPris_Click(object sender, RoutedEventArgs e)
+        {
+            CanvasSalgstatistik.Visibility = System.Windows.Visibility.Hidden;
+            CanvasKvmPris.Visibility = System.Windows.Visibility.Visible;
+            CanvasPrisBeregner.Visibility = System.Windows.Visibility.Hidden;
+            CanvasCRUD.Visibility = System.Windows.Visibility.Hidden;
+            CanvasÅbentHus.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        private void ButtonPrisBeregner_Click(object sender, RoutedEventArgs e)
+        {
+            CanvasSalgstatistik.Visibility = System.Windows.Visibility.Hidden;
+            CanvasKvmPris.Visibility = System.Windows.Visibility.Hidden;
+            CanvasPrisBeregner.Visibility = System.Windows.Visibility.Visible;
+            CanvasCRUD.Visibility = System.Windows.Visibility.Hidden;
+            CanvasÅbentHus.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        private void ButtonCRUD_Click(object sender, RoutedEventArgs e)
+        {
+            CanvasSalgstatistik.Visibility = System.Windows.Visibility.Hidden;
+            CanvasKvmPris.Visibility = System.Windows.Visibility.Hidden;
+            CanvasPrisBeregner.Visibility = System.Windows.Visibility.Hidden;
+            CanvasCRUD.Visibility = System.Windows.Visibility.Visible;
+            CanvasÅbentHus.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        private void ButtonÅbentHus_Click(object sender, RoutedEventArgs e)
+        {
+            CanvasSalgstatistik.Visibility = System.Windows.Visibility.Hidden;
+            CanvasKvmPris.Visibility = System.Windows.Visibility.Hidden;
+            CanvasPrisBeregner.Visibility = System.Windows.Visibility.Hidden;
+            CanvasCRUD.Visibility = System.Windows.Visibility.Hidden;
+            CanvasÅbentHus.Visibility = System.Windows.Visibility.Visible;
+        }
     }
 }

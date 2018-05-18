@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace Main
 {
-    class Ur
+    class ControllerUr
     {
 
         public static string london = "";
