@@ -17,7 +17,7 @@ namespace Main
 
             instance = this;
 
-            Connection.Connect();
+            ControllerConnection.Connect();
 
             Thread threadLondonUr = new Thread(new ThreadStart(ControllerUr.London));
             Thread threadKøbenhavnUr = new Thread(new ThreadStart(ControllerUr.København));
