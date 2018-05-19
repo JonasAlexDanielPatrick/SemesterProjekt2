@@ -28,7 +28,8 @@
         <Label x:Name="LabelKøbenhavn" Content="København: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
 
         <Canvas x:Name="CanvasSalgstatistik" Grid.ColumnSpan="6" Grid.Row="1">
-            <DataGrid Height="359" Canvas.Left="135" Canvas.Top="10" Width="647"/>
+            <DataGrid Height="359" Canvas.Left="135" Canvas.Top="10" Width="647">
+            </DataGrid>
             <Grid Height="369" Width="130">
                 <Label Content="Startdato" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                 <Label Content="Slutdato" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
