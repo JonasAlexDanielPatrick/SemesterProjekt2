@@ -16,7 +16,10 @@ namespace Main
 
         public void Jonas()
         {
-
+            /*
+            select Sagsnr, Adresse, OmrådeNavn, Ejendom.Postnr, Postnummer.ByNavn, NuværrendePris, SalgsDato, Mægler.Navn from Ejendom, Postnummer, Mægler
+            where SalgsDato != '' AND Ejendom.Postnr = Postnummer.Postnr AND Ejendom.MæglerID = Mægler.ID;
+            */
         }
 
     }
