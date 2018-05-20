@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Threading;
-using System.ComponentModel;
+using Microsoft.Win32;
 using System.Diagnostics;
 
 namespace Main
@@ -100,6 +100,34 @@ namespace Main
                 string slutDato = tempSlutDato.Substring(6, 4) + "-" + tempSlutDato.Substring(3, 2) + "-" + tempSlutDato.Substring(0, 2);
 
                 ControllerSalgsstatistik.Vis(DataGridSalgsstatistik, startDato, slutDato);
+            }
+        }
+
+        private void ButtonSalgsstatistikUdskriv_Click(object sender, RoutedEventArgs e)
+        {
+            if (DatePickerSalgsstatistikStartdato.ToString() != "" && DatePickerSalgsstatistikSlutdato.ToString() != "")
+            {
+                string udfil = "";
+
+                string tempStartDato = DatePickerSalgsstatistikStartdato.SelectedDate.ToString().Substring(0, 10);
+                string startDato = tempStartDato.Substring(6, 4) + "-" + tempStartDato.Substring(3, 2) + "-" + tempStartDato.Substring(0, 2);
+
+                string tempSlutDato = DatePickerSalgsstatistikSlutdato.SelectedDate.ToString().Substring(0, 10);
+                string slutDato = tempSlutDato.Substring(6, 4) + "-" + tempSlutDato.Substring(3, 2) + "-" + tempSlutDato.Substring(0, 2);
+
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.FileName = "Salgsstatistik";
+                sfd.DefaultExt = ".txt";
+                sfd.Filter = "Text documents (.txt)|*.txt";
+
+                bool? isClosed = sfd.ShowDialog();
+
+                if(isClosed == true)
+                {
+                    udfil = sfd.FileName;
+                }
+
+                ControllerSalgsstatistik.Udskriv(DataGridSalgsstatistik, startDato, slutDato, udfil);
             }
         }
     }
