@@ -28,7 +28,7 @@
         <Label x:Name="LabelKøbenhavn" Content="København: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
 
         <Canvas x:Name="CanvasSalgstatistik" Grid.ColumnSpan="6" Grid.Row="1">
-            <DataGrid x:Name="DataGridSalgsstatistik" Height="359" Canvas.Left="135" Canvas.Top="10" Width="647" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3">
+            <DataGrid x:Name="DataGridSalgsstatistik" Height="359" Canvas.Left="135" Canvas.Top="10" Width="647" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Sagsnr}" Width="80" Header="Sagsnr"/>
                     <DataGridTextColumn Binding="{Binding Adresse}" Width="*" Header="Adresse"/>
@@ -43,7 +43,7 @@
             <Grid Height="369" Width="130">
                 <Label Content="Startdato" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                 <Label Content="Slutdato" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
-                <Button x:Name="ButtonSalgsstatistikUdskriv" Content="Udskriv" Margin="5,335,5,5"/>
+                <Button x:Name="ButtonSalgsstatistikUdskriv" Content="Udskriv" Margin="5,335,5,5" Click="ButtonSalgsstatistikUdskriv_Click"/>
                 <Button x:Name="ButtonSalgsstatistikSøg" Content="Søg" Margin="5,300,5,40" Click="ButtonSalgsstatistikSøg_Click"/>
                 <DatePicker x:Name="DatePickerSalgsstatistikStartdato" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="112" Height="31"/>
                 <DatePicker x:Name="DatePickerSalgsstatistikSlutdato" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="112" Height="31"/>
