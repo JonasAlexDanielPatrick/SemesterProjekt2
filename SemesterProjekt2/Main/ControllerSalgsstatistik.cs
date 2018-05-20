@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
+using System.Windows.Controls;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Main
 {
     class ControllerSalgsstatistik
     {
-
-        public void Alex()
+        public static void Vis(DataGrid dg)
         {
-
-        }
-
-        public void Jonas()
-        {
-            /*
-            select Sagsnr, Adresse, OmrådeNavn, Ejendom.Postnr, Postnummer.ByNavn, NuværrendePris, SalgsDato, Mægler.Navn from Ejendom, Postnummer, Mægler
-            where SalgsDato != '' AND Ejendom.Postnr = Postnummer.Postnr AND Ejendom.MæglerID = Mægler.ID;
-            */
+            string sSQL = "select Sagsnr, Adresse, OmrådeNavn, Ejendom.Postnr, Postnummer.ByNavn, NuværendePris, SalgsDato, Mægler.Navn from Ejendom, Postnummer, Mægler where SalgsDato != '' AND Ejendom.Postnr = Postnummer.Postnr AND Ejendom.MæglerID = Mægler.ID;";
+            SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
+            SqlDataAdapter sda = new SqlDataAdapter(command);
+            DataTable dt = new DataTable("Employee");
+            sda.Fill(dt);
+            dg.ItemsSource = dt.DefaultView;
         }
 
     }

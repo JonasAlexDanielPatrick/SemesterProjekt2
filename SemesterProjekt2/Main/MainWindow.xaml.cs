@@ -87,5 +87,10 @@ namespace Main
             CanvasÅbentHus.Visibility = System.Windows.Visibility.Visible;
             instance.Title = "SweetHome - Åbent Hus";
         }
+
+        private void ButtonSalgsstatistikSøg_Click(object sender, RoutedEventArgs e)
+        {
+            ControllerSalgsstatistik.Vis(DataGridSalgsstatistik);
+        }
     }
 }
