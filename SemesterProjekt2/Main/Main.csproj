@@ -54,7 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="PrisBeregner.cs" />
+    <Compile Include="ControllerPrisBeregner.cs" />
     <Compile Include="ControllerSalgsstatistik.cs" />
     <Compile Include="ControllerUr.cs" />
     <Page Include="MainWindow.xaml">
