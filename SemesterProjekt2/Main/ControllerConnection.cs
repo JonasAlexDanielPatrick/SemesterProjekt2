@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace Main
 {
-    class Connection
+    class ControllerConnection
     // Skrevet Af Jonas
     {
 
@@ -30,7 +30,7 @@ namespace Main
         public static void Postnr()
         {
             string sSQL = "SELECT * FROM Postnummer;";
-            SqlCommand command = new SqlCommand(sSQL, Connection.conn);
+            SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
