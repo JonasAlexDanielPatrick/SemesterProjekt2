@@ -159,9 +159,21 @@ namespace Main
 
         }
 
+        private void ButtonKvmPrisSøg_Click(object sender, RoutedEventArgs e)
+        {
+            string startDato = "2017-02-01";
+            
+            string slutDato = "2017-02-31";
+
+            ControllerKvmPris.Vis(DataGridKvmPriser, startDato, slutDato);
+ 
+        }
+
         private void ButtonKvmPrisUdskriv_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
+
     }
 }

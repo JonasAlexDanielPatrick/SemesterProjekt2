@@ -67,16 +67,16 @@
                     <DataGridTextColumn Binding="{Binding ByNavn}" Width="80" Header="By"/>
                     <DataGridTextColumn Binding="{Binding BoligAreal}" Width="80" Header="Antal Kvm."/>
                     <DataGridTextColumn Binding="{Binding NuværendePris}" Width="80" Header="Pris"/>
-                    <DataGridTextColumn Binding="{Binding Navn}" Width="80" Header="Kvm. Pris"/>
+                    <DataGridTextColumn Binding="{Binding KvmPris}" Width="80" Header="Kvm. Pris"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Grid Height="369" Width="130">
-                <ComboBox x:Name="ComboboxKvmPriserÅr" Margin="5,100,5,240">
+                <ComboBox x:Name="ComboboxKvmPriserÅr" Margin="5,50,5,290">
                     <ComboBoxItem Tag="2016" IsSelected="True">2016</ComboBoxItem>
                     <ComboBoxItem Tag="2017" IsSelected="False">2017</ComboBoxItem>
                     <ComboBoxItem Tag="2018" IsSelected="False">2018</ComboBoxItem>
                 </ComboBox>
-                <ComboBox x:Name="ComboboxKvmPriserMåned" Margin="5,200,5,140">
+                <ComboBox x:Name="ComboboxKvmPriserMåned" Margin="5,150,5,190">
                     <ComboBoxItem Tag="01" IsSelected="True">Januar</ComboBoxItem>
                     <ComboBoxItem Tag="02" IsSelected="False">Febuar</ComboBoxItem>
                     <ComboBoxItem Tag="03" IsSelected="False">Marts</ComboBoxItem>
@@ -90,6 +90,7 @@
                     <ComboBoxItem Tag="11" IsSelected="False">November</ComboBoxItem>
                     <ComboBoxItem Tag="12" IsSelected="False">December</ComboBoxItem>
                 </ComboBox>
+                <Button x:Name="ButtonKvmPrisSøg" Content="Søg" Margin="5,300,5,40" Click="ButtonKvmPrisSøg_Click"/>
                 <Button x:Name="ButtonKvmPrisUdskriv" Content="Udskriv" Margin="5,335,5,5" Click="ButtonKvmPrisUdskriv_Click"/>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
