@@ -65,8 +65,8 @@
                     <DataGridTextColumn Binding="{Binding OmrådeNavn}" Width="80" Header="Område"/>
                     <DataGridTextColumn Binding="{Binding Postnr}" Width="50" Header="Postnr"/>
                     <DataGridTextColumn Binding="{Binding ByNavn}" Width="80" Header="By"/>
-                    <DataGridTextColumn Binding="{Binding BoligAreal}" Width="80" Header="Antal Kvm."/>
                     <DataGridTextColumn Binding="{Binding NuværendePris}" Width="80" Header="Pris"/>
+                    <DataGridTextColumn Binding="{Binding BoligAreal}" Width="80" Header="Antal Kvm."/>
                     <DataGridTextColumn Binding="{Binding KvmPris}" Width="80" Header="Kvm. Pris"/>
                 </DataGrid.Columns>
             </DataGrid>

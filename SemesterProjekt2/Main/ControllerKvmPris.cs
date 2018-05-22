@@ -32,7 +32,7 @@ namespace Main
 
                 stream = new StreamWriter(udfil);
 
-                stream.WriteLine("  Sagsnr  |        Adresse       |        Område        |  Postnr  |          By          |  Antal Kvm.  |     Pris     |  Kvm Pris.  ");
+                stream.WriteLine("  Sagsnr  |        Adresse       |        Område        |  Postnr  |          By          |     Pris     |  Antal Kvm.  |  Kvm Pris.  ");
 
                 foreach (DataRow row in dt.Rows)
                 {
