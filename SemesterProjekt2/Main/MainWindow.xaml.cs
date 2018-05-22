@@ -161,9 +161,9 @@ namespace Main
 
         private void ButtonKvmPrisSøg_Click(object sender, RoutedEventArgs e)
         {
-            string startDato = "2017-02-01";
-            
-            string slutDato = "2017-02-31";
+            string startDato = ((ComboBoxItem)ComboboxKvmPriserÅr.SelectedItem).Tag.ToString() + "-" + ((ComboBoxItem)ComboboxKvmPriserMåned.SelectedItem).Tag.ToString() + "-01";
+
+            string slutDato = ((ComboBoxItem)ComboboxKvmPriserÅr.SelectedItem).Tag.ToString() + "-" + ((ComboBoxItem)ComboboxKvmPriserMåned.SelectedItem).Tag.ToString() + "-31";
 
             ControllerKvmPris.Vis(DataGridKvmPriser, startDato, slutDato);
  
