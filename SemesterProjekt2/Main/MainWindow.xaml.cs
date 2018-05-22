@@ -25,6 +25,8 @@ namespace Main
 
             threadLondonUr.Start();
             threadKøbenhavnUr.Start();
+
+            ButtonSalgsstatistik_Click(null, null);
             
         }
 

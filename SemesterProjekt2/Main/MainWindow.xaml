@@ -27,7 +27,7 @@
         <Label x:Name="LabelLondon" Content="London: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Label x:Name="LabelKøbenhavn" Content="København: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
 
-        <Canvas x:Name="CanvasSalgstatistik" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Visible">
+        <Canvas x:Name="CanvasSalgstatistik" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
             <DataGrid x:Name="DataGridSalgsstatistik" Height="359" Canvas.Left="135" Canvas.Top="10" Width="647" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Sagsnr}" Width="80" Header="Sagsnr"/>
@@ -57,8 +57,28 @@
 
         </Canvas>
 
-        <Canvas x:Name="CanvasKvmPris" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
-            
+        <Canvas x:Name="CanvasKvmPris" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Visible">
+            <DataGrid x:Name="DataGridKvmPriser" Height="359" Canvas.Left="135" Canvas.Top="10" Width="647" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Sagsnr}" Width="80" Header="Sagsnr"/>
+                    <DataGridTextColumn Binding="{Binding Adresse}" Width="*" Header="Adresse"/>
+                    <DataGridTextColumn Binding="{Binding OmrådeNavn}" Width="80" Header="Område"/>
+                    <DataGridTextColumn Binding="{Binding Postnr}" Width="50" Header="Postnr"/>
+                    <DataGridTextColumn Binding="{Binding ByNavn}" Width="80" Header="By"/>
+                    <DataGridTextColumn Binding="{Binding NuværendePris}" Width="80" Header="Pris"/>
+                    <DataGridTextColumn Binding="{Binding SalgsDato}" Width="80" Header="Dato"/>
+                    <DataGridTextColumn Binding="{Binding Navn}" Width="80" Header="Mægler"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Grid Height="369" Width="130">
+                <Button x:Name="ButtonKvmPrisUdskriv" Content="Udskriv" Margin="5,335,5,5" Click="ButtonKvmPrisUdskriv_Click"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+            </Grid>
         </Canvas>
 
         <Canvas x:Name="CanvasPrisBeregner" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
