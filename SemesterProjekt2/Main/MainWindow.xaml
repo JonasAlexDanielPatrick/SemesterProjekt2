@@ -19,11 +19,11 @@
             <RowDefinition Height="40" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Content="Salgsstatistik" Margin="4" />
-        <Button Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1" Content="Kvm. Pris" Margin="4" />
-        <Button Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="1" Content="Pris Beregner" Margin="4" />
-        <Button Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="1" Content="CRUD" Margin="4" />
-        <Button Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="1" Content="Åbent hus" Margin="4" />
+        <Button x:Name="ButtonSalgsstatistik" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Content="Salgsstatistik" Margin="4,4,4,0" Height="32" VerticalAlignment="Top" Click="ButtonSalgsstatistik_Click" />
+        <Button x:Name="ButtonKvmPris" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1" Content="Kvm. Pris" Margin="4" Click="ButtonKvmPris_Click" />
+        <Button x:Name="ButtonPrisBeregner" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="1" Content="Pris Beregner" Margin="4" Click="ButtonPrisBeregner_Click" />
+        <Button x:Name="ButtonCRUD" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="1" Content="CRUD" Margin="4" Click="ButtonCRUD_Click" />
+        <Button x:Name="ButtonÅbentHus" Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="1" Content="Åbent hus" Margin="4" Click="ButtonÅbentHus_Click" />
         <Label x:Name="LabelLondon" Content="London: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Label x:Name="LabelKøbenhavn" Content="København: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
 
