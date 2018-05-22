@@ -27,7 +27,7 @@
         <Label x:Name="LabelLondon" Content="London: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Label x:Name="LabelKøbenhavn" Content="København: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
 
-        <Canvas x:Name="CanvasSalgstatistik" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Visible">
+        <Canvas x:Name="CanvasSalgstatistik" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
             <DataGrid x:Name="DataGridSalgsstatistik" Height="359" Canvas.Left="135" Canvas.Top="10" Width="647" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Sagsnr}" Width="80" Header="Sagsnr"/>
@@ -65,7 +65,7 @@
 
         </Canvas>
 
-        <Canvas x:Name="CanvasCRUD" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
+        <Canvas x:Name="CanvasCRUD" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Visible">
 
         </Canvas>
 
