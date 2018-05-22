@@ -71,6 +71,25 @@
                 </DataGrid.Columns>
             </DataGrid>
             <Grid Height="369" Width="130">
+                <ComboBox x:Name="ComboboxKvmPriserÅr" Margin="5,100,5,240">
+                    <ComboBoxItem Tag="2016" IsSelected="True">2016</ComboBoxItem>
+                    <ComboBoxItem Tag="2017" IsSelected="False">2017</ComboBoxItem>
+                    <ComboBoxItem Tag="2018" IsSelected="False">2018</ComboBoxItem>
+                </ComboBox>
+                <ComboBox x:Name="ComboboxKvmPriserMåned" Margin="5,200,5,140">
+                    <ComboBoxItem Tag="01" IsSelected="True">Januar</ComboBoxItem>
+                    <ComboBoxItem Tag="02" IsSelected="False">Febuar</ComboBoxItem>
+                    <ComboBoxItem Tag="03" IsSelected="False">Marts</ComboBoxItem>
+                    <ComboBoxItem Tag="04" IsSelected="False">April</ComboBoxItem>
+                    <ComboBoxItem Tag="05" IsSelected="False">Maj</ComboBoxItem>
+                    <ComboBoxItem Tag="06" IsSelected="False">Juni</ComboBoxItem>
+                    <ComboBoxItem Tag="07" IsSelected="False">Juli</ComboBoxItem>
+                    <ComboBoxItem Tag="08" IsSelected="False">August</ComboBoxItem>
+                    <ComboBoxItem Tag="09" IsSelected="False">September</ComboBoxItem>
+                    <ComboBoxItem Tag="10" IsSelected="False">Oktober</ComboBoxItem>
+                    <ComboBoxItem Tag="11" IsSelected="False">November</ComboBoxItem>
+                    <ComboBoxItem Tag="12" IsSelected="False">December</ComboBoxItem>
+                </ComboBox>
                 <Button x:Name="ButtonKvmPrisUdskriv" Content="Udskriv" Margin="5,335,5,5" Click="ButtonKvmPrisUdskriv_Click"/>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />

@@ -159,6 +159,9 @@ namespace Main
 
         }
 
-       
+        private void ButtonKvmPrisUdskriv_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
