@@ -161,9 +161,9 @@ namespace Main
 
         private void ButtonKvmPrisSøg_Click(object sender, RoutedEventArgs e)
         {
-            string startDato = "2017-02-01";
-            
-            string slutDato = "2017-02-31";
+            string startDato = ((ComboBoxItem)ComboboxKvmPriserÅr.SelectedItem).Tag.ToString() + "-" + ((ComboBoxItem)ComboboxKvmPriserMåned.SelectedItem).Tag.ToString() + "-01";
+
+            string slutDato = ((ComboBoxItem)ComboboxKvmPriserÅr.SelectedItem).Tag.ToString() + "-" + ((ComboBoxItem)ComboboxKvmPriserMåned.SelectedItem).Tag.ToString() + "-31";
 
             ControllerKvmPris.Vis(DataGridKvmPriser, startDato, slutDato);
  
@@ -171,7 +171,28 @@ namespace Main
 
         private void ButtonKvmPrisUdskriv_Click(object sender, RoutedEventArgs e)
         {
+            if (ComboboxKvmPriserÅr.ToString() != "" && ComboboxKvmPriserMåned.ToString() != "")
+            {
+                string udfil = "";
 
+                string startDato = ((ComboBoxItem)ComboboxKvmPriserÅr.SelectedItem).Tag.ToString() + "-" + ((ComboBoxItem)ComboboxKvmPriserMåned.SelectedItem).Tag.ToString() + "-01";
+
+                string slutDato = ((ComboBoxItem)ComboboxKvmPriserÅr.SelectedItem).Tag.ToString() + "-" + ((ComboBoxItem)ComboboxKvmPriserMåned.SelectedItem).Tag.ToString() + "-31";
+
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.FileName = "KvmPris";
+                sfd.DefaultExt = ".txt";
+                sfd.Filter = "Text documents (.txt)|*.txt";
+
+                bool? isClosed = sfd.ShowDialog();
+
+                if (isClosed == true)
+                {
+                    udfil = sfd.FileName;
+                }
+
+                ControllerKvmPris.Udskriv(DataGridKvmPriser, startDato, slutDato, udfil);
+            }
         }
 
 
