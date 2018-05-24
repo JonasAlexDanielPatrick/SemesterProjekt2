@@ -209,5 +209,25 @@ namespace Main
         {
 
         }
+
+        private void ButtonCreate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonRead_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
