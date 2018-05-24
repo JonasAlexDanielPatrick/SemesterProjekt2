@@ -195,6 +195,19 @@ namespace Main
             }
         }
 
+        private void ButtonHusejer_Click(object sender, RoutedEventArgs e)
+        {
+            ControllerCrudHusejer.Vis(DataGridHusejer);
+        }
 
+        private void ButtonMægler_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonEjendom_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
