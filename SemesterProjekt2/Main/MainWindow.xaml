@@ -116,7 +116,14 @@
         </Canvas>
 
         <Canvas x:Name="CanvasCRUD" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Visible">
-
+            <DataGrid x:Name="DataGridHusejer" Height="359" Canvas.Left="138" Canvas.Top="10" Width="647" Visibility="Visible" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding ID}" Width="80" Header="ID"/>
+                    <DataGridTextColumn Binding="{Binding Navn}" Width="*" Header="Navn"/>
+                    <DataGridTextColumn Binding="{Binding Email}" Width="*" Header="Email"/>
+                    <DataGridTextColumn Binding="{Binding Telefon}" Width="100" Header="Telefon"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Canvas>
 
         <Canvas x:Name="CanvasÅbentHus" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
