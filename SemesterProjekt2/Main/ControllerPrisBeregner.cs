@@ -1,4 +1,9 @@
-﻿namespace Main
+﻿
+using System;
+using System.Data.SqlClient;
+using System.Diagnostics;
+
+namespace Main
 {
     class ControllerPrisBeregner
     {
@@ -10,38 +15,39 @@
             //Udregning
             double pris = (kvm * kvmPris) * prisFaktor;
             return pris;
-            
+
         }
 
         private static double FindPrisFaktor(int postnummer, string område)
         {
 
             //SQL code here
-
-            //Temp code
-            double prisFaktor;
-            if (postnummer == 7100 && område == "Vestbyen")
+            SqlCommand cmd = new SqlCommand("SELECT PrisFaktor FROM Område WHERE Navn = '" + område + "' AND Postnr = " + postnummer + ";", ControllerConnection.conn);
+            double prisFaktor = 0;
+            try
             {
-                prisFaktor = 0.75;
-                return prisFaktor;
-            }
+                using (SqlDataReader read = cmd.ExecuteReader())
+                {
+                    while (read.Read())
+                    {
+                        prisFaktor = Convert.ToDouble((read["PrisFaktor"]));
 
-            else if (postnummer == 7120 && område == "Bredballe")
-            {
-                prisFaktor = 1.25;
+                    }
+                }
                 return prisFaktor;
-            }
 
-            else if (postnummer == 7120 && område == "Midbyen")
-            {
-                prisFaktor = 1.25;
-                return prisFaktor;
             }
-            else
+            catch (Exception)
+            {
+                Debug.WriteLine("Failed to connect to the database" + "\n");
                 return 0;
+            }
+
+
+
 
         }
 
-        
+
     }
 }
