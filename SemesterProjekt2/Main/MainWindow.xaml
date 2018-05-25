@@ -25,7 +25,7 @@
         <Button x:Name="ButtonCRUD" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="1" Content="CRUD" Margin="4" Click="ButtonCRUD_Click" />
         <Button x:Name="ButtonÅbentHus" Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="1" Content="Åbent hus" Margin="4" Click="ButtonÅbentHus_Click" />
         <Label x:Name="LabelLondon" Content="London: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <Label x:Name="LabelKøbenhavn" Content="København: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+        <Label x:Name="LabelKøbenhavn" Content="København: 00:00" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Bottom" MouseDown="LabelKøbenhavn_Click"/>
 
         <Canvas x:Name="CanvasSalgstatistik" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Visible">
             <DataGrid x:Name="DataGridSalgsstatistik" Height="359" Canvas.Left="135" Canvas.Top="10" Width="647" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True">
@@ -121,6 +121,10 @@
 
         <Canvas x:Name="CanvasÅbentHus" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
 
+        </Canvas>
+
+        <Canvas x:Name="CanvasTestData" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
+            <Button x:Name="ButtonOpretData" Content="Opret Data" Width="300" Height="100" Margin="250,120,10,10" Click="ButtonOpretData_Click"/>
         </Canvas>
 
 

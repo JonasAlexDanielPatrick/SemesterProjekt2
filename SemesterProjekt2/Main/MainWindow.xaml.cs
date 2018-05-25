@@ -49,6 +49,7 @@ namespace Main
             CanvasPrisBeregner.Visibility = System.Windows.Visibility.Hidden;
             CanvasCRUD.Visibility = System.Windows.Visibility.Hidden;
             CanvasÅbentHus.Visibility = System.Windows.Visibility.Hidden;
+            CanvasTestData.Visibility = Visibility.Hidden;
             instance.Title = "SweetHome - Salgsstatistik";
         }
 
@@ -59,6 +60,7 @@ namespace Main
             CanvasPrisBeregner.Visibility = System.Windows.Visibility.Hidden;
             CanvasCRUD.Visibility = System.Windows.Visibility.Hidden;
             CanvasÅbentHus.Visibility = System.Windows.Visibility.Hidden;
+            CanvasTestData.Visibility = Visibility.Hidden;
             instance.Title = "SweetHome - Kvm. Pris";
         }
 
@@ -69,6 +71,7 @@ namespace Main
             CanvasPrisBeregner.Visibility = System.Windows.Visibility.Visible;
             CanvasCRUD.Visibility = System.Windows.Visibility.Hidden;
             CanvasÅbentHus.Visibility = System.Windows.Visibility.Hidden;
+            CanvasTestData.Visibility = Visibility.Hidden;
             instance.Title = "SweetHome - Pris Beregner";
         }
 
@@ -79,6 +82,7 @@ namespace Main
             CanvasPrisBeregner.Visibility = System.Windows.Visibility.Hidden;
             CanvasCRUD.Visibility = System.Windows.Visibility.Visible;
             CanvasÅbentHus.Visibility = System.Windows.Visibility.Hidden;
+            CanvasTestData.Visibility = Visibility.Hidden;
             instance.Title = "SweetHome - CRUD";
         }
 
@@ -89,7 +93,19 @@ namespace Main
             CanvasPrisBeregner.Visibility = System.Windows.Visibility.Hidden;
             CanvasCRUD.Visibility = System.Windows.Visibility.Hidden;
             CanvasÅbentHus.Visibility = System.Windows.Visibility.Visible;
+            CanvasTestData.Visibility = Visibility.Hidden;
             instance.Title = "SweetHome - Åbent Hus";
+        }
+
+        private void LabelKøbenhavn_Click(object sender, RoutedEventArgs e)
+        {
+            CanvasSalgstatistik.Visibility = System.Windows.Visibility.Hidden;
+            CanvasKvmPris.Visibility = System.Windows.Visibility.Hidden;
+            CanvasPrisBeregner.Visibility = System.Windows.Visibility.Hidden;
+            CanvasCRUD.Visibility = System.Windows.Visibility.Hidden;
+            CanvasÅbentHus.Visibility = System.Windows.Visibility.Hidden;
+            CanvasTestData.Visibility = Visibility.Visible;
+            instance.Title = "SweetHome - Test Data";
         }
 
         private void ButtonSalgsstatistikSøg_Click(object sender, RoutedEventArgs e)
@@ -175,6 +191,9 @@ namespace Main
             }
         }
 
-
+        private void ButtonOpretData_Click(object sender, RoutedEventArgs e)
+        {
+            ControllerTestData.OpretData();
+        }
     }
 }

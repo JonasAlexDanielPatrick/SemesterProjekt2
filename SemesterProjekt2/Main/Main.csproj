@@ -57,6 +57,7 @@
     <Compile Include="ControllerKvmPris.cs" />
     <Compile Include="ControllerPrisBeregner.cs" />
     <Compile Include="ControllerSalgsstatistik.cs" />
+    <Compile Include="ControllerTestData.cs" />
     <Compile Include="ControllerUr.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
