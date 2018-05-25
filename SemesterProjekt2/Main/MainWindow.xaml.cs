@@ -193,10 +193,10 @@ namespace Main
 
         private void ButtonCreate_Click(object sender, RoutedEventArgs e)
         {
-            //if (TextBox_TextChanged_4 != "")
-            //{
-                
-            //}
+            if (WrapPanelHusejer.IsVisible && (TextBoxHusejerNavn.Text != "Navn" || TextBoxHusejerEmail.Text != "Email" || TextBoxHusejerTelefon.Text != "Telefon"))
+            {
+                ControllerCrudHusejer.OpretHusejer(TextBoxHusejerNavn.Text, TextBoxHusejerEmail.Text, TextBoxHusejerTelefon.Text);
+            }
         }
 
         private void ButtonRead_Click(object sender, RoutedEventArgs e)
@@ -214,7 +214,7 @@ namespace Main
 
         }
 
-        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        private void TextBoxHusejerID_LostFocus(object sender, RoutedEventArgs e)
         {
             if (TextBoxHusejerID.Text == "")
             {
@@ -223,9 +223,33 @@ namespace Main
 
         }
 
-        private void Button_GotFocus(object sender, RoutedEventArgs e)
+        private void TextBoxHusejerNavn_LostFocus(object sender, RoutedEventArgs e)
         {
-            ControllerCrudHusejer.UpdateDG(DataGridHusejer);
+            if (TextBoxHusejerNavn.Text == "")
+            {
+                TextBoxHusejerNavn.Text = "Navn";
+            }
         }
+
+        private void TextBoxHusejerEmail_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxHusejerEmail.Text == "")
+            {
+                TextBoxHusejerEmail.Text = "Email";
+            }
+        }
+
+        private void TextBoxHusejerTelefon_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxHusejerTelefon.Text == "")
+            {
+                TextBoxHusejerTelefon.Text = "Telefon";
+            }
+        }
+
+        //private void Button_GotFocus(object sender, RoutedEventArgs e)
+        //{
+        //    ControllerCrudHusejer.UpdateDG(DataGridHusejer);
+        //}
     }
 }
