@@ -134,30 +134,11 @@ namespace Main
             }
         }
 
-        private void TextBox_TextChanged_3(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             textbox4.Text = Convert.ToString(ControllerPrisBeregner.BeregnPris(Convert.ToInt32(textbox1.Text), textbox2.Text, Convert.ToInt32(textbox3.Text)));
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)
-        {
-
-        }
 
         private void ButtonKvmPrisSøg_Click(object sender, RoutedEventArgs e)
         {
@@ -212,7 +193,10 @@ namespace Main
 
         private void ButtonCreate_Click(object sender, RoutedEventArgs e)
         {
-
+            //if (TextBox_TextChanged_4 != "")
+            //{
+                
+            //}
         }
 
         private void ButtonRead_Click(object sender, RoutedEventArgs e)
@@ -228,6 +212,20 @@ namespace Main
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxHusejerID.Text == "")
+            {
+                TextBoxHusejerID.Text = "ID";
+            }
+
+        }
+
+        private void Button_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ControllerCrudHusejer.UpdateDG(DataGridHusejer);
         }
     }
 }

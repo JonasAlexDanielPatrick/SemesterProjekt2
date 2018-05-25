@@ -104,19 +104,21 @@
         </Canvas>
 
         <Canvas x:Name="CanvasPrisBeregner" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
-            <TextBox Grid.ColumnSpan="2" Grid.Row="1" TextChanged="TextBox_TextChanged" Name="textbox1" Canvas.Left="29" Canvas.Top="56" Height="33" Width="120" />
-            <TextBox Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" TextChanged="TextBox_TextChanged_1" Name="textbox2" Height="33" Canvas.Left="182" Canvas.Top="56" Width="120" />
-            <TextBox Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1" TextChanged="TextBox_TextChanged_2" Name="textbox3" Height="32" Canvas.Left="336" Canvas.Top="56" Width="120" />
+            <TextBox Grid.ColumnSpan="2" Grid.Row="1" Name="textbox1" Canvas.Left="29" Canvas.Top="56" Height="33" Width="120" />
+            <TextBox Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" Name="textbox2" Height="33" Canvas.Left="182" Canvas.Top="56" Width="120" />
+            <TextBox Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1" Name="textbox3" Height="32" Canvas.Left="336" Canvas.Top="56" Width="120" />
             <Label Grid.ColumnSpan="2" Grid.Row="1" Height="30" Canvas.Left="29" Canvas.Top="26" Width="120" Content="    Postnummer" FontSize="14" />
             <Label Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" Canvas.Left="182" Canvas.Top="26" Height="30" Width="120" FontSize="14" Content="   Område Navn" />
             <Label Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1" Canvas.Left="336" Canvas.Top="26" Height="30" Width="120" RenderTransformOrigin="0.5,0.5" Content="      Antal Kvm" FontSize="14" />
             <Button Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="1" Click="Button_Click_1" Canvas.Left="578" Canvas.Top="246" Height="46" Width="172" FontSize="14" Content="Beregn Pris" />
-            <TextBox Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" TextChanged="TextBox_TextChanged_3" Name="textbox4" Height="46" Canvas.Left="426" Canvas.Top="246" Width="120" />
+            <TextBox Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Name="textbox4" Height="46" Canvas.Left="426" Canvas.Top="246" Width="120" />
             <Label Content="      Vurdering" Canvas.Left="426" Canvas.Top="214" Height="32" Width="120" FontSize="14"/>
         </Canvas>
-
+        <Canvas x:Name="CanvasCRUDHusejer" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Visible">
+        </Canvas>
         <Canvas x:Name="CanvasCRUD" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Visible">
-            <DataGrid x:Name="DataGridHusejer" Height="359" Canvas.Left="175" Canvas.Top="10" Width="607" Visibility="Visible" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True">
+
+            <DataGrid x:Name="DataGridHusejer" Height="329" Canvas.Left="175" Canvas.Top="40" Width="607" Visibility="Visible" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True" ItemsSource="{Binding}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding ID}" Width="80" Header="ID"/>
                     <DataGridTextColumn Binding="{Binding Navn}" Width="*" Header="Navn"/>
@@ -131,19 +133,11 @@
             <Button x:Name="ButtonRead" Content="Søg" Canvas.Left="90" Canvas.Top="324" Width="75" Click="ButtonRead_Click"/>
             <Button x:Name="ButtonUpdate" Content="Opdatér" Canvas.Left="10" Canvas.Top="349" Width="75" Click="ButtonUpdate_Click"/>
             <Button x:Name="ButtonDelete" Content="Slet" Canvas.Left="90" Canvas.Top="349" Width="75" Click="ButtonDelete_Click"/>
-            <TextBox Height="16" Canvas.Left="62" TextWrapping="Wrap" Text="TextBox" Canvas.Top="40" Width="103"/>
-            <TextBox Height="16" Canvas.Left="62" TextWrapping="Wrap" Text="TextBox" Canvas.Top="61" Width="103"/>
-            <TextBox Height="16" Canvas.Left="62" TextWrapping="Wrap" Text="TextBox" Canvas.Top="82" Width="103"/>
-            <TextBox Height="16" Canvas.Left="62" TextWrapping="Wrap" Text="TextBox" Canvas.Top="103" Width="103"/>
-            <TextBox Height="16" Canvas.Left="62" TextWrapping="Wrap" Text="TextBox" Canvas.Top="124" Width="103"/>
-            <TextBox Height="16" Canvas.Left="62" TextWrapping="Wrap" Text="TextBox" Canvas.Top="145" Width="103"/>
-            <TextBox Height="16" Canvas.Left="62" TextWrapping="Wrap" Text="TextBox" Canvas.Top="166" Width="103"/>
-            <TextBox Height="16" Canvas.Left="62" TextWrapping="Wrap" Text="TextBox" Canvas.Top="187" Width="103"/>
-            <TextBox Height="16" Canvas.Left="62" TextWrapping="Wrap" Text="TextBox" Canvas.Top="208" Width="103"/>
-            <TextBox Height="16" Canvas.Left="62" TextWrapping="Wrap" Text="TextBox" Canvas.Top="229" Width="103"/>
-            <TextBox Height="16" Canvas.Left="62" TextWrapping="Wrap" Text="TextBox" Canvas.Top="250" Width="103"/>
-            <TextBox Height="16" Canvas.Left="62" TextWrapping="Wrap" Text="TextBox" Canvas.Top="271" Width="103"/>
-            <TextBox Height="16" Canvas.Left="62" TextWrapping="Wrap" Text="TextBox" Canvas.Top="292" Width="103"/>
+            <WrapPanel Height="279" Canvas.Left="10" Canvas.Top="40" Width="155">
+                <TextBox x:Name="TextBoxHusejerID" Height="23" TextWrapping="Wrap" Text="ID" Width="155" LostFocus="TextBox_LostFocus"/>
+                <Button Content="Button" Width="75" GotFocus="Button_GotFocus"/>
+            </WrapPanel>
+
         </Canvas>
 
         <Canvas x:Name="CanvasÅbentHus" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
