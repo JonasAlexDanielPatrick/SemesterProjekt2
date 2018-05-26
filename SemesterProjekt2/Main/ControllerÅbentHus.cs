@@ -20,7 +20,12 @@ namespace Main
 
         public static void FyldEjendomDatagrid(DataGrid dg)
         {
-
+            string sSQL = "select Sagsnr, Adresse, OmrådeNavn, Postnummer.ByNavn, NuværendePris from Ejendom, Postnummer where Salgsdato = '' AND Ejendom.Postnr = Postnummer.Postnr;";
+            SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
+            SqlDataAdapter sda = new SqlDataAdapter(command);
+            DataTable dt = new DataTable("Ejendom");
+            sda.Fill(dt);
+            dg.ItemsSource = dt.DefaultView;
         }
 
         public static void GenererListe(string udfil)
