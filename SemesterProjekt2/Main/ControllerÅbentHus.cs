@@ -10,7 +10,12 @@ namespace Main
     {
         public static void FyldMæglerDatagrid(DataGrid dg)
         {
-
+            string sSQL = "select Navn from Mægler;";
+            SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
+            SqlDataAdapter sda = new SqlDataAdapter(command);
+            DataTable dt = new DataTable("Mægler-liste");
+            sda.Fill(dt);
+            dg.ItemsSource = dt.DefaultView;
         }
 
         public static void FyldEjendomDatagrid(DataGrid dg)
