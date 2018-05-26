@@ -120,7 +120,38 @@
         </Canvas>
 
         <Canvas x:Name="CanvasÅbentHus" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Visible">
-
+            <Grid Height="379" Width="792">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <DataGrid x:Name="DataGridÅbentHusMægler" HorizontalAlignment="Left" Height="290" Margin="10,40,0,0" VerticalAlignment="Top" Width="244" Grid.ColumnSpan="2">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Navn}" Width="*" Header="Navn"/>
+                        <DataGridCheckBoxColumn Width="60" Header="Valgt"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <DataGrid x:Name="DataGridÅbentHusEjendom" HorizontalAlignment="Left" Height="290" Margin="10,40,0,0" VerticalAlignment="Top" Width="508" Grid.ColumnSpan="4" Grid.Column="2">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Sagsnr}" Width="80" Header="Sagsnr"/>
+                        <DataGridTextColumn Binding="{Binding Adresse}" Width="*" Header="Adresse"/>
+                        <DataGridTextColumn Binding="{Binding OmrådeNavn}" Width="80" Header="Område"/>
+                        <DataGridTextColumn Binding="{Binding ByNavn}" Width="80" Header="By"/>
+                        <DataGridTextColumn Binding="{Binding NuværendePris}" Width="80" Header="Pris"/>
+                        <DataGridCheckBoxColumn Width="60" Header="Valgt"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Label Content="Mægler liste" HorizontalAlignment="Left" Margin="46,10,0,0" VerticalAlignment="Top"/>
+                <Label Content="Ejendomme" HorizontalAlignment="Left" Margin="49,10,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                <Button x:Name="ButtonÅbentHusUdskriv" Content="Udskriv" Grid.Column="5" HorizontalAlignment="Left" Margin="10,337,0,0" Height="32" VerticalAlignment="Top" Width="112"/>
+            </Grid>
         </Canvas>
 
         <Canvas x:Name="CanvasTestData" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
