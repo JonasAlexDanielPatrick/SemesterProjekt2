@@ -2,11 +2,21 @@
 using System.Data.SqlClient;
 using System.IO;
 using System.Diagnostics;
+using System.Windows.Controls;
 
 namespace Main
 {
     class ControllerÅbentHus
     {
+        public static void FyldMæglerDatagrid(DataGrid dg)
+        {
+
+        }
+
+        public static void FyldEjendomDatagrid(DataGrid dg)
+        {
+
+        }
 
         public static void GenererListe(string udfil)
         {

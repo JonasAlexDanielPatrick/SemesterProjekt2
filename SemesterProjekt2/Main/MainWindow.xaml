@@ -135,7 +135,7 @@
                 <DataGrid x:Name="DataGridÅbentHusMægler" HorizontalAlignment="Left" Height="290" Margin="10,40,0,0" VerticalAlignment="Top" Width="244" Grid.ColumnSpan="2">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Navn}" Width="*" Header="Navn"/>
-                        <DataGridCheckBoxColumn Width="60" Header="Valgt"/>
+                        <DataGridCheckBoxColumn Width="50" Header="Valgt"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <DataGrid x:Name="DataGridÅbentHusEjendom" HorizontalAlignment="Left" Height="290" Margin="10,40,0,0" VerticalAlignment="Top" Width="508" Grid.ColumnSpan="4" Grid.Column="2">
@@ -145,7 +145,7 @@
                         <DataGridTextColumn Binding="{Binding OmrådeNavn}" Width="80" Header="Område"/>
                         <DataGridTextColumn Binding="{Binding ByNavn}" Width="80" Header="By"/>
                         <DataGridTextColumn Binding="{Binding NuværendePris}" Width="80" Header="Pris"/>
-                        <DataGridCheckBoxColumn Width="60" Header="Valgt"/>
+                        <DataGridCheckBoxColumn Width="50" Header="Valgt"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <Label Content="Mægler liste" HorizontalAlignment="Left" Margin="46,10,0,0" VerticalAlignment="Top"/>
