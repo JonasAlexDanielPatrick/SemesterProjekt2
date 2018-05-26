@@ -68,6 +68,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ControllerConnection.cs" />
+    <Compile Include="ControllerÅbentHus.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -78,6 +79,7 @@
     <Compile Include="ModelHusejer.cs" />
     <Compile Include="ModelMægler.cs" />
     <Compile Include="ModelOmråde.cs" />
+    <Compile Include="ModelÅbentHus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
