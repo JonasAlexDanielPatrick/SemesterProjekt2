@@ -94,6 +94,8 @@ namespace Main
             CanvasCRUD.Visibility = System.Windows.Visibility.Hidden;
             CanvasÅbentHus.Visibility = System.Windows.Visibility.Visible;
             CanvasTestData.Visibility = Visibility.Hidden;
+            ControllerÅbentHus.FyldEjendomDatagrid(DataGridÅbentHusEjendom);
+            ControllerÅbentHus.FyldMæglerDatagrid(DataGridÅbentHusMægler);
             instance.Title = "SweetHome - Åbent Hus";
         }
 

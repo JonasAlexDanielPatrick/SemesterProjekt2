@@ -132,13 +132,13 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <DataGrid x:Name="DataGridÅbentHusMægler" HorizontalAlignment="Left" Height="290" Margin="10,40,0,0" VerticalAlignment="Top" Width="244" Grid.ColumnSpan="2">
+                <DataGrid x:Name="DataGridÅbentHusMægler" HorizontalAlignment="Left" Height="290" Margin="10,40,0,0" VerticalAlignment="Top" Width="244" Grid.ColumnSpan="2" AutoGenerateColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Navn}" Width="*" Header="Navn"/>
                         <DataGridCheckBoxColumn Width="50" Header="Valgt"/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <DataGrid x:Name="DataGridÅbentHusEjendom" HorizontalAlignment="Left" Height="290" Margin="10,40,0,0" VerticalAlignment="Top" Width="508" Grid.ColumnSpan="4" Grid.Column="2">
+                <DataGrid x:Name="DataGridÅbentHusEjendom" HorizontalAlignment="Left" Height="290" Margin="10,40,0,0" VerticalAlignment="Top" Width="508" Grid.ColumnSpan="4" Grid.Column="2" AutoGenerateColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Sagsnr}" Width="80" Header="Sagsnr"/>
                         <DataGridTextColumn Binding="{Binding Adresse}" Width="*" Header="Adresse"/>
