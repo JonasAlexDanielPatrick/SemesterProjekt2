@@ -26,6 +26,7 @@ namespace Main
             DataTable dt = new DataTable("Ejendom");
             sda.Fill(dt);
             dg.ItemsSource = dt.DefaultView;
+
         }
 
         public static void GenererListe(string udfil)
