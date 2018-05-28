@@ -4,6 +4,8 @@ using System.Windows.Controls;
 using System.Threading;
 using Microsoft.Win32;
 using System.Diagnostics;
+using System.Windows.Input;
+using System.Text.RegularExpressions;
 
 namespace Main
 {
@@ -209,15 +211,22 @@ namespace Main
 
         private void ButtonSøg_Click(object sender, RoutedEventArgs e)
         {
-            TextBoxHusejerID.Text = "ID (Oprettes automatisk)";
-            TextBoxHusejerNavn.Text = "Navn";
-            TextBoxHusejerEmail.Text = "Email";
-            TextBoxHusejerTelefon.Text = "Telefon";
+            
         }
 
         private void ButtonOpdater_Click(object sender, RoutedEventArgs e)
         {
+            if (WrapPanelHusejer.IsVisible && TextBoxHusejerID.Text != "ID (Oprettes automatisk)" || TextBoxHusejerID.Text != "")
+            {
+                ControllerCrudHusejer.OpdaterHusejer(Convert.ToInt32(TextBoxHusejerID.Text), TextBoxHusejerNavn.Text, TextBoxHusejerEmail.Text, TextBoxHusejerTelefon.Text);
 
+                ControllerCrudHusejer.LæsHusejer(DataGridHusejer);
+
+                TextBoxHusejerID.Text = "ID (Oprettes automatisk)";
+                TextBoxHusejerNavn.Text = "Navn";
+                TextBoxHusejerEmail.Text = "Email";
+                TextBoxHusejerTelefon.Text = "Telefon";
+            }
         }
 
         private void ButtonSlet_Click(object sender, RoutedEventArgs e)
@@ -256,6 +265,16 @@ namespace Main
             {
                 TextBoxHusejerTelefon.Text = "Telefon";
             }
-        } 
+        }
+
+        private void TextBoxHusejerID_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
+
+        private void TextBoxHusejerTelefon_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
     }
 }

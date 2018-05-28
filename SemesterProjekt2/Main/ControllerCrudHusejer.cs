@@ -9,27 +9,11 @@ using System.Windows.Controls;
 using System.Data;
 using System.Diagnostics;
 
+
 namespace Main
 {
     class ControllerCrudHusejer
     {
-        //public static List<ModelHusejer> Husejer;
-
-        public static void HusejerSqlDataReader()
-        {
-
-            //string sSQL = "SELECT * FROM Husejer";
-            //SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
-            //SqlDataAdapter sda = new SqlDataAdapter(command);
-            //SqlDataReader reader = command.ExecuteReader();
-            //while (reader.Read())
-            //{
-            //    Husejer.Add(new ModelHusejer(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3)));
-                   
-            //}
-            //UpdateDG();
-        }
-        
         public static void LæsHusejer(DataGrid dg)
         {
             string sSQL = "SELECT * FROM Husejer";
@@ -44,8 +28,16 @@ namespace Main
         {
             string sSQL = "INSERT INTO Husejer VALUES ('" + navn + "', '" + email + "', '" + telefon + "';";
             SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
-
-            
         }
+
+        public static void OpdaterHusejer(int id, string navn, string email, string telefon)
+        {
+            if (navn != "Navn" && navn != "" && email != "Email" && email != "" && telefon != "Telefon" && telefon != "")
+            {
+                //sSQL = "UPDATE Kundekartotek SET Adresse='Bullervej 22' WHERE KundeId = 5;";
+            }
+        }
+
+        
     }
 }

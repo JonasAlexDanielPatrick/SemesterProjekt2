@@ -134,10 +134,10 @@
             <Button x:Name="ButtonOpdater" Content="Opdatér" Canvas.Left="10" Canvas.Top="349" Width="75" Click="ButtonOpdater_Click"/>
             <Button x:Name="ButtonSlet" Content="Slet" Canvas.Left="90" Canvas.Top="349" Width="75" Click="ButtonSlet_Click"/>
             <WrapPanel x:Name="WrapPanelHusejer" Height="279" Canvas.Left="10" Canvas.Top="40" Width="155">
-                <TextBox x:Name="TextBoxHusejerID" Height="18" TextWrapping="Wrap" Text="ID (Oprettes automatisk)" Width="155" LostFocus="TextBoxHusejerID_LostFocus"/>
+                <TextBox x:Name="TextBoxHusejerID" Height="18" TextWrapping="Wrap" Text="ID (Oprettes automatisk)" Width="155" LostFocus="TextBoxHusejerID_LostFocus" PreviewTextInput="TextBoxHusejerID_PreviewTextInput"/>
                 <TextBox x:Name="TextBoxHusejerNavn" Height="18" TextWrapping="Wrap" Text="Navn" Width="155" LostFocus="TextBoxHusejerNavn_LostFocus"/>
                 <TextBox x:Name="TextBoxHusejerEmail" Height="18" TextWrapping="Wrap" Text="Email" Width="155" LostFocus="TextBoxHusejerEmail_LostFocus"/>
-                <TextBox x:Name="TextBoxHusejerTelefon" Height="18" TextWrapping="Wrap" Text="Telefon" Width="155" LostFocus="TextBoxHusejerTelefon_LostFocus"/>
+                <TextBox x:Name="TextBoxHusejerTelefon" Height="18" TextWrapping="Wrap" Text="Telefon" Width="155" LostFocus="TextBoxHusejerTelefon_LostFocus" PreviewTextInput="TextBoxHusejerTelefon_PreviewTextInput"/>
             </WrapPanel>
 
         </Canvas>
