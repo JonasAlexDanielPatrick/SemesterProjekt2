@@ -30,7 +30,7 @@ namespace Main
             //UpdateDG();
         }
         
-        public static void Vis(DataGrid dg)
+        public static void LæsHusejer(DataGrid dg)
         {
             string sSQL = "SELECT * FROM Husejer";
             SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
@@ -45,16 +45,6 @@ namespace Main
             string sSQL = "INSERT INTO Husejer VALUES ('" + navn + "', '" + email + "', '" + telefon + "';";
             SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
 
-            
-        }
-
-        public static void LæsHusejer()
-        {
-
-        }
-
-        public static void UpdateDG(ModelHusejer Husejer)
-        {
             
         }
     }

@@ -178,7 +178,7 @@ namespace Main
 
         private void ButtonHusejer_Click(object sender, RoutedEventArgs e)
         {
-            ControllerCrudHusejer.Vis(DataGridHusejer);
+            ControllerCrudHusejer.LæsHusejer(DataGridHusejer);
         }
 
         private void ButtonMægler_Click(object sender, RoutedEventArgs e)
@@ -191,25 +191,36 @@ namespace Main
 
         }
 
-        private void ButtonCreate_Click(object sender, RoutedEventArgs e)
+        private void ButtonOpret_Click(object sender, RoutedEventArgs e)
         {
-            if (WrapPanelHusejer.IsVisible && (TextBoxHusejerNavn.Text != "Navn" || TextBoxHusejerEmail.Text != "Email" || TextBoxHusejerTelefon.Text != "Telefon"))
+            if (WrapPanelHusejer.IsVisible && TextBoxHusejerNavn.Text != "Navn" && TextBoxHusejerEmail.Text != "Email" && TextBoxHusejerTelefon.Text != "Telefon" 
+                && TextBoxHusejerNavn.Text != "" && TextBoxHusejerEmail.Text != "" && TextBoxHusejerTelefon.Text != "") 
             {
                 ControllerCrudHusejer.OpretHusejer(TextBoxHusejerNavn.Text, TextBoxHusejerEmail.Text, TextBoxHusejerTelefon.Text);
+
+                ControllerCrudHusejer.LæsHusejer(DataGridHusejer);
+
+                TextBoxHusejerID.Text = "ID (Oprettes automatisk)";
+                TextBoxHusejerNavn.Text = "Navn";
+                TextBoxHusejerEmail.Text = "Email";
+                TextBoxHusejerTelefon.Text = "Telefon";
             }
         }
 
-        private void ButtonRead_Click(object sender, RoutedEventArgs e)
+        private void ButtonSøg_Click(object sender, RoutedEventArgs e)
+        {
+            TextBoxHusejerID.Text = "ID (Oprettes automatisk)";
+            TextBoxHusejerNavn.Text = "Navn";
+            TextBoxHusejerEmail.Text = "Email";
+            TextBoxHusejerTelefon.Text = "Telefon";
+        }
+
+        private void ButtonOpdater_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void ButtonUpdate_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        private void ButtonSlet_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -218,7 +229,7 @@ namespace Main
         {
             if (TextBoxHusejerID.Text == "")
             {
-                TextBoxHusejerID.Text = "ID";
+                TextBoxHusejerID.Text = "ID (Oprettes automatisk)";
             }
 
         }
@@ -245,11 +256,6 @@ namespace Main
             {
                 TextBoxHusejerTelefon.Text = "Telefon";
             }
-        }
-
-        //private void Button_GotFocus(object sender, RoutedEventArgs e)
-        //{
-        //    ControllerCrudHusejer.UpdateDG(DataGridHusejer);
-        //}
+        } 
     }
 }

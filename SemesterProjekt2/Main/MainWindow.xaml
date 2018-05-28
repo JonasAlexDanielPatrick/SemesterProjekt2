@@ -129,12 +129,12 @@
             <Button x:Name="ButtonHusejer" Content="Husejer" Canvas.Left="10" Canvas.Top="10" Width="50" Click="ButtonHusejer_Click"/>
             <Button x:Name="ButtonMægler" Content="Mægler" Canvas.Left="62" Canvas.Top="10" Width="50" Click="ButtonMægler_Click"/>
             <Button x:Name="ButtonEjendom" Content="Ejendom" Canvas.Left="116" Canvas.Top="10" Width="50" Click="ButtonEjendom_Click"/>
-            <Button x:Name="ButtonCreate" Content="Opret" Canvas.Left="10" Canvas.Top="324" Width="75" Click="ButtonCreate_Click"/>
-            <Button x:Name="ButtonRead" Content="Søg" Canvas.Left="90" Canvas.Top="324" Width="75" Click="ButtonRead_Click"/>
-            <Button x:Name="ButtonUpdate" Content="Opdatér" Canvas.Left="10" Canvas.Top="349" Width="75" Click="ButtonUpdate_Click"/>
-            <Button x:Name="ButtonDelete" Content="Slet" Canvas.Left="90" Canvas.Top="349" Width="75" Click="ButtonDelete_Click"/>
+            <Button x:Name="ButtonOpret" Content="Opret" Canvas.Left="10" Canvas.Top="324" Width="75" Click="ButtonOpret_Click"/>
+            <Button x:Name="ButtonSøg" Content="Søg" Canvas.Left="90" Canvas.Top="324" Width="75" Click="ButtonSøg_Click"/>
+            <Button x:Name="ButtonOpdater" Content="Opdatér" Canvas.Left="10" Canvas.Top="349" Width="75" Click="ButtonOpdater_Click"/>
+            <Button x:Name="ButtonSlet" Content="Slet" Canvas.Left="90" Canvas.Top="349" Width="75" Click="ButtonSlet_Click"/>
             <WrapPanel x:Name="WrapPanelHusejer" Height="279" Canvas.Left="10" Canvas.Top="40" Width="155">
-                <TextBox x:Name="TextBoxHusejerID" Height="18" TextWrapping="Wrap" Text="ID" Width="155" LostFocus="TextBoxHusejerID_LostFocus"/>
+                <TextBox x:Name="TextBoxHusejerID" Height="18" TextWrapping="Wrap" Text="ID (Oprettes automatisk)" Width="155" LostFocus="TextBoxHusejerID_LostFocus"/>
                 <TextBox x:Name="TextBoxHusejerNavn" Height="18" TextWrapping="Wrap" Text="Navn" Width="155" LostFocus="TextBoxHusejerNavn_LostFocus"/>
                 <TextBox x:Name="TextBoxHusejerEmail" Height="18" TextWrapping="Wrap" Text="Email" Width="155" LostFocus="TextBoxHusejerEmail_LostFocus"/>
                 <TextBox x:Name="TextBoxHusejerTelefon" Height="18" TextWrapping="Wrap" Text="Telefon" Width="155" LostFocus="TextBoxHusejerTelefon_LostFocus"/>
