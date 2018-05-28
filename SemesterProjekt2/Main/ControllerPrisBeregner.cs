@@ -7,6 +7,7 @@ namespace Main
 {
     class ControllerPrisBeregner
     {
+      
         public static object BeregnPris(int postnummer, string område, int kvm)
         {
 

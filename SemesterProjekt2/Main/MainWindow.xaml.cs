@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Threading;
 using Microsoft.Win32;
 using System.Diagnostics;
+using System.Data.SqlClient;
 
 namespace Main
 {
@@ -27,6 +28,7 @@ namespace Main
             threadKøbenhavnUr.Start();
 
             ButtonSalgsstatistik_Click(null, null);
+            FillComboBoxes();
             
         }
 
@@ -36,10 +38,36 @@ namespace Main
             set { Dispatcher.Invoke(new Action(() => { LabelLondon.Content = value; })); }
         }
 
+
         internal string KøbenhavnUr
         {
             get { return LabelKøbenhavn.Content.ToString(); }
             set { Dispatcher.Invoke(new Action(() => { LabelKøbenhavn.Content = value; })); }
+        }
+
+        void FillComboBoxes()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT * FROM [sweethome].[dbo].[Område];", ControllerConnection.conn);
+            SqlDataReader reader;
+
+            try
+            {
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string sName = reader.GetString(reader.GetOrdinal("Navn"));
+                    comboboxNavn.Items.Add(sName);
+                    int sPostnr = reader.GetInt32(reader.GetOrdinal("Postnr"));
+                    comboboxPostnr.Items.Add(sPostnr);
+                }
+
+
+            }
+            catch (Exception x)
+            {
+                Debug.WriteLine("Could not find database/table" + "\n");
+            }
         }
 
         private void ButtonSalgsstatistik_Click(object sender, RoutedEventArgs e)
@@ -154,7 +182,7 @@ namespace Main
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            textbox4.Text = Convert.ToString(ControllerPrisBeregner.BeregnPris(Convert.ToInt32(textbox1.Text), textbox2.Text, Convert.ToInt32(textbox3.Text)));
+            textbox4.Text = Convert.ToString(ControllerPrisBeregner.BeregnPris(Convert.ToInt32(comboboxPostnr.Text), comboboxNavn.Text, Convert.ToInt32(textbox3.Text)));
         }
 
         private void ButtonKvmPrisSøg_Click(object sender, RoutedEventArgs e)
