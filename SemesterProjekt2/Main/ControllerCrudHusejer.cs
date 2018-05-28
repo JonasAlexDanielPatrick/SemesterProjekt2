@@ -28,16 +28,21 @@ namespace Main
         {
             string sSQL = "INSERT INTO Husejer VALUES ('" + navn + "', '" + email + "', '" + telefon + "';";
             SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
+            command.ExecuteNonQuery();
         }
 
         public static void OpdaterHusejer(int id, string navn, string email, string telefon)
         {
             if (navn != "Navn" && navn != "" && email != "Email" && email != "" && telefon != "Telefon" && telefon != "")
             {
-                //sSQL = "UPDATE Kundekartotek SET Adresse='Bullervej 22' WHERE KundeId = 5;";
+                string sSQL = "SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;" +
+                              "BEGIN TRANSACTION" +
+                              "UPDATE Husejer SET Navn ='" + navn + "', Email = '" + email + "', Telefon = '" + telefon + "' Where ID =" + id + ";" +
+                              "COMMIT TRANSACTION;";
+
+                SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
+                command.ExecuteNonQuery();
             }
         }
-
-        
     }
 }
