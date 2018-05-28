@@ -132,13 +132,13 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <DataGrid x:Name="DataGridÅbentHusMægler" HorizontalAlignment="Left" Height="290" Margin="10,40,0,0" VerticalAlignment="Top" Width="244" Grid.ColumnSpan="2" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CurrentCellChanged="DataGridÅbentHusMægler_CurrentCellChanged">
+                <DataGrid x:Name="DataGridÅbentHusMægler" HorizontalAlignment="Left" Height="290" Margin="10,40,0,0" VerticalAlignment="Top" Width="244" Grid.ColumnSpan="2" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CellEditEnding="DataGridÅbentHusMægler_CurrentCellChanged">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Navn}" Width="*" Header="Navn" IsReadOnly="True"/>
                         <DataGridCheckBoxColumn Width="50" Header="Valgt"/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <DataGrid x:Name="DataGridÅbentHusEjendom" HorizontalAlignment="Left" Height="290" Margin="10,40,0,0" VerticalAlignment="Top" Width="508" Grid.ColumnSpan="4" Grid.Column="2" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserReorderColumns="False">
+                <DataGrid x:Name="DataGridÅbentHusEjendom" HorizontalAlignment="Right" Height="290" Margin="0,40,10,0" VerticalAlignment="Top" Width="508" Grid.ColumnSpan="4" Grid.Column="2" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserReorderColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Sagsnr}" Width="80" Header="Sagsnr" IsReadOnly="True"/>
                         <DataGridTextColumn Binding="{Binding Adresse}" Width="*" Header="Adresse" IsReadOnly="True"/>

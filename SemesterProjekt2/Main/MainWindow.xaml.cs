@@ -198,9 +198,10 @@ namespace Main
             ControllerTestData.OpretData();
         }
 
-        private void DataGridÅbentHusMægler_CurrentCellChanged(object sender, SelectionChangedEventArgs e)
-        {
 
+        private void DataGridÅbentHusMægler_CurrentCellChanged(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            
         }
     }
 }
