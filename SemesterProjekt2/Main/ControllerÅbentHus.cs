@@ -10,7 +10,7 @@ namespace Main
     {
         public static void FyldMæglerDatagrid(DataGrid dg)
         {
-            string sSQL = "select Navn from Mægler;";
+            string sSQL = "select ID, Navn from Mægler;";
             SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
             SqlDataAdapter sda = new SqlDataAdapter(command);
             DataTable dt = new DataTable("Mægler-liste");
@@ -29,15 +29,15 @@ namespace Main
 
         }
 
-        public static void GenererListe(string udfil)
+        public static void GenererListe(DataGrid dg, string udfil)
         {
-
-
-            Udskriv(udfil);
+            Udskriv(dg, udfil);
         }
 
-        public static void Udskriv(string udfil)
+        public static void Udskriv(DataGrid dg, string udfil)
         {
+            TælAntalValgteMæglere(dg);
+
             StreamWriter stream = null;
 
             try
@@ -55,6 +55,20 @@ namespace Main
                 {
                     stream.Close();
                 }
+            }
+        }
+
+        public static void TælAntalValgteMæglere(DataGrid dg)
+        {
+            DataTable dt = new DataTable();
+            dt = ((DataView)dg.ItemsSource).ToTable();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                Debug.WriteLine(row.Table.Columns.Count);
+                object[] array = row.ItemArray;
+
+                Debug.WriteLine(array[0] + " | " + array[1]);
             }
         }
 

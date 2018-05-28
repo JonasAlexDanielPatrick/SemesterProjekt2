@@ -171,7 +171,7 @@ namespace Main
 
                 bool? isClosed = sfd.ShowDialog();
 
-                if(isClosed == true)
+                if (isClosed == true)
                 {
                     udfil = sfd.FileName;
                 }
@@ -192,7 +192,7 @@ namespace Main
             string slutDato = ((ComboBoxItem)ComboboxKvmPriserÅr.SelectedItem).Tag.ToString() + "-" + ((ComboBoxItem)ComboboxKvmPriserMåned.SelectedItem).Tag.ToString() + "-31";
 
             ControllerKvmPris.Vis(DataGridKvmPriser, startDato, slutDato);
- 
+
         }
 
         private void ButtonKvmPrisUdskriv_Click(object sender, RoutedEventArgs e)
@@ -221,9 +221,24 @@ namespace Main
             }
         }
 
+        private void ButtonÅbentHusUdskriv_Click(object sender, RoutedEventArgs e)
+        {
+            ControllerÅbentHus.GenererListe(DataGridÅbentHusMægler, "");
+        }
+
         private void ButtonOpretData_Click(object sender, RoutedEventArgs e)
         {
             ControllerTestData.OpretData();
+        }
+
+        private void test2(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Checked");
+        }
+
+        private void test(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Un-Checked");
         }
     }
 }
