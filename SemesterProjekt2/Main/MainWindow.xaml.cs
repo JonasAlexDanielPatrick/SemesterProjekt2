@@ -259,17 +259,6 @@ namespace Main
 
         private void CheckBoxÅbentHusMægler_Checked(object sender, RoutedEventArgs e)
         {
-            if (ControllerÅbentHus.mæglere.Count < 5)
-            {
-                object[] row = ((DataRowView)DataGridÅbentHusMægler.SelectedItem).Row.ItemArray;
-                ModelÅbentHusMægler mægler = new ModelÅbentHusMægler((int)row[0], row[1].ToString());
-                ControllerÅbentHus.mæglere.Add(mægler);
-            }
-            else if (ControllerÅbentHus.mæglere.Count == 5)
-            {
-                DataGridÅbentHusMægler.IsHitTestVisible = false;
-                Console.WriteLine("List is full");
-            }
 
         }
 
