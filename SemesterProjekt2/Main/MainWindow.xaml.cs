@@ -16,8 +16,6 @@ namespace Main
     {
         public static MainWindow instance;
 
-        bool BoolProperty;
-
         public MainWindow()
         {
             InitializeComponent();
@@ -33,7 +31,6 @@ namespace Main
             threadKøbenhavnUr.Start();
 
             ButtonSalgsstatistik_Click(null, null);
-            FillComboBoxes();
 
         }
 
@@ -48,43 +45,6 @@ namespace Main
         {
             get { return LabelKøbenhavn.Content.ToString(); }
             set { Dispatcher.Invoke(new Action(() => { LabelKøbenhavn.Content = value; })); }
-        }
-
-        void FillComboBoxPostnummer()
-        {
-           
-            
-            SqlCommand cmd = new SqlCommand("SELECT * FROM [sweethome].[dbo].[Område];", ControllerConnection.conn);
-            SqlDataReader reader;
-
-            try
-            {
-                reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    int sPostnr = reader.GetInt32(reader.GetOrdinal("Postnr"));
-                    bool hasItem = comboboxPrisBeregner_Postnr.Items.Contains(sPostnr);
-
-                    if (hasItem)
-                    {
-                        Debug.WriteLine("Postnummer findes allerede!");
-                    }
-                    else
-                    {
-                        comboboxPrisBeregner_Postnr.Items.Add(sPostnr);
-                    }
-
-                }
-                reader.Close();
-            }
-            catch (Exception x)
-            {
-                Debug.WriteLine("Could not find database/table" + "\n");
-            }
-           
-
-
         }
 
         private void ButtonSalgsstatistik_Click(object sender, RoutedEventArgs e)
@@ -275,12 +235,45 @@ namespace Main
         private void CheckBoxÅbentHusMægler_Unchecked(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Un-Checked");
-        }       
+        }
+
+        void ComboBox_PrisBeregner_Postnummer_Open(object sender, EventArgs e)
+        {
+            SqlDataReader reader = null;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT Postnr FROM Område;", ControllerConnection.conn);
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int sPostnr = reader.GetInt32(0);
+                    bool hasItem = comboboxPrisBeregner_Postnr.Items.Contains(sPostnr);
+
+                    if (hasItem)
+                    {
+                        Debug.WriteLine("Postnummer findes allerede!");
+                    }
+                    else
+                    {
+                        comboboxPrisBeregner_Postnr.Items.Add(sPostnr);
+                    }
+                }
+            }
+            catch (Exception x)
+            {
+                Debug.WriteLine("Could not find database/table" + "\n");
+            }
+            finally
+            {
+                reader.Close();
+            }
+        }
 
         private void ComboBox_PrisBeregner_Postnummer_Close(object sender, EventArgs e)
         {
             comboboxPrisBeregner_Navn.Items.Clear();
-            SqlCommand cmd = new SqlCommand("SELECT [Navn] FROM[sweethome].[dbo].[Område] WHERE[Postnr] = " + comboboxPrisBeregner_Postnr.Text + ";", ControllerConnection.conn);
+            SqlCommand cmd = new SqlCommand("SELECT Navn FROM Område WHERE Postnr = " + comboboxPrisBeregner_Postnr.Text + ";", ControllerConnection.conn);
             SqlDataReader reader;
             try
             {
@@ -297,11 +290,8 @@ namespace Main
             }
             catch (Exception x)
             {
-                Debug.WriteLine("Could not find database/table" + "\n");
+                Debug.WriteLine("Could not find database/table - CLOSE");
             }
-        }
-
-      
         }
 
         private void CheckBoxÅbentHusEjendom_Click(object sender, RoutedEventArgs e)

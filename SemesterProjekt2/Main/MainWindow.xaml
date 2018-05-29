@@ -6,9 +6,6 @@
         xmlns:local="clr-namespace:Main"
         mc:Ignorable="d"
         Title="SweetHome - Salgsstatistik" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Window.Resources>
-        <local:ControllerÅbentHus x:Key="ÅbentHus"/>
-    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -115,7 +112,7 @@
             <TextBox Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Name="textboxPrisBeregner_Vurdering" Height="35" Canvas.Left="485" Canvas.Top="323" Width="135" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True"/>
             <Label Content="Vurdering" Canvas.Left="485" Canvas.Top="293" Height="30" Width="135" FontSize="14" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" RenderTransformOrigin="0.692,0.625"/>
             <ComboBox Height="32" Width="119" Canvas.Left="183" Canvas.Top="56" FontSize="14" Name="comboboxPrisBeregner_Navn" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-            <ComboBox Canvas.Left="29" Canvas.Top="56" Width="120" Height="32" Name="comboboxPrisBeregner_Postnr"  DropDownClosed="ComboBox_PrisBeregner_Postnummer_Close" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+            <ComboBox Canvas.Left="29" Canvas.Top="56" Width="120" Height="32" Name="comboboxPrisBeregner_Postnr"  DropDownClosed="ComboBox_PrisBeregner_Postnummer_Close" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DropDownOpened="ComboBox_PrisBeregner_Postnummer_Open" />
         </Canvas>
 
         <Canvas x:Name="CanvasCRUD" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
