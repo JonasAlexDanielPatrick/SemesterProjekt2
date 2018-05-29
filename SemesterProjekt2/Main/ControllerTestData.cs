@@ -995,8 +995,8 @@ namespace Main
             "Åsvinget",
             "Åvang",
         };
-        static List<ModelOmråde> områder = new List<ModelOmråde>();
-        List<ModelEjendom> ejendome = new List<ModelEjendom>();
+        static List<ModelTestDataOmråde> områder = new List<ModelTestDataOmråde>();
+        List<ModelTestDataEjendom> ejendome = new List<ModelTestDataEjendom>();
 
 
         public static void OpretData()
@@ -1021,7 +1021,7 @@ namespace Main
 
                 while (reader.Read())
                 {
-                    områder.Add(new ModelOmråde(reader.GetString(0), reader.GetInt32(1), reader.GetString(2), (float)reader.GetDouble(3)));                 
+                    områder.Add(new ModelTestDataOmråde(reader.GetString(0), reader.GetInt32(1), reader.GetString(2), (float)reader.GetDouble(3)));                 
                 }
             }
             catch (Exception)
@@ -1055,7 +1055,7 @@ namespace Main
             for (int i = 0; i < antal; i++)
             {
                 Random random = new Random();
-                ModelOmråde modelOmråde = områder[random.Next(0, områder.Count)];
+                ModelTestDataOmråde modelOmråde = områder[random.Next(0, områder.Count)];
 
                 mægler = random.Next(1, antalMægler + 1);
                 område = modelOmråde.Navn;

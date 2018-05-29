@@ -75,8 +75,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModelEjendom.cs" />
-    <Compile Include="ModelOmråde.cs" />
+    <Compile Include="ModelTestDataEjendom.cs" />
+    <Compile Include="ModelÅbentHusEjendom.cs" />
+    <Compile Include="ModelÅbentHusMægler.cs" />
+    <Compile Include="ModelTestDataOmråde.cs" />
     <Compile Include="ModelÅbentHus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
