@@ -211,12 +211,18 @@ namespace Main
 
         private void ButtonSøg_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (WrapPanelHusejer.IsVisible && (TextBoxHusejerID.Text != "ID (Oprettes automatisk)" && TextBoxHusejerID.Text != "") || 
+                (TextBoxHusejerNavn.Text != "Navn" && TextBoxHusejerNavn.Text != "") || (TextBoxHusejerEmail.Text != "Email" && TextBoxHusejerEmail.Text != "") || 
+                (TextBoxHusejerTelefon.Text != "Telefon" && TextBoxHusejerTelefon.Text != ""))
+            {
+                ControllerCrudHusejer.SøgHusejer(Convert.ToInt32(TextBoxHusejerID.Text), TextBoxHusejerNavn.Text, TextBoxHusejerEmail.Text, TextBoxHusejerTelefon.Text);
+            }
         }
 
         private void ButtonOpdater_Click(object sender, RoutedEventArgs e)
         {
-            if (WrapPanelHusejer.IsVisible && TextBoxHusejerID.Text != "ID (Oprettes automatisk)" || TextBoxHusejerID.Text != "")
+            if (WrapPanelHusejer.IsVisible && TextBoxHusejerID.Text != "ID (Oprettes automatisk)" && TextBoxHusejerID.Text != "" && (TextBoxHusejerNavn.Text != "Navn" && TextBoxHusejerNavn.Text != "") || (TextBoxHusejerEmail.Text != "Email" && TextBoxHusejerEmail.Text != "") ||
+                (TextBoxHusejerTelefon.Text != "Telefon" && TextBoxHusejerTelefon.Text != ""))
             {
                 ControllerCrudHusejer.OpdaterHusejer(Convert.ToInt32(TextBoxHusejerID.Text), TextBoxHusejerNavn.Text, TextBoxHusejerEmail.Text, TextBoxHusejerTelefon.Text);
 
@@ -231,7 +237,14 @@ namespace Main
 
         private void ButtonSlet_Click(object sender, RoutedEventArgs e)
         {
+            ControllerCrudHusejer.SletHusEjer(Convert.ToInt32(TextBoxHusejerID.Text));
 
+            ControllerCrudHusejer.LæsHusejer(DataGridHusejer);
+
+            TextBoxHusejerID.Text = "ID (Oprettes automatisk)";
+            TextBoxHusejerNavn.Text = "Navn";
+            TextBoxHusejerEmail.Text = "Email";
+            TextBoxHusejerTelefon.Text = "Telefon";
         }
 
         private void TextBoxHusejerID_LostFocus(object sender, RoutedEventArgs e)

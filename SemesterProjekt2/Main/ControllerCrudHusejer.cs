@@ -26,23 +26,71 @@ namespace Main
 
         public static void OpretHusejer(string navn, string email, string telefon)
         {
-            string sSQL = "INSERT INTO Husejer VALUES ('" + navn + "', '" + email + "', '" + telefon + "';";
+            string sSQL = "INSERT INTO Husejer VALUES ('" + navn + "', '" + email + "', '" + telefon + "');";
             SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
             command.ExecuteNonQuery();
         }
 
         public static void OpdaterHusejer(int id, string navn, string email, string telefon)
         {
-            if (navn != "Navn" && navn != "" && email != "Email" && email != "" && telefon != "Telefon" && telefon != "")
-            {
-                string sSQL = "SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;" +
-                              "BEGIN TRANSACTION" +
-                              "UPDATE Husejer SET Navn ='" + navn + "', Email = '" + email + "', Telefon = '" + telefon + "' Where ID =" + id + ";" +
-                              "COMMIT TRANSACTION;";
+            string tempSSQL = "SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;" +
+                              "BEGIN TRANSACTION;" +
+                              "UPDATE Husejer SET";
 
-                SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
-                command.ExecuteNonQuery();
+            if (navn != "Navn" && navn != "")
+            {
+                tempSSQL += " Navn = '" + navn + "'";
             }
+
+            if(email != "Email" && navn != "")
+            {
+                if (tempSSQL.Contains("Navn"))
+                {
+                    tempSSQL += ", Email = '" + email + "'";
+                }
+                else
+                {
+                    tempSSQL += " Email = '" + email + "'";
+                }
+            }
+
+            if (telefon != "Telefon" && telefon != "")
+            {
+                if (tempSSQL.Contains(email))
+                {
+                    tempSSQL += ", Telefon = '" + telefon + "'";
+                }
+                else
+                {
+                    tempSSQL += " Telefon = '" + telefon + "'";
+                }
+                
+            }
+
+            tempSSQL += "Where ID = '" + id + "' COMMIT TRANSACTION;";
+
+            //string sSQL = "SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;" +
+            //          "BEGIN TRANSACTION;" +
+            //          "UPDATE Husejer SET Navn = '" + navn + "', Email = '" + email + "', Telefon = '" + telefon + "' Where ID = '" + id + "';" +
+            //          "COMMIT TRANSACTION;";       
+            string sSQL = tempSSQL;
+            SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
+            command.ExecuteNonQuery();
+           
+        }
+
+        public static void SletHusEjer(int id)  // virker
+        {
+            string sSQL = "DELETE FROM Husejer WHERE ID = '" + id + "';";
+            SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
+            command.ExecuteNonQuery();
+        }
+
+        public static void SøgHusejer(int id, string navn, string email, string telefon)
+        {
+            string tempSSQL = "SELECT * FROM Husejer WHERE";
+
+
         }
     }
 }
