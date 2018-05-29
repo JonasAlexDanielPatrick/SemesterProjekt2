@@ -8,13 +8,15 @@ namespace Models
 {
     class ModelÅbentHusMægler
     {
-        public int Id { get; }
+        public int ID { get; }
         public String Navn { get; }
+        public bool IsChecked { get; set; }
 
         public ModelÅbentHusMægler(int id, string navn)
         {
-            Id = id;
+            ID = id;
             Navn = navn;
+            IsChecked = false;
         }
 
     }

@@ -10,8 +10,8 @@ namespace Main
 {
     class ControllerÅbentHus
     {
-        List<ModelÅbentHusMægler> mæglere = new List<ModelÅbentHusMægler>();
-        List<ModelÅbentHusEjendom> ejendomme = new List<ModelÅbentHusEjendom>();
+        public static List<ModelÅbentHusMægler> mæglere = new List<ModelÅbentHusMægler>();
+        public static List<ModelÅbentHusEjendom> ejendomme = new List<ModelÅbentHusEjendom>();
 
         public static void FyldMæglerDatagrid(DataGrid dg)
         {
@@ -20,7 +20,13 @@ namespace Main
             SqlDataAdapter sda = new SqlDataAdapter(command);
             DataTable dt = new DataTable("Mægler-liste");
             sda.Fill(dt);
-            dg.ItemsSource = dt.DefaultView;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                object[] array = row.ItemArray;
+                mæglere.Add(new ModelÅbentHusMægler((int)array[0], array[1].ToString()));
+            }
+            dg.DataContext = mæglere;
         }
 
         public static void FyldEjendomDatagrid(DataGrid dg)
@@ -30,7 +36,13 @@ namespace Main
             SqlDataAdapter sda = new SqlDataAdapter(command);
             DataTable dt = new DataTable("Ejendom");
             sda.Fill(dt);
-            dg.ItemsSource = dt.DefaultView;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                object[] array = row.ItemArray;
+                ejendomme.Add(new ModelÅbentHusEjendom((int)array[0], array[1].ToString(), array[2].ToString(), array[3].ToString(), (int)array[4]));
+            }
+            dg.DataContext = ejendomme;
 
         }
 

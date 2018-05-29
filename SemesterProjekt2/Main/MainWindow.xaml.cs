@@ -5,6 +5,8 @@ using System.Threading;
 using Microsoft.Win32;
 using System.Diagnostics;
 using System.Data.SqlClient;
+using System.Data;
+using Models;
 
 namespace Main
 {
@@ -12,6 +14,8 @@ namespace Main
     public partial class MainWindow : Window
     {
         public static MainWindow instance;
+
+        bool BoolProperty;
 
         public MainWindow()
         {
@@ -29,7 +33,7 @@ namespace Main
 
             ButtonSalgsstatistik_Click(null, null);
             FillComboBoxes();
-            
+
         }
 
         internal string LondonUr
@@ -223,7 +227,16 @@ namespace Main
 
         private void ButtonÅbentHusUdskriv_Click(object sender, RoutedEventArgs e)
         {
-            ControllerÅbentHus.GenererListe(DataGridÅbentHusMægler, "");
+            //ControllerÅbentHus.GenererListe(DataGridÅbentHusMægler, "");
+
+            foreach (ModelÅbentHusEjendom ejendom in ControllerÅbentHus.ejendomme)
+            {
+                if (ejendom.IsChecked)
+                {
+                    Debug.WriteLine(ejendom.Sagsnr + " is true!");
+                }
+            }
+
         }
 
         private void ButtonOpretData_Click(object sender, RoutedEventArgs e)
@@ -239,6 +252,20 @@ namespace Main
         private void CheckBoxÅbentHusMægler_Unchecked(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Un-Checked");
+        }
+
+        private void CheckBoxÅbentHusEjendom_Click(object sender, RoutedEventArgs e)
+        {
+            ModelÅbentHusEjendom ejendom = (ModelÅbentHusEjendom)DataGridÅbentHusEjendom.SelectedItem;
+
+            if (ejendom.IsChecked == false)
+            {
+                ejendom.IsChecked = false;
+            }
+            else
+            {
+                ejendom.IsChecked = true;
+            }
         }
     }
 }
