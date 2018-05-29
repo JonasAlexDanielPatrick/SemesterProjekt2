@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Data.SqlClient;
 using System.Data;
 using Models;
+using System.Windows.Input;
 
 namespace Main
 {
@@ -14,7 +15,7 @@ namespace Main
     public partial class MainWindow : Window
     {
         public static MainWindow instance;
-
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -30,9 +31,10 @@ namespace Main
             threadKøbenhavnUr.Start();
 
             ButtonSalgsstatistik_Click(null, null);
-            FillComboBoxes();
+            FillComboBoxPostnummer();
+           
 
-    }
+        }
 
         internal string LondonUr
         {
@@ -47,8 +49,10 @@ namespace Main
             set { Dispatcher.Invoke(new Action(() => { LabelKøbenhavn.Content = value; })); }
         }
 
-        void FillComboBoxes()
+        void FillComboBoxPostnummer()
         {
+           
+            
             SqlCommand cmd = new SqlCommand("SELECT * FROM [sweethome].[dbo].[Område];", ControllerConnection.conn);
             SqlDataReader reader;
 
@@ -58,18 +62,28 @@ namespace Main
 
                 while (reader.Read())
                 {
-                    string sName = reader.GetString(reader.GetOrdinal("Navn"));
-                    comboboxNavn.Items.Add(sName);
                     int sPostnr = reader.GetInt32(reader.GetOrdinal("Postnr"));
-                    comboboxPostnr.Items.Add(sPostnr);
+                    bool hasItem = comboboxPrisBeregner_Postnr.Items.Contains(sPostnr);
+
+                    if (hasItem)
+                    {
+                        Debug.WriteLine("Postnummer findes allerede!");
+                    }
+                    else
+                    {
+                        comboboxPrisBeregner_Postnr.Items.Add(sPostnr);
+                    }
+
                 }
-
-
+                reader.Close();
             }
             catch (Exception x)
             {
                 Debug.WriteLine("Could not find database/table" + "\n");
             }
+           
+
+
         }
 
         private void ButtonSalgsstatistik_Click(object sender, RoutedEventArgs e)
@@ -182,9 +196,19 @@ namespace Main
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void ButtonPrisBeregner_BeregnPrisClick(object sender, RoutedEventArgs e)
         {
-            textbox4.Text = Convert.ToString(ControllerPrisBeregner.BeregnPris(Convert.ToInt32(comboboxPostnr.Text), comboboxNavn.Text, Convert.ToInt32(textbox3.Text)));
+            try
+            {
+                textboxPrisBeregner_Vurdering.Text = Convert.ToString(ControllerPrisBeregner.BeregnPris(Convert.ToInt32(comboboxPrisBeregner_Postnr.Text), comboboxPrisBeregner_Navn.Text, Convert.ToInt32(textbox_PrisBeregnerKVM.Text)));
+            }
+            catch (Exception x)
+            {
+                Debug.WriteLine("Tager ikke imod string!");
+                textbox_PrisBeregnerKVM.Clear();
+            }
+
+           
         }
 
         private void ButtonKvmPrisSøg_Click(object sender, RoutedEventArgs e)
@@ -252,6 +276,32 @@ namespace Main
         private void CheckBoxÅbentHusMægler_Unchecked(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Un-Checked");
+        }       
+
+        private void ComboBox_PrisBeregner_Postnummer_Close(object sender, EventArgs e)
+        {
+            comboboxPrisBeregner_Navn.Items.Clear();
+            SqlCommand cmd = new SqlCommand("SELECT [Navn] FROM[sweethome].[dbo].[Område] WHERE[Postnr] = " + comboboxPrisBeregner_Postnr.Text + ";", ControllerConnection.conn);
+            SqlDataReader reader;
+            try
+            {
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    string sName = reader.GetString(reader.GetOrdinal("Navn"));
+                    comboboxPrisBeregner_Navn.Items.Add(sName);
+
+                }
+                reader.Close();
+            }
+            catch (Exception x)
+            {
+                Debug.WriteLine("Could not find database/table" + "\n");
+            }
         }
+
+      
     }
 }
