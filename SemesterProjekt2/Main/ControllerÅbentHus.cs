@@ -10,8 +10,8 @@ namespace Main
 {
     class ControllerÅbentHus
     {
-        List<ModelÅbentHusMægler> mæglere = new List<ModelÅbentHusMægler>();
-        List<ModelÅbentHusEjendom> ejendomme = new List<ModelÅbentHusEjendom>();
+        public static List<ModelÅbentHusMægler> mæglere = new List<ModelÅbentHusMægler>();
+        public static List<ModelÅbentHusEjendom> ejendomme = new List<ModelÅbentHusEjendom>();
 
         public static void FyldMæglerDatagrid(DataGrid dg)
         {

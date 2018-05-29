@@ -5,6 +5,8 @@ using System.Threading;
 using Microsoft.Win32;
 using System.Diagnostics;
 using System.Data.SqlClient;
+using System.Data;
+using Models;
 
 namespace Main
 {
@@ -29,8 +31,8 @@ namespace Main
 
             ButtonSalgsstatistik_Click(null, null);
             FillComboBoxes();
-            
-        }
+
+    }
 
         internal string LondonUr
         {
@@ -233,7 +235,18 @@ namespace Main
 
         private void CheckBoxÅbentHusMægler_Checked(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Checked");
+            if (ControllerÅbentHus.mæglere.Count < 5)
+            {
+                object[] row = ((DataRowView)DataGridÅbentHusMægler.SelectedItem).Row.ItemArray;
+                ModelÅbentHusMægler mægler = new ModelÅbentHusMægler((int)row[0], row[1].ToString());
+                ControllerÅbentHus.mæglere.Add(mægler);
+            }
+            else if (ControllerÅbentHus.mæglere.Count == 5)
+            {
+                DataGridÅbentHusMægler.IsHitTestVisible = false;
+                Console.WriteLine("List is full");
+            }
+
         }
 
         private void CheckBoxÅbentHusMægler_Unchecked(object sender, RoutedEventArgs e)
