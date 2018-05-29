@@ -3,11 +3,16 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Diagnostics;
 using System.Windows.Controls;
+using Models;
+using System.Collections.Generic;
 
 namespace Main
 {
     class ControllerÅbentHus
     {
+        List<ModelÅbentHusMægler> mæglere = new List<ModelÅbentHusMægler>();
+        List<ModelÅbentHusEjendom> ejendomme = new List<ModelÅbentHusEjendom>();
+
         public static void FyldMæglerDatagrid(DataGrid dg)
         {
             string sSQL = "select ID, Navn from Mægler;";

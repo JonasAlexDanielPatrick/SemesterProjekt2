@@ -132,20 +132,20 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <DataGrid x:Name="DataGridÅbentHusMægler" HorizontalAlignment="Left" Height="290" Margin="10,40,0,0" VerticalAlignment="Top" Width="244" Grid.ColumnSpan="2" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False">
+                <DataGrid x:Name="DataGridÅbentHusMægler" HorizontalAlignment="Left" Height="290" Margin="10,40,0,0" VerticalAlignment="Top" Width="244" Grid.ColumnSpan="2" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding ID}" Width="50" Header="ID" IsReadOnly="True" CanUserSort="False"/>
                         <DataGridTextColumn Binding="{Binding Navn}" Width="*" Header="Navn" IsReadOnly="True" CanUserSort="False"/>
                         <DataGridTemplateColumn Header="Valgt" Width="50">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center" Checked="test2" Unchecked="test"/>
+                                    <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center" Checked="CheckBoxÅbentHusMægler_Checked" Unchecked="CheckBoxÅbentHusMægler_Unchecked"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-                <DataGrid x:Name="DataGridÅbentHusEjendom" HorizontalAlignment="Left" Height="290" Margin="10,40,0,0" VerticalAlignment="Top" Width="508" Grid.ColumnSpan="4" Grid.Column="2" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserReorderColumns="False">
+                <DataGrid x:Name="DataGridÅbentHusEjendom" HorizontalAlignment="Left" Height="290" Margin="10,40,0,0" VerticalAlignment="Top" Width="508" Grid.ColumnSpan="4" Grid.Column="2" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" CanUserDeleteRows="False" CanUserAddRows="False" CanUserReorderColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Sagsnr}" Width="80" Header="Sagsnr" IsReadOnly="True"/>
                         <DataGridTextColumn Binding="{Binding Adresse}" Width="*" Header="Adresse" IsReadOnly="True"/>

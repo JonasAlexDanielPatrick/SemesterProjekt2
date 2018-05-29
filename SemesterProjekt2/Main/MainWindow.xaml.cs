@@ -255,12 +255,12 @@ namespace Main
             ControllerTestData.OpretData();
         }
 
-        private void test2(object sender, RoutedEventArgs e)
+        private void CheckBoxÅbentHusMægler_Checked(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Checked");
         }
 
-        private void test(object sender, RoutedEventArgs e)
+        private void CheckBoxÅbentHusMægler_Unchecked(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Un-Checked");
         }       
