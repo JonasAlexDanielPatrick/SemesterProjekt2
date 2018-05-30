@@ -81,6 +81,9 @@ namespace Main
             CanvasPrisBeregner.Visibility = System.Windows.Visibility.Hidden;
             CanvasCRUD.Visibility = System.Windows.Visibility.Visible;
             CanvasÅbentHus.Visibility = System.Windows.Visibility.Hidden;
+            WrapPanelHusejer.Visibility = Visibility.Visible;
+            DataGridHusejer.Visibility = Visibility.Visible;
+            ControllerCrudHusejer.LæsHusejer(DataGridHusejer);
             instance.Title = "SweetHome - CRUD";
         }
 
@@ -202,7 +205,7 @@ namespace Main
 
                 ControllerCrudHusejer.LæsHusejer(DataGridHusejer);
 
-                TextBoxHusejerID.Text = "ID (Oprettes automatisk)";
+                TextBoxHusejerID.Text = "ID (Autogenereres)";
                 TextBoxHusejerNavn.Text = "Navn";
                 TextBoxHusejerEmail.Text = "Email";
                 TextBoxHusejerTelefon.Text = "Telefon";
@@ -211,24 +214,24 @@ namespace Main
 
         private void ButtonSøg_Click(object sender, RoutedEventArgs e)
         {
-            if (WrapPanelHusejer.IsVisible && (TextBoxHusejerID.Text != "ID (Oprettes automatisk)" && TextBoxHusejerID.Text != "") || 
+            if (WrapPanelHusejer.IsVisible && (TextBoxHusejerID.Text != "ID (Autogenereres)" && TextBoxHusejerID.Text != "") || 
                 (TextBoxHusejerNavn.Text != "Navn" && TextBoxHusejerNavn.Text != "") || (TextBoxHusejerEmail.Text != "Email" && TextBoxHusejerEmail.Text != "") || 
                 (TextBoxHusejerTelefon.Text != "Telefon" && TextBoxHusejerTelefon.Text != ""))
             {
-                ControllerCrudHusejer.SøgHusejer(Convert.ToInt32(TextBoxHusejerID.Text), TextBoxHusejerNavn.Text, TextBoxHusejerEmail.Text, TextBoxHusejerTelefon.Text);
+                ControllerCrudHusejer.SøgHusejer(TextBoxHusejerID.Text, TextBoxHusejerNavn.Text, TextBoxHusejerEmail.Text, TextBoxHusejerTelefon.Text, DataGridHusejer);
             }
         }
 
         private void ButtonOpdater_Click(object sender, RoutedEventArgs e)
         {
-            if (WrapPanelHusejer.IsVisible && TextBoxHusejerID.Text != "ID (Oprettes automatisk)" && TextBoxHusejerID.Text != "" && (TextBoxHusejerNavn.Text != "Navn" && TextBoxHusejerNavn.Text != "") || (TextBoxHusejerEmail.Text != "Email" && TextBoxHusejerEmail.Text != "") ||
+            if (WrapPanelHusejer.IsVisible && TextBoxHusejerID.Text != "ID (Autogenereres)" && TextBoxHusejerID.Text != "" && (TextBoxHusejerNavn.Text != "Navn" && TextBoxHusejerNavn.Text != "") || (TextBoxHusejerEmail.Text != "Email" && TextBoxHusejerEmail.Text != "") ||
                 (TextBoxHusejerTelefon.Text != "Telefon" && TextBoxHusejerTelefon.Text != ""))
             {
                 ControllerCrudHusejer.OpdaterHusejer(Convert.ToInt32(TextBoxHusejerID.Text), TextBoxHusejerNavn.Text, TextBoxHusejerEmail.Text, TextBoxHusejerTelefon.Text);
 
                 ControllerCrudHusejer.LæsHusejer(DataGridHusejer);
 
-                TextBoxHusejerID.Text = "ID (Oprettes automatisk)";
+                TextBoxHusejerID.Text = "ID (Autogenereres)";
                 TextBoxHusejerNavn.Text = "Navn";
                 TextBoxHusejerEmail.Text = "Email";
                 TextBoxHusejerTelefon.Text = "Telefon";
@@ -241,7 +244,7 @@ namespace Main
 
             ControllerCrudHusejer.LæsHusejer(DataGridHusejer);
 
-            TextBoxHusejerID.Text = "ID (Oprettes automatisk)";
+            TextBoxHusejerID.Text = "ID (Autogenereres)";
             TextBoxHusejerNavn.Text = "Navn";
             TextBoxHusejerEmail.Text = "Email";
             TextBoxHusejerTelefon.Text = "Telefon";
@@ -251,7 +254,7 @@ namespace Main
         {
             if (TextBoxHusejerID.Text == "")
             {
-                TextBoxHusejerID.Text = "ID (Oprettes automatisk)";
+                TextBoxHusejerID.Text = "ID (Autogenereres)";
             }
 
         }
@@ -288,6 +291,53 @@ namespace Main
         private void TextBoxHusejerTelefon_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
+
+        private void TextBoxMæglerID_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxMæglerID.Text == "")
+            {
+                TextBoxMæglerID.Text = "ID (Autogenereres)";
+            }
+        }
+
+        private void TextBoxMæglerNavn_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxMæglerNavn.Text == "")
+            {
+                TextBoxMæglerNavn.Text = "Navn";
+            }
+        }
+
+        private void TextBoxMæglerTelefon_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxMæglerTelefon.Text == "")
+            {
+                TextBoxMæglerTelefon.Text = "Telefon";
+            }
+        }
+
+        private void TextBoxMæglerEmail_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxMæglerEmail.Text == "")
+            {
+                TextBoxMæglerEmail.Text = "Email";
+            }
+        }
+
+        private void TextBoxMæglerID_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
+
+        private void TextBoxMæglerTelefon_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
+
+        private void DataGridEjendom_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataGridEjendom.Items.Add(new object());
         }
     }
 }
