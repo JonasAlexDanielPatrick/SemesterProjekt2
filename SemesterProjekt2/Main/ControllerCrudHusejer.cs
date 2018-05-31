@@ -25,7 +25,7 @@ namespace Main
             command.ExecuteNonQuery();
         }
 
-        public static void OpdaterHusejer(int id, string navn, string email, string telefon) // virker
+        public static void OpdaterHusejer(string id, string navn, string email, string telefon) // virker
         {
             string tempSSQL = "SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;" +
                               "BEGIN TRANSACTION;" +

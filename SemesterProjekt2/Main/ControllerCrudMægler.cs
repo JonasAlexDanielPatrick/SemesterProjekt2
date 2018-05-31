@@ -25,8 +25,9 @@ namespace Main
             command.ExecuteNonQuery();
         }
 
-        public static void OpdaterMægler(int id, string navn, string telefon, string email) // 
+        public static void OpdaterMægler(string id, string navn, string telefon, string email) // 
         {
+
             string tempSSQL = "SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;" +
                               "BEGIN TRANSACTION;" +
                               "UPDATE Mægler SET";

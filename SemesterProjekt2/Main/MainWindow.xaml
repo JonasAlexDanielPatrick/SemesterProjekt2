@@ -189,7 +189,7 @@
                 <TextBox x:Name="TextBoxEjendomKælderAreal" Height="17" TextWrapping="Wrap" Text="Kælderareal" Width="155" LostFocus="TextBoxEjendomKælderAreal_LostFocus" PreviewTextInput="TextBoxEjendomKælderAreal_PreviewTextInput" />
                 <TextBox x:Name="TextBoxEjendomBoligAreal" Height="17" TextWrapping="Wrap" Text="Boligareal" Width="155" LostFocus="TextBoxEjendomBoligAreal_LostFocus" PreviewTextInput="TextBoxEjendomBoligAreal_PreviewTextInput" />
                 <TextBox x:Name="TextBoxEjendomByggeår" Height="17" TextWrapping="Wrap" Text="Byggeår" Width="155" LostFocus="TextBoxEjendomByggeår_LostFocus" PreviewTextInput="TextBoxEjendomByggeår_PreviewTextInput" />
-                <TextBox x:Name="TextBoxEjendomGarageCarport" Height="17" TextWrapping="Wrap" Text="Garage/carport" Width="155" LostFocus="TextBoxEjendomGarageCarport_LostFocus" />
+                <TextBox x:Name="TextBoxEjendomGarageCarport" Height="17" TextWrapping="Wrap" Text="Garage/carport" Width="155" LostFocus="TextBoxEjendomGarageCarport_LostFocus" PreviewTextInput="TextBoxEjendomGarageCarport_PreviewTextInput" />
             </WrapPanel>
         </Canvas>
 
