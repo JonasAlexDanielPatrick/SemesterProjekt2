@@ -205,6 +205,7 @@ namespace Main
             DataGridHusejer.Visibility = Visibility.Hidden;
             WrapPanelMægler.Visibility = Visibility.Visible;
             DataGridMægler.Visibility = Visibility.Visible;
+            ControllerCrudMægler.LæsMægler(DataGridMægler);
         }
 
         private void ButtonEjendom_Click(object sender, RoutedEventArgs e)
@@ -220,8 +221,9 @@ namespace Main
 
         private void ButtonOpret_Click(object sender, RoutedEventArgs e)
         {
-            if (WrapPanelHusejer.IsVisible && TextBoxHusejerNavn.Text != "Navn" && TextBoxHusejerEmail.Text != "Email" && TextBoxHusejerTelefon.Text != "Telefon" 
-                && TextBoxHusejerNavn.Text != "" && TextBoxHusejerEmail.Text != "" && TextBoxHusejerTelefon.Text != "") 
+            if (WrapPanelHusejer.IsVisible && TextBoxHusejerNavn.Text != "Navn" && TextBoxHusejerNavn.Text != "" && 
+                TextBoxHusejerEmail.Text != "Email" && TextBoxHusejerEmail.Text != "" && TextBoxHusejerTelefon.Text != "Telefon" && 
+                TextBoxHusejerTelefon.Text != "") 
             {
                 ControllerCrudHusejer.OpretHusejer(TextBoxHusejerNavn.Text, TextBoxHusejerEmail.Text, TextBoxHusejerTelefon.Text);
 
@@ -232,6 +234,20 @@ namespace Main
                 TextBoxHusejerEmail.Text = "Email";
                 TextBoxHusejerTelefon.Text = "Telefon";
             }
+            if (WrapPanelMægler.IsVisible && TextBoxMæglerNavn.Text != "Navn" && TextBoxMæglerNavn.Text != "" &&
+                TextBoxMæglerTelefon.Text != "Telefon" && TextBoxMæglerTelefon.Text != "" && TextBoxMæglerEmail.Text != "Email" &&
+                TextBoxMæglerEmail.Text != "")
+            {
+                ControllerCrudMægler.OpretMægler(TextBoxMæglerNavn.Text, TextBoxMæglerTelefon.Text, TextBoxMæglerEmail.Text);
+
+                ControllerCrudMægler.LæsMægler(DataGridMægler);
+
+                TextBoxMæglerID.Text = "ID (Autogenereres)";
+                TextBoxMæglerNavn.Text = "Navn";
+                TextBoxMæglerTelefon.Text = "Telefon";
+                TextBoxMæglerEmail.Text = "Email";
+                
+            }
         }
 
         private void ButtonSøg_Click(object sender, RoutedEventArgs e)
@@ -241,6 +257,12 @@ namespace Main
                 (TextBoxHusejerTelefon.Text != "Telefon" && TextBoxHusejerTelefon.Text != ""))
             {
                 ControllerCrudHusejer.SøgHusejer(TextBoxHusejerID.Text, TextBoxHusejerNavn.Text, TextBoxHusejerEmail.Text, TextBoxHusejerTelefon.Text, DataGridHusejer);
+            }
+            if(WrapPanelMægler.IsVisible && (TextBoxMæglerID.Text != "ID (Autogenereres)" && TextBoxMæglerID.Text != "") ||
+                (TextBoxMæglerNavn.Text != "Navn" && TextBoxMæglerNavn.Text != "") || (TextBoxMæglerTelefon.Text != "Telefon" && TextBoxMæglerTelefon.Text != "") || 
+                (TextBoxMæglerEmail.Text != "Email" && TextBoxMæglerEmail.Text != ""))
+            {
+                //ControllerCrudMægler.SøgMægler
             }
         }
 
@@ -257,18 +279,44 @@ namespace Main
                 TextBoxHusejerEmail.Text = "Email";
                 TextBoxHusejerTelefon.Text = "Telefon";
             }
+            if (WrapPanelMægler.IsVisible && TextBoxMæglerID.Text != "ID (Autogenereres)" && TextBoxMæglerID.Text != "")
+            {
+                ControllerCrudMægler.OpdaterMægler(Convert.ToInt32(TextBoxMæglerID.Text), TextBoxMæglerNavn.Text, TextBoxMæglerTelefon.Text, TextBoxMæglerEmail.Text);
+
+                ControllerCrudMægler.LæsMægler(DataGridMægler);
+
+                TextBoxMæglerID.Text = "ID (Autogenereres)";
+                TextBoxMæglerNavn.Text = "Navn";
+                TextBoxMæglerTelefon.Text = "Telefon";
+                TextBoxMæglerEmail.Text = "Email";
+            }
         }
 
         private void ButtonSlet_Click(object sender, RoutedEventArgs e)
         {
-            ControllerCrudHusejer.SletHusEjer(Convert.ToInt32(TextBoxHusejerID.Text));
+            if(WrapPanelHusejer.IsVisible && TextBoxHusejerID.Text != "ID(Autogenereres)" && TextBoxHusejerID.Text != "")
+            {
+                ControllerCrudHusejer.SletHusEjer(Convert.ToInt32(TextBoxHusejerID.Text));
 
-            ControllerCrudHusejer.LæsHusejer(DataGridHusejer);
+                ControllerCrudHusejer.LæsHusejer(DataGridHusejer);
 
-            TextBoxHusejerID.Text = "ID (Autogenereres)";
-            TextBoxHusejerNavn.Text = "Navn";
-            TextBoxHusejerEmail.Text = "Email";
-            TextBoxHusejerTelefon.Text = "Telefon";
+                TextBoxHusejerID.Text = "ID (Autogenereres)";
+                TextBoxHusejerNavn.Text = "Navn";
+                TextBoxHusejerEmail.Text = "Email";
+                TextBoxHusejerTelefon.Text = "Telefon";
+            }
+            if (WrapPanelMægler.IsVisible && TextBoxMæglerID.Text != "ID(Autogenereres)" && TextBoxMæglerID.Text != "")
+            {
+                ControllerCrudMægler.SletMægler(Convert.ToInt32(TextBoxHusejerID.Text));
+
+                ControllerCrudMægler.LæsMægler(DataGridMægler);
+
+                TextBoxMæglerID.Text = "ID (Autogenereres)";
+                TextBoxMæglerNavn.Text = "Navn";
+                TextBoxMæglerTelefon.Text = "Telefon";
+                TextBoxMæglerEmail.Text = "Email";
+            }
+            
         }
 
         private void TextBoxHusejerID_LostFocus(object sender, RoutedEventArgs e)

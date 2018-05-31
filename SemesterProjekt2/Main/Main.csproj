@@ -55,6 +55,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ControllerCrudHusejer.cs" />
+    <Compile Include="ControllerCrudMægler.cs" />
     <Compile Include="ControllerKvmPris.cs" />
     <Compile Include="ControllerPrisBeregner.cs" />
     <Compile Include="ControllerSalgsstatistik.cs" />
