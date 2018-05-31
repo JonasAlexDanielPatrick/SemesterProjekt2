@@ -8,22 +8,22 @@ namespace Main
     class ControllerPrisBeregner
     {
       
-        public static object BeregnPris(int postnummer, string område, int kvm)
+        public static object BeregnPris(int postnr, string navn, int antalKvm)
         {
 
-            double prisFaktor = FindPrisFaktor(postnummer, område);
+            double prisFaktor = FindPrisFaktor(postnr, navn);
             double kvmPris = 22000;
             //Udregning
-            double pris = (kvm * kvmPris) * prisFaktor;
-            return pris;
+            double vurderingsPris = (antalKvm * kvmPris) * prisFaktor;
+            return vurderingsPris;
 
         }
 
-        private static double FindPrisFaktor(int postnummer, string område)
+        private static double FindPrisFaktor(int postnr, string navn)
         {
 
             //SQL code here
-            SqlCommand cmd = new SqlCommand("SELECT PrisFaktor FROM Område WHERE Navn = '" + område + "' AND Postnr = " + postnummer + ";", ControllerConnection.conn);
+            SqlCommand cmd = new SqlCommand("SELECT PrisFaktor FROM Område WHERE Navn = '" + navn + "' AND Postnr = " + postnr + ";", ControllerConnection.conn);
             double prisFaktor = 0;
             try
             {
