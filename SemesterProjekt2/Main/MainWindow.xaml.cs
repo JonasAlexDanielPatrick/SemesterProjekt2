@@ -217,6 +217,7 @@ namespace Main
             DataGridMægler.Visibility = Visibility.Hidden;
             WrapPanelEjendom.Visibility = Visibility.Visible;
             DataGridEjendom.Visibility = Visibility.Visible;
+            ControllerCrudEjendom.LæsEjendom(DataGridEjendom);
         }
 
         private void ButtonOpret_Click(object sender, RoutedEventArgs e)
@@ -247,6 +248,33 @@ namespace Main
                 TextBoxMæglerTelefon.Text = "Telefon";
                 TextBoxMæglerEmail.Text = "Email";
                 
+            }
+            if(WrapPanelEjendom.IsVisible && TextBoxEjendomMæglerID.Text != "Mægler ID (Påkrævet)" && TextBoxEjendomMæglerID.Text != "" && 
+                TextBoxEjendomHusejerID.Text != "Husejer ID (Påkrævet)" && TextBoxHusejerID.Text != "")
+            {
+                ControllerCrudEjendom.OpretEjendom(TextBoxEjendomMæglerID.Text, TextBoxEjendomHusejerID.Text, TextBoxEjendomOmrådeNavn.Text,
+                    TextBoxEjendomPostnr.Text, TextBoxEjendomEnergiMærke.Text, TextBoxEjendomStartDato.Text, TextBoxEjendomSalgsDato.Text,
+                    TextBoxEjendomAdresse.Text, TextBoxEjendomStartPris.Text, TextBoxEjendomNuværendePris.Text, TextBoxEjendomGrundAreal.Text,
+                    TextBoxEjendomKælderAreal.Text, TextBoxEjendomBoligAreal.Text, TextBoxEjendomByggeår.Text, TextBoxEjendomGarageCarport.Text);
+
+                ControllerCrudEjendom.LæsEjendom(DataGridEjendom);
+
+                TextBoxEjendomMæglerID.Text = "Mægler ID (Påkrævet)";
+                TextBoxEjendomHusejerID.Text = "Husejer ID (Påkrævet)";
+                TextBoxEjendomOmrådeNavn.Text = "Områdenavn";
+                TextBoxEjendomPostnr.Text = "Postnr";
+                TextBoxEjendomEnergiMærke.Text = "Energimærke";
+                TextBoxEjendomStartDato.Text = "Startdato";
+                TextBoxEjendomSalgsDato.Text = "Salgsdato";
+                TextBoxEjendomAdresse.Text = "Adresse";
+                TextBoxEjendomStartPris.Text = "Startpris";
+                TextBoxEjendomNuværendePris.Text = "Nuværendepris";
+                TextBoxEjendomGrundAreal.Text = "Grundareal";
+                TextBoxEjendomKælderAreal.Text = "Kælderareal";
+                TextBoxEjendomBoligAreal.Text = "Boligareal";
+                TextBoxEjendomByggeår.Text = "Byggeår";
+                TextBoxEjendomGarageCarport.Text = "Garage/carport";
+
             }
         }
 

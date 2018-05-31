@@ -54,6 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ControllerCrudEjendom.cs" />
     <Compile Include="ControllerCrudHusejer.cs" />
     <Compile Include="ControllerCrudMægler.cs" />
     <Compile Include="ControllerKvmPris.cs" />

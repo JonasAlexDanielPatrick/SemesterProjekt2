@@ -118,12 +118,12 @@
         <Canvas x:Name="CanvasCRUD" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Visible">
             <Button x:Name="ButtonHusejer" Content="Husejer" Canvas.Left="10" Canvas.Top="10" Width="50" Click="ButtonHusejer_Click"/>
             <Button x:Name="ButtonMægler" Content="Mægler" Canvas.Left="62" Canvas.Top="10" Width="50" Click="ButtonMægler_Click"/>
-            <Button x:Name="ButtonEjendom" Content="Ejendom" Canvas.Left="116" Canvas.Top="10" Width="50" Click="ButtonEjendom_Click"/>
+            <Button x:Name="ButtonEjendom" Content="Ejendom" Canvas.Left="114" Canvas.Top="10" Width="50" Click="ButtonEjendom_Click"/>
             <Button x:Name="ButtonOpret" Content="Opret" Canvas.Left="10" Canvas.Top="324" Width="75" Click="ButtonOpret_Click"/>
             <Button x:Name="ButtonSøg" Content="Søg" Canvas.Left="90" Canvas.Top="324" Width="75" Click="ButtonSøg_Click"/>
             <Button x:Name="ButtonOpdater" Content="Opdatér" Canvas.Left="10" Canvas.Top="349" Width="75" Click="ButtonOpdater_Click"/>
             <Button x:Name="ButtonSlet" Content="Slet" Canvas.Left="90" Canvas.Top="349" Width="75" Click="ButtonSlet_Click"/>
-            <DataGrid x:Name="DataGridHusejer" Height="329" Canvas.Left="175" Canvas.Top="40" Width="607" Visibility="Visible" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True" ItemsSource="{Binding}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
+            <DataGrid x:Name="DataGridHusejer" Height="329" Canvas.Left="175" Canvas.Top="40" Width="607" Visibility="Hidden" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True" ItemsSource="{Binding}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding ID}" Width="*" MinWidth="80" Header="ID"/>
                     <DataGridTextColumn Binding="{Binding Navn}" Width="*" MinWidth="80" Header="Navn"/>
@@ -152,7 +152,7 @@
                 <TextBox x:Name="TextBoxMæglerEmail" Height="17" TextWrapping="Wrap" Text="Email" Width="155" LostFocus="TextBoxMæglerEmail_LostFocus"/>
             </WrapPanel>
 
-            <DataGrid x:Name="DataGridEjendom" Height="329" Canvas.Left="175" Canvas.Top="40" Width="607" Visibility="Hidden" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True" ItemsSource="{Binding}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
+            <DataGrid x:Name="DataGridEjendom" Height="329" Canvas.Left="175" Canvas.Top="40" Width="607" Visibility="Visible" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True" ItemsSource="{Binding}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
                     <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Sagsnr}" Width="*" MinWidth="80" Header="Sagsnr"/>
                     <DataGridTextColumn Binding="{Binding MæglerID}" Width="*" MinWidth="80" Header="MæglerID"/>
@@ -175,8 +175,8 @@
             
             <WrapPanel x:Name="WrapPanelEjendom" Height="279" Canvas.Left="10" Canvas.Top="40" Width="155" Visibility="Visible">
                 <TextBox x:Name="TextBoxEjendomSagsnr" Height="17" TextWrapping="Wrap" Text="Sagsnr (Autogenereres)" Width="155" LostFocus="TextBoxEjendomSagsnr_LostFocus" PreviewTextInput="TextBoxEjendomSagsnr_PreviewTextInput" />
-                <TextBox x:Name="TextBoxEjendomMæglerID" Height="17" TextWrapping="Wrap" Text="Mægler ID" Width="155" LostFocus="TextBoxEjendomMæglerID_LostFocus" PreviewTextInput="TextBoxEjendomMæglerID_PreviewTextInput" />
-                <TextBox x:Name="TextBoxEjendomHusejerID" Height="17" TextWrapping="Wrap" Text="Husejer ID" Width="155" LostFocus="TextBoxEjendomHusejerID_LostFocus" PreviewTextInput="TextBoxEjendomHusejerID_PreviewTextInput" />
+                <TextBox x:Name="TextBoxEjendomMæglerID" Height="17" TextWrapping="Wrap" Text="Mægler ID (Påkrævet)" Width="155" LostFocus="TextBoxEjendomMæglerID_LostFocus" PreviewTextInput="TextBoxEjendomMæglerID_PreviewTextInput" />
+                <TextBox x:Name="TextBoxEjendomHusejerID" Height="17" TextWrapping="Wrap" Text="Husejer ID (Påkrævet)" Width="155" LostFocus="TextBoxEjendomHusejerID_LostFocus" PreviewTextInput="TextBoxEjendomHusejerID_PreviewTextInput" />
                 <TextBox x:Name="TextBoxEjendomOmrådeNavn" Height="17" TextWrapping="Wrap" Text="Områdenavn" Width="155" LostFocus="TextBoxEjendomOmrådeNavn_LostFocus" />
                 <TextBox x:Name="TextBoxEjendomPostnr" Height="17" TextWrapping="Wrap" Text="Postnr" Width="155" LostFocus="TextBoxEjendomPostnr_LostFocus" PreviewTextInput="TextBoxEjendomPostnr_PreviewTextInput" />
                 <TextBox x:Name="TextBoxEjendomEnergiMærke" Height="17" TextWrapping="Wrap" Text="Energimærke" Width="155" LostFocus="TextBoxEjendomEnergiMærke_LostFocus" />

@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 using System.Windows.Controls;
 using System.Data;
-
+using System.Linq;
 
 namespace Main
 {
@@ -80,7 +80,7 @@ namespace Main
         {
             string tempSSQL = "SELECT * FROM Husejer WHERE";
 
-            if (Convert.ToString(id) != "ID (Autogenereres)" && Convert.ToString(id) != "")
+            if (id != "ID (Autogenereres)" && id != "")
             {
                 tempSSQL += " ID = '" + id + "'";
             }
@@ -122,7 +122,7 @@ namespace Main
 
             }
 
-            string sSQL = tempSSQL;
+            string sSQL = tempSSQL + ";";
             SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
             SqlDataAdapter sda = new SqlDataAdapter(command);
             DataTable dt = new DataTable("Husejer");
