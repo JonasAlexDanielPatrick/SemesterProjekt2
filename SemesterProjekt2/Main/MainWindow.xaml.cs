@@ -262,7 +262,7 @@ namespace Main
                 (TextBoxMæglerNavn.Text != "Navn" && TextBoxMæglerNavn.Text != "") || (TextBoxMæglerTelefon.Text != "Telefon" && TextBoxMæglerTelefon.Text != "") || 
                 (TextBoxMæglerEmail.Text != "Email" && TextBoxMæglerEmail.Text != ""))
             {
-                //ControllerCrudMægler.SøgMægler
+                ControllerCrudMægler.SøgMægler(TextBoxMæglerID.Text, TextBoxMæglerNavn.Text, TextBoxMæglerTelefon.Text, TextBoxMæglerEmail.Text, DataGridMægler);
             }
         }
 
