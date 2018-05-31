@@ -14,7 +14,7 @@ namespace Main
 {
     class ControllerCrudHusejer
     {
-        public static void LæsHusejer(DataGrid dg)
+        public static void LæsHusejer(DataGrid dg) // virker
         {
             string sSQL = "SELECT * FROM Husejer";
             SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
@@ -82,7 +82,7 @@ namespace Main
             command.ExecuteNonQuery();
         }
 
-        public static void SøgHusejer(string id, string navn, string email, string telefon, DataGrid dg) 
+        public static void SøgHusejer(string id, string navn, string email, string telefon, DataGrid dg) // virker
         {
             string tempSSQL = "SELECT * FROM Husejer WHERE";
 

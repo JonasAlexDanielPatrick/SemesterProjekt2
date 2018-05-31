@@ -123,12 +123,12 @@
             <Button x:Name="ButtonSøg" Content="Søg" Canvas.Left="90" Canvas.Top="324" Width="75" Click="ButtonSøg_Click"/>
             <Button x:Name="ButtonOpdater" Content="Opdatér" Canvas.Left="10" Canvas.Top="349" Width="75" Click="ButtonOpdater_Click"/>
             <Button x:Name="ButtonSlet" Content="Slet" Canvas.Left="90" Canvas.Top="349" Width="75" Click="ButtonSlet_Click"/>
-            <DataGrid x:Name="DataGridHusejer" Height="329" Canvas.Left="175" Canvas.Top="40" Width="607" Visibility="Hidden" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True" ItemsSource="{Binding}" CanUserReorderColumns="False" CanUserResizeColumns="False">
+            <DataGrid x:Name="DataGridHusejer" Height="329" Canvas.Left="175" Canvas.Top="40" Width="607" Visibility="Visible" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True" ItemsSource="{Binding}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding ID}" Width="80" Header="ID" CanUserResize="False"/>
-                    <DataGridTextColumn Binding="{Binding Navn}" Width="Auto" Header="Navn" CanUserResize="False"/>
-                    <DataGridTextColumn Binding="{Binding Email}" Width="Auto" Header="Email" CanUserResize="False"/>
-                    <DataGridTextColumn Binding="{Binding Telefon}" Width="100" Header="Telefon" CanUserResize="False"/>
+                    <DataGridTextColumn Binding="{Binding ID}" Width="*" MinWidth="80" Header="ID"/>
+                    <DataGridTextColumn Binding="{Binding Navn}" Width="*" MinWidth="80" Header="Navn"/>
+                    <DataGridTextColumn Binding="{Binding Email}" Width="*" MinWidth="80" Header="Email"/>
+                    <DataGridTextColumn Binding="{Binding Telefon}" Width="*" MinWidth="80" Header="Telefon"/>
                 </DataGrid.Columns>
             </DataGrid>
             <WrapPanel x:Name="WrapPanelHusejer" Height="279" Canvas.Left="10" Canvas.Top="40" Width="155" Visibility="Hidden">
@@ -137,12 +137,12 @@
                 <TextBox x:Name="TextBoxHusejerEmail" Height="17" TextWrapping="Wrap" Text="Email" Width="155" LostFocus="TextBoxHusejerEmail_LostFocus"/>
                 <TextBox x:Name="TextBoxHusejerTelefon" Height="17" TextWrapping="Wrap" Text="Telefon" Width="155" LostFocus="TextBoxHusejerTelefon_LostFocus" PreviewTextInput="TextBoxHusejerTelefon_PreviewTextInput"/>
             </WrapPanel>
-            <DataGrid x:Name="DataGridMægler" Height="329" Canvas.Left="175" Canvas.Top="40" Width="607" Visibility="Hidden" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True" ItemsSource="{Binding}" CanUserReorderColumns="False" CanUserResizeColumns="False">
+            <DataGrid x:Name="DataGridMægler" Height="329" Canvas.Left="175" Canvas.Top="40" Width="607" Visibility="Hidden" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True" ItemsSource="{Binding}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding ID}" Width="80" Header="ID"/>
-                    <DataGridTextColumn Binding="{Binding Navn}" Width="*" Header="Navn"/>
-                    <DataGridTextColumn Binding="{Binding Telefon}" Width="100" Header="Telefon"/>
-                    <DataGridTextColumn Binding="{Binding Email}" Width="*" Header="Email"/>
+                    <DataGridTextColumn Binding="{Binding ID}" Width="*" MinWidth="80" Header="ID"/>
+                    <DataGridTextColumn Binding="{Binding Navn}" Width="*" MinWidth="80" Header="Navn"/>
+                    <DataGridTextColumn Binding="{Binding Telefon}" Width="*" MinWidth="80" Header="Telefon"/>
+                    <DataGridTextColumn Binding="{Binding Email}" Width="*" MinWidth="80" Header="Email"/>
                 </DataGrid.Columns>
             </DataGrid>
             <WrapPanel x:Name="WrapPanelMægler" Height="279" Canvas.Left="10" Canvas.Top="40" Width="155" Visibility="Hidden">
@@ -152,44 +152,44 @@
                 <TextBox x:Name="TextBoxMæglerEmail" Height="17" TextWrapping="Wrap" Text="Email" Width="155" LostFocus="TextBoxMæglerEmail_LostFocus"/>
             </WrapPanel>
 
-            <DataGrid x:Name="DataGridEjendom" Height="329" Canvas.Left="175" Canvas.Top="40" Width="607" Visibility="Visible" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True" ItemsSource="{Binding}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" MinColumnWidth="80" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Visible" Loaded="DataGridEjendom_Loaded">
+            <DataGrid x:Name="DataGridEjendom" Height="329" Canvas.Left="175" Canvas.Top="40" Width="607" Visibility="Hidden" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True" ItemsSource="{Binding}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Sagsnr}" Width="*" Header="Sagsnr" MinWidth="80"/>
-                        <DataGridTextColumn Binding="{Binding MæglerID}" Width="*" Header="MæglerID" MinWidth="80"/>
-                        <DataGridTextColumn Binding="{Binding HusejerID}" Width="*" Header="HusejerID" MinWidth="80"/>
-                    <DataGridTextColumn Binding="{Binding OmrådeNavn}" Width="*" Header="Områdenavn" MinWidth="80"/>
-                    <DataGridTextColumn Binding="{Binding Postnr}" Width="*" Header="Postnr" MinWidth="80"/>
-                    <DataGridTextColumn Binding="{Binding EnergiMærke}" Width="*" Header="Energimærke" MinWidth="80"/>
-                    <DataGridTextColumn Binding="{Binding StartDato}" Width="*" Header="Startdato" MinWidth="80"/>
-                    <DataGridTextColumn Binding="{Binding SalgsDato}" Width="*" Header="Salgsdato" MinWidth="80"/>
-                    <DataGridTextColumn Binding="{Binding Adresse}" Width="*" Header="Adresse" MinWidth="80"/>
-                    <DataGridTextColumn Binding="{Binding StartPris}" Width="*" Header="Startpris" MinWidth="80"/>
-                    <DataGridTextColumn Binding="{Binding NuværendePris}" Width="*" Header="Nuværende pris" MinWidth="80"/>
-                    <DataGridTextColumn Binding="{Binding GrundAreal}" Width="*" Header="Grundareal" MinWidth="80"/>
-                    <DataGridTextColumn Binding="{Binding KælderAreal}" Width="*" Header="Kælderareal" MinWidth="80"/>
-                    <DataGridTextColumn Binding="{Binding BoligAreal}" Width="*" Header="Boligareal" MinWidth="80"/>
-                    <DataGridTextColumn Binding="{Binding ByggeÅr}" Width="*" Header="Byggeår" MinWidth="80"/>
-                        <DataGridTextColumn Binding="{Binding GarageCarport}" Width="*" Header="Garage/Carport" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding Sagsnr}" Width="*" MinWidth="80" Header="Sagsnr"/>
+                    <DataGridTextColumn Binding="{Binding MæglerID}" Width="*" MinWidth="80" Header="MæglerID"/>
+                    <DataGridTextColumn Binding="{Binding HusejerID}" Width="*" MinWidth="80" Header="HusejerID"/>
+                    <DataGridTextColumn Binding="{Binding OmrådeNavn}" Width="*" MinWidth="80" Header="Områdenavn"/>
+                    <DataGridTextColumn Binding="{Binding Postnr}" Width="*" MinWidth="80" Header="Postnr"/>
+                    <DataGridTextColumn Binding="{Binding EnergiMærke}" Width="*" MinWidth="80" Header="Energimærke"/>
+                    <DataGridTextColumn Binding="{Binding StartDato}" Width="*" MinWidth="80" Header="Startdato"/>
+                    <DataGridTextColumn Binding="{Binding SalgsDato}" Width="*" MinWidth="80" Header="Salgsdato"/>
+                    <DataGridTextColumn Binding="{Binding Adresse}" Width="*" MinWidth="80" Header="Adresse"/>
+                    <DataGridTextColumn Binding="{Binding StartPris}" Width="*" MinWidth="80" Header="Startpris"/>
+                    <DataGridTextColumn Binding="{Binding NuværendePris}" Width="*" MinWidth="100" Header="Nuværende pris"/>
+                    <DataGridTextColumn Binding="{Binding GrundAreal}" Width="*" MinWidth="80" Header="Grundareal"/>
+                    <DataGridTextColumn Binding="{Binding KælderAreal}" Width="*" MinWidth="80" Header="Kælderareal"/>
+                    <DataGridTextColumn Binding="{Binding BoligAreal}" Width="*" MinWidth="80" Header="Boligareal"/>
+                    <DataGridTextColumn Binding="{Binding ByggeÅr}" Width="*" MinWidth="80" Header="Byggeår"/>
+                        <DataGridTextColumn Binding="{Binding GarageCarport}" Width="*" MinWidth="100" Header="Garage/Carport"/>
                     </DataGrid.Columns>
                 </DataGrid>
             
             <WrapPanel x:Name="WrapPanelEjendom" Height="279" Canvas.Left="10" Canvas.Top="40" Width="155" Visibility="Visible">
-                <TextBox x:Name="TextBoxEjendomSagsnr" Height="17" TextWrapping="Wrap" Text="Sagsnr (Autogenereres)" Width="155" />
-                <TextBox x:Name="TextBoxEjendomMæglerID" Height="17" TextWrapping="Wrap" Text="MæglerID" Width="155" />
-                <TextBox x:Name="TextBoxEjendomHusejerID" Height="17" TextWrapping="Wrap" Text="HusejerID" Width="155" />
-                <TextBox x:Name="TextBoxEjendomOmrådeNavn" Height="17" TextWrapping="Wrap" Text="Områdenavn" Width="155" />
-                <TextBox x:Name="TextBoxEjendomPostnr" Height="17" TextWrapping="Wrap" Text="Postnr" Width="155" />
-                <TextBox x:Name="TextBoxEjendomEnergiMærke" Height="17" TextWrapping="Wrap" Text="Energimærke" Width="155" />
-                <TextBox x:Name="TextBoxEjendomStartDato" Height="17" TextWrapping="Wrap" Text="Startdato" Width="155" />
-                <TextBox x:Name="TextBoxEjendomSalgsDato" Height="17" TextWrapping="Wrap" Text="Salgsdator" Width="155" />
-                <TextBox x:Name="TextBoxEjendomAdresse" Height="17" TextWrapping="Wrap" Text="Adresse" Width="155" />
-                <TextBox x:Name="TextBoxEjendomStartPris" Height="17" TextWrapping="Wrap" Text="Startpris" Width="155" />
-                <TextBox x:Name="TextBoxEjendomNuværendePris" Height="17" TextWrapping="Wrap" Text="Nuværende pris" Width="155" />
-                <TextBox x:Name="TextBoxEjendomGrundAreal" Height="17" TextWrapping="Wrap" Text="Grundareal" Width="155" />
-                <TextBox x:Name="TextBoxEjendomKælderAreal" Height="17" TextWrapping="Wrap" Text="Kælderareal" Width="155" />
-                <TextBox x:Name="TextBoxEjendomBoligAreal" Height="17" TextWrapping="Wrap" Text="Boligareal" Width="155" />
-                <TextBox x:Name="TextBoxEjendomByggeår" Height="17" TextWrapping="Wrap" Text="Byggeår" Width="155" />
-                <TextBox x:Name="TextBoxEjendomGarageCarport" Height="17" TextWrapping="Wrap" Text="Garage/Carport" Width="155" />
+                <TextBox x:Name="TextBoxEjendomSagsnr" Height="17" TextWrapping="Wrap" Text="Sagsnr (Autogenereres)" Width="155" LostFocus="TextBoxEjendomSagsnr_LostFocus" PreviewTextInput="TextBoxEjendomSagsnr_PreviewTextInput" />
+                <TextBox x:Name="TextBoxEjendomMæglerID" Height="17" TextWrapping="Wrap" Text="Mægler ID" Width="155" LostFocus="TextBoxEjendomMæglerID_LostFocus" PreviewTextInput="TextBoxEjendomMæglerID_PreviewTextInput" />
+                <TextBox x:Name="TextBoxEjendomHusejerID" Height="17" TextWrapping="Wrap" Text="Husejer ID" Width="155" LostFocus="TextBoxEjendomHusejerID_LostFocus" PreviewTextInput="TextBoxEjendomHusejerID_PreviewTextInput" />
+                <TextBox x:Name="TextBoxEjendomOmrådeNavn" Height="17" TextWrapping="Wrap" Text="Områdenavn" Width="155" LostFocus="TextBoxEjendomOmrådeNavn_LostFocus" />
+                <TextBox x:Name="TextBoxEjendomPostnr" Height="17" TextWrapping="Wrap" Text="Postnr" Width="155" LostFocus="TextBoxEjendomPostnr_LostFocus" PreviewTextInput="TextBoxEjendomPostnr_PreviewTextInput" />
+                <TextBox x:Name="TextBoxEjendomEnergiMærke" Height="17" TextWrapping="Wrap" Text="Energimærke" Width="155" LostFocus="TextBoxEjendomEnergiMærke_LostFocus" />
+                <TextBox x:Name="TextBoxEjendomStartDato" Height="17" TextWrapping="Wrap" Text="Startdato (åååå-mm-dd)" Width="155" LostFocus="TextBoxEjendomStartDato_LostFocus" />
+                <TextBox x:Name="TextBoxEjendomSalgsDato" Height="17" TextWrapping="Wrap" Text="Salgsdato (åååå-mm-dd)" Width="155" LostFocus="TextBoxEjendomSalgsDato_LostFocus" />
+                <TextBox x:Name="TextBoxEjendomAdresse" Height="17" TextWrapping="Wrap" Text="Adresse" Width="155" LostFocus="TextBoxEjendomAdresse_LostFocus" />
+                <TextBox x:Name="TextBoxEjendomStartPris" Height="17" TextWrapping="Wrap" Text="Startpris" Width="155" LostFocus="TextBoxEjendomStartPris_LostFocus" PreviewTextInput="TextBoxEjendomStartPris_PreviewTextInput" />
+                <TextBox x:Name="TextBoxEjendomNuværendePris" Height="17" TextWrapping="Wrap" Text="Nuværende pris" Width="155" LostFocus="TextBoxEjendomNuværendePris_LostFocus" PreviewTextInput="TextBoxEjendomNuværendePris_PreviewTextInput" />
+                <TextBox x:Name="TextBoxEjendomGrundAreal" Height="17" TextWrapping="Wrap" Text="Grundareal" Width="155" LostFocus="TextBoxEjendomGrundAreal_LostFocus" PreviewTextInput="TextBoxEjendomGrundAreal_PreviewTextInput" />
+                <TextBox x:Name="TextBoxEjendomKælderAreal" Height="17" TextWrapping="Wrap" Text="Kælderareal" Width="155" LostFocus="TextBoxEjendomKælderAreal_LostFocus" PreviewTextInput="TextBoxEjendomKælderAreal_PreviewTextInput" />
+                <TextBox x:Name="TextBoxEjendomBoligAreal" Height="17" TextWrapping="Wrap" Text="Boligareal" Width="155" LostFocus="TextBoxEjendomBoligAreal_LostFocus" PreviewTextInput="TextBoxEjendomBoligAreal_PreviewTextInput" />
+                <TextBox x:Name="TextBoxEjendomByggeår" Height="17" TextWrapping="Wrap" Text="Byggeår" Width="155" LostFocus="TextBoxEjendomByggeår_LostFocus" PreviewTextInput="TextBoxEjendomByggeår_PreviewTextInput" />
+                <TextBox x:Name="TextBoxEjendomGarageCarport" Height="17" TextWrapping="Wrap" Text="Garage/carport" Width="155" LostFocus="TextBoxEjendomGarageCarport_LostFocus" />
             </WrapPanel>
         </Canvas>
 

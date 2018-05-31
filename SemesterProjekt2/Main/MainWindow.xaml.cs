@@ -181,19 +181,41 @@ namespace Main
             }
         }
 
+        //
+        // CRUD
+        //
         private void ButtonHusejer_Click(object sender, RoutedEventArgs e)
         {
+            
+            WrapPanelMægler.Visibility = Visibility.Hidden;
+            DataGridMægler.Visibility = Visibility.Hidden;
+            WrapPanelEjendom.Visibility = Visibility.Hidden;
+            DataGridEjendom.Visibility = Visibility.Hidden;
+            WrapPanelHusejer.Visibility = Visibility.Visible;
+            DataGridHusejer.Visibility = Visibility.Visible;
             ControllerCrudHusejer.LæsHusejer(DataGridHusejer);
         }
 
         private void ButtonMægler_Click(object sender, RoutedEventArgs e)
         {
-
+            
+            WrapPanelEjendom.Visibility = Visibility.Hidden;
+            DataGridEjendom.Visibility = Visibility.Hidden;
+            WrapPanelHusejer.Visibility = Visibility.Hidden;
+            DataGridHusejer.Visibility = Visibility.Hidden;
+            WrapPanelMægler.Visibility = Visibility.Visible;
+            DataGridMægler.Visibility = Visibility.Visible;
         }
 
         private void ButtonEjendom_Click(object sender, RoutedEventArgs e)
         {
-
+            
+            WrapPanelHusejer.Visibility = Visibility.Hidden;
+            DataGridHusejer.Visibility = Visibility.Hidden;
+            WrapPanelMægler.Visibility = Visibility.Hidden;
+            DataGridMægler.Visibility = Visibility.Hidden;
+            WrapPanelEjendom.Visibility = Visibility.Visible;
+            DataGridEjendom.Visibility = Visibility.Visible;
         }
 
         private void ButtonOpret_Click(object sender, RoutedEventArgs e)
@@ -224,8 +246,7 @@ namespace Main
 
         private void ButtonOpdater_Click(object sender, RoutedEventArgs e)
         {
-            if (WrapPanelHusejer.IsVisible && TextBoxHusejerID.Text != "ID (Autogenereres)" && TextBoxHusejerID.Text != "" && (TextBoxHusejerNavn.Text != "Navn" && TextBoxHusejerNavn.Text != "") || (TextBoxHusejerEmail.Text != "Email" && TextBoxHusejerEmail.Text != "") ||
-                (TextBoxHusejerTelefon.Text != "Telefon" && TextBoxHusejerTelefon.Text != ""))
+            if (WrapPanelHusejer.IsVisible && TextBoxHusejerID.Text != "ID (Autogenereres)" && TextBoxHusejerID.Text != "")
             {
                 ControllerCrudHusejer.OpdaterHusejer(Convert.ToInt32(TextBoxHusejerID.Text), TextBoxHusejerNavn.Text, TextBoxHusejerEmail.Text, TextBoxHusejerTelefon.Text);
 
@@ -335,9 +356,188 @@ namespace Main
             e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
         }
 
-        private void DataGridEjendom_Loaded(object sender, RoutedEventArgs e)
+        //Hjælp til at kunne se den horisontale scroll bar i datagrid'et, ved at fylde objekter ind i kolonnerne
+        //private void DataGridEjendom_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    DataGridEjendom.Items.Add(new object());
+        //}
+
+        private void TextBoxEjendomSagsnr_LostFocus(object sender, RoutedEventArgs e)
         {
-            DataGridEjendom.Items.Add(new object());
+            if (TextBoxEjendomSagsnr.Text == "")
+            {
+                TextBoxEjendomSagsnr.Text = "Sagsnr";
+            }
+        }
+
+        private void TextBoxEjendomMæglerID_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxEjendomMæglerID.Text == "")
+            {
+                TextBoxEjendomMæglerID.Text = "Mægler ID";
+            }
+        }
+
+        private void TextBoxEjendomHusejerID_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxEjendomHusejerID.Text == "")
+            {
+                TextBoxEjendomHusejerID.Text = "Husejer ID";
+            }
+        }
+
+        private void TextBoxEjendomOmrådeNavn_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxEjendomOmrådeNavn.Text == "")
+            {
+                TextBoxEjendomOmrådeNavn.Text = "Områdenavn";
+            }
+        }
+
+        private void TextBoxEjendomPostnr_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxEjendomPostnr.Text == "")
+            {
+                TextBoxEjendomPostnr.Text = "Postnr";
+            }
+        }
+
+        private void TextBoxEjendomEnergiMærke_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxEjendomEnergiMærke.Text == "")
+            {
+                TextBoxEjendomEnergiMærke.Text = "Energimærke";
+            }
+        }
+
+        private void TextBoxEjendomStartDato_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxEjendomStartDato.Text == "")
+            {
+                TextBoxEjendomStartDato.Text = "Startdato";
+            }
+        }
+
+        private void TextBoxEjendomSalgsDato_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxEjendomSalgsDato.Text == "")
+            {
+                TextBoxEjendomSalgsDato.Text = "Salgsdato";
+            }
+        }
+
+        private void TextBoxEjendomAdresse_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxEjendomAdresse.Text == "")
+            {
+                TextBoxEjendomAdresse.Text = "Adresse";
+            }
+        }
+
+        private void TextBoxEjendomStartPris_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxEjendomStartPris.Text == "")
+            {
+                TextBoxEjendomStartPris.Text = "Startpris";
+            }
+        }
+
+        private void TextBoxEjendomNuværendePris_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxEjendomNuværendePris.Text == "")
+            {
+                TextBoxEjendomNuværendePris.Text = "Nuværendepris";
+            }
+        }
+
+        private void TextBoxEjendomGrundAreal_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxEjendomGrundAreal.Text == "")
+            {
+                TextBoxEjendomGrundAreal.Text = "Grundareal";
+            }
+        }
+
+        private void TextBoxEjendomKælderAreal_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxEjendomKælderAreal.Text == "")
+            {
+                TextBoxEjendomKælderAreal.Text = "Kælderareal";
+            }
+        }
+
+        private void TextBoxEjendomBoligAreal_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxEjendomBoligAreal.Text == "")
+            {
+                TextBoxEjendomBoligAreal.Text = "Boligareal";
+            }
+        }
+
+        private void TextBoxEjendomByggeår_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxEjendomByggeår.Text == "")
+            {
+                TextBoxEjendomByggeår.Text = "Byggeår";
+            }
+        }
+
+        private void TextBoxEjendomGarageCarport_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxEjendomGarageCarport.Text == "")
+            {
+                TextBoxEjendomGarageCarport.Text = "Garage/carport";
+            }
+        }
+
+        private void TextBoxEjendomSagsnr_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
+
+        private void TextBoxEjendomMæglerID_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
+
+        private void TextBoxEjendomHusejerID_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
+
+        private void TextBoxEjendomPostnr_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
+
+        private void TextBoxEjendomStartPris_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
+
+        private void TextBoxEjendomNuværendePris_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
+
+        private void TextBoxEjendomGrundAreal_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
+
+        private void TextBoxEjendomKælderAreal_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
+
+        private void TextBoxEjendomBoligAreal_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
+
+        private void TextBoxEjendomByggeår_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
         }
     }
 }
