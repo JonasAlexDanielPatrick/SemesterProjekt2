@@ -248,5 +248,19 @@ namespace Main
                 ejendom.IsChecked = true;
             }
         }
+
+        private void CheckBoxÅbentHusMægler_Click(object sender, RoutedEventArgs e)
+        {
+            ModelÅbentHusMægler mægler = (ModelÅbentHusMægler)DataGridÅbentHusMægler.SelectedItem;
+
+            if (mægler.IsChecked == false)
+            {
+                mægler.IsChecked = false;
+            }
+            else
+            {
+                mægler.IsChecked = true;
+            }
+        }
     }
 }
