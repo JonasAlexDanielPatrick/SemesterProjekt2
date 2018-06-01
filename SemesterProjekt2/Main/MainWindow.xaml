@@ -139,7 +139,7 @@
                         <DataGridTemplateColumn Header="Valgt" Width="50">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <CheckBox IsChecked="{Binding IsChecked}"  VerticalAlignment="Center" HorizontalAlignment="Center" Click="CheckBoxÅbentHusMægler_Click"/>
+                                    <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  VerticalAlignment="Center" HorizontalAlignment="Center" Click="CheckBoxÅbentHusMægler_Click"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

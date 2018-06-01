@@ -10,6 +10,8 @@ namespace Main
 {
     class ControllerÅbentHus
     {
+        public static int antalMæglereValgt = 0;
+        public static int antalEjendommeValgt = 0;
         public static List<ModelÅbentHusMægler> mæglere = new List<ModelÅbentHusMægler>();
         public static List<ModelÅbentHusEjendom> ejendomme = new List<ModelÅbentHusEjendom>();
 
@@ -57,7 +59,6 @@ namespace Main
 
         public static void Udskriv(DataGrid dg, string udfil)
         {
-            TælAntalValgteMæglere(dg);
 
             StreamWriter stream = null;
 
@@ -79,19 +80,28 @@ namespace Main
             }
         }
 
-        public static void TælAntalValgteMæglere(DataGrid dg)
+        public static void MæglerClicked(ModelÅbentHusMægler mægler)
         {
-            DataTable dt = new DataTable();
-            dt = ((DataView)dg.ItemsSource).ToTable();
-
-            foreach (DataRow row in dt.Rows)
+            if (mægler.IsChecked == false)
             {
-                Debug.WriteLine(row.Table.Columns.Count);
-                object[] array = row.ItemArray;
-
-                Debug.WriteLine(array[0] + " | " + array[1]);
+                antalMæglereValgt--;
+            }
+            else
+            {
+                antalMæglereValgt++;
             }
         }
 
+        public static void EjendomClicked(ModelÅbentHusEjendom ejendom)
+        {
+            if (ejendom.IsChecked == false)
+            {
+                antalEjendommeValgt--;
+            }
+            else
+            {
+                antalEjendommeValgt++;
+            }
+        }
     }
 }

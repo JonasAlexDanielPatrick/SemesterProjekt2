@@ -212,13 +212,6 @@ namespace Main
         {
             //ControllerÅbentHus.GenererListe(DataGridÅbentHusMægler, "");
 
-            foreach (ModelÅbentHusEjendom ejendom in ControllerÅbentHus.ejendomme)
-            {
-                if (ejendom.IsChecked)
-                {
-                    Debug.WriteLine(ejendom.Sagsnr + " is true!");
-                }
-            }
 
         }
 
@@ -288,28 +281,14 @@ namespace Main
         {
             ModelÅbentHusEjendom ejendom = (ModelÅbentHusEjendom)DataGridÅbentHusEjendom.SelectedItem;
 
-            if (ejendom.IsChecked == false)
-            {
-                ejendom.IsChecked = false;
-            }
-            else
-            {
-                ejendom.IsChecked = true;
-            }
+            ControllerÅbentHus.EjendomClicked(ejendom);
         }
 
         private void CheckBoxÅbentHusMægler_Click(object sender, RoutedEventArgs e)
         {
             ModelÅbentHusMægler mægler = (ModelÅbentHusMægler)DataGridÅbentHusMægler.SelectedItem;
 
-            if (mægler.IsChecked == false)
-            {
-                mægler.IsChecked = false;
-            }
-            else
-            {
-                mægler.IsChecked = true;
-            }
+            ControllerÅbentHus.MæglerClicked(mægler);
         }
     }
 }
