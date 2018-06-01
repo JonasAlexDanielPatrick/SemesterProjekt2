@@ -18,8 +18,10 @@ namespace Main
             string sSQL = "select ID, Navn from Mægler;";
             SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
             SqlDataAdapter sda = new SqlDataAdapter(command);
-            DataTable dt = new DataTable("Mægler-liste");
+            DataTable dt = new DataTable("Mæglere");
             sda.Fill(dt);
+
+            mæglere.Clear();
 
             foreach (DataRow row in dt.Rows)
             {
@@ -34,8 +36,10 @@ namespace Main
             string sSQL = "select Sagsnr, Adresse, OmrådeNavn, Postnummer.ByNavn, NuværendePris from Ejendom, Postnummer where Salgsdato = '' AND Ejendom.Postnr = Postnummer.Postnr;";
             SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
             SqlDataAdapter sda = new SqlDataAdapter(command);
-            DataTable dt = new DataTable("Ejendom");
+            DataTable dt = new DataTable("Ejendomme");
             sda.Fill(dt);
+
+            ejendomme.Clear();
 
             foreach (DataRow row in dt.Rows)
             {

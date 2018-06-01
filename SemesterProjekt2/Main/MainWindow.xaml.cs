@@ -227,16 +227,6 @@ namespace Main
             ControllerTestData.OpretData();
         }
 
-        private void CheckBoxÅbentHusMægler_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void CheckBoxÅbentHusMægler_Unchecked(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine("Un-Checked");
-        }
-
         void ComboBox_PrisBeregner_Postnummer_Open(object sender, EventArgs e)
         {
             SqlDataReader reader = null;
