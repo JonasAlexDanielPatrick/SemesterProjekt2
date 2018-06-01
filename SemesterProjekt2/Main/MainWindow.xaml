@@ -153,7 +153,7 @@
             </WrapPanel>
 
             <DataGrid x:Name="DataGridEjendom" Height="329" Canvas.Left="175" Canvas.Top="40" Width="607" Visibility="Visible" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True" ItemsSource="{Binding}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
-                    <DataGrid.Columns>
+                <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Sagsnr}" Width="*" MinWidth="80" Header="Sagsnr"/>
                     <DataGridTextColumn Binding="{Binding MæglerID}" Width="*" MinWidth="80" Header="MæglerID"/>
                     <DataGridTextColumn Binding="{Binding HusejerID}" Width="*" MinWidth="80" Header="HusejerID"/>
@@ -169,10 +169,10 @@
                     <DataGridTextColumn Binding="{Binding KælderAreal}" Width="*" MinWidth="80" Header="Kælderareal"/>
                     <DataGridTextColumn Binding="{Binding BoligAreal}" Width="*" MinWidth="80" Header="Boligareal"/>
                     <DataGridTextColumn Binding="{Binding ByggeÅr}" Width="*" MinWidth="80" Header="Byggeår"/>
-                        <DataGridTextColumn Binding="{Binding GarageCarport}" Width="*" MinWidth="100" Header="Garage/Carport"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            
+                    <DataGridTextColumn Binding="{Binding GarageCarport}" Width="*" MinWidth="100" Header="Garage/Carport"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
             <WrapPanel x:Name="WrapPanelEjendom" Height="279" Canvas.Left="10" Canvas.Top="40" Width="155" Visibility="Visible">
                 <TextBox x:Name="TextBoxEjendomSagsnr" Height="17" TextWrapping="Wrap" Text="Sagsnr (Autogenereres)" Width="155" LostFocus="TextBoxEjendomSagsnr_LostFocus" PreviewTextInput="TextBoxEjendomSagsnr_PreviewTextInput" />
                 <TextBox x:Name="TextBoxEjendomMæglerID" Height="17" TextWrapping="Wrap" Text="Mægler ID (Påkrævet)" Width="155" LostFocus="TextBoxEjendomMæglerID_LostFocus" PreviewTextInput="TextBoxEjendomMæglerID_PreviewTextInput" />
@@ -189,7 +189,8 @@
                 <TextBox x:Name="TextBoxEjendomKælderAreal" Height="17" TextWrapping="Wrap" Text="Kælderareal" Width="155" LostFocus="TextBoxEjendomKælderAreal_LostFocus" PreviewTextInput="TextBoxEjendomKælderAreal_PreviewTextInput" />
                 <TextBox x:Name="TextBoxEjendomBoligAreal" Height="17" TextWrapping="Wrap" Text="Boligareal" Width="155" LostFocus="TextBoxEjendomBoligAreal_LostFocus" PreviewTextInput="TextBoxEjendomBoligAreal_PreviewTextInput" />
                 <TextBox x:Name="TextBoxEjendomByggeår" Height="17" TextWrapping="Wrap" Text="Byggeår" Width="155" LostFocus="TextBoxEjendomByggeår_LostFocus" PreviewTextInput="TextBoxEjendomByggeår_PreviewTextInput" />
-                <TextBox x:Name="TextBoxEjendomGarageCarport" Height="17" TextWrapping="Wrap" Text="Garage/carport" Width="155" LostFocus="TextBoxEjendomGarageCarport_LostFocus" PreviewTextInput="TextBoxEjendomGarageCarport_PreviewTextInput" />
+                <Label Content="Garage/Carport" Width="93"/>
+                <ComboBox x:Name="ComboBoxEjendomGarageCarport" Width="62" SelectedIndex="2"/>
             </WrapPanel>
         </Canvas>
 

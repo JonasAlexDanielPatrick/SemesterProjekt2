@@ -8,6 +8,12 @@ namespace Main
 {
     class ControllerCrudEjendom
     {
+        public static void AddItem(ComboBox comboBoxEjendomGarageCarport)
+        {
+            comboBoxEjendomGarageCarport.Items.Add("True");
+            comboBoxEjendomGarageCarport.Items.Add("False");
+            comboBoxEjendomGarageCarport.Items.Add("Ligegyldig");
+        }
         public static void LæsEjendom(DataGrid dg) //
         {
             string sSQL = "SELECT * FROM Ejendom";

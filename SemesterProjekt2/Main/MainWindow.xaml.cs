@@ -29,7 +29,8 @@ namespace Main
             threadKøbenhavnUr.Start();
 
             ButtonSalgsstatistik_Click(null, null);
-            
+
+            ControllerCrudEjendom.AddItem(ComboBoxEjendomGarageCarport);
         }
 
         internal string LondonUr
@@ -255,7 +256,7 @@ namespace Main
                 ControllerCrudEjendom.OpretEjendom(TextBoxEjendomMæglerID.Text, TextBoxEjendomHusejerID.Text, TextBoxEjendomOmrådeNavn.Text,
                     TextBoxEjendomPostnr.Text, TextBoxEjendomEnergiMærke.Text, TextBoxEjendomStartDato.Text, TextBoxEjendomSalgsDato.Text,
                     TextBoxEjendomAdresse.Text, TextBoxEjendomStartPris.Text, TextBoxEjendomNuværendePris.Text, TextBoxEjendomGrundAreal.Text,
-                    TextBoxEjendomKælderAreal.Text, TextBoxEjendomBoligAreal.Text, TextBoxEjendomByggeår.Text, TextBoxEjendomGarageCarport.Text);
+                    TextBoxEjendomKælderAreal.Text, TextBoxEjendomBoligAreal.Text, TextBoxEjendomByggeår.Text, ComboBoxEjendomGarageCarport.Text);
 
                 ControllerCrudEjendom.LæsEjendom(DataGridEjendom);
 
@@ -273,7 +274,7 @@ namespace Main
                 TextBoxEjendomKælderAreal.Text = "Kælderareal";
                 TextBoxEjendomBoligAreal.Text = "Boligareal";
                 TextBoxEjendomByggeår.Text = "Byggeår";
-                TextBoxEjendomGarageCarport.Text = "Garage/carport";
+                ComboBoxEjendomGarageCarport.SelectedIndex = 2;
 
             }
         }
@@ -299,12 +300,12 @@ namespace Main
                 (TextBoxEjendomAdresse.Text != "Adresse" && TextBoxEjendomAdresse.Text != "") || (TextBoxEjendomStartPris.Text != "Startpris" && TextBoxEjendomStartPris.Text != "") || 
                 (TextBoxEjendomNuværendePris.Text != "Nuværende pris" && TextBoxEjendomNuværendePris.Text != "") || (TextBoxEjendomGrundAreal.Text != "Grundareal" && TextBoxEjendomGrundAreal.Text != "") ||
                 (TextBoxEjendomKælderAreal.Text != "Kælderareal" && TextBoxEjendomKælderAreal.Text != "") || (TextBoxEjendomBoligAreal.Text != "Boligareal" && TextBoxEjendomBoligAreal.Text != "") || 
-                (TextBoxEjendomByggeår.Text != "Byggeår" && TextBoxEjendomByggeår.Text != "") || (TextBoxEjendomGarageCarport.Text != "Garage/carport" && TextBoxEjendomGarageCarport.Text != ""))
+                (TextBoxEjendomByggeår.Text != "Byggeår" && TextBoxEjendomByggeår.Text != "") || ComboBoxEjendomGarageCarport.Text != "Ligegyldig")
             {
                 ControllerCrudEjendom.SøgEjendom(TextBoxEjendomSagsnr.Text, TextBoxEjendomMæglerID.Text, TextBoxEjendomHusejerID.Text, TextBoxEjendomOmrådeNavn.Text,
                     TextBoxEjendomPostnr.Text, TextBoxEjendomEnergiMærke.Text, TextBoxEjendomStartDato.Text, TextBoxEjendomSalgsDato.Text,
                     TextBoxEjendomAdresse.Text, TextBoxEjendomStartPris.Text, TextBoxEjendomNuværendePris.Text, TextBoxEjendomGrundAreal.Text,
-                    TextBoxEjendomKælderAreal.Text, TextBoxEjendomBoligAreal.Text, TextBoxEjendomByggeår.Text, TextBoxEjendomGarageCarport.Text, DataGridEjendom);
+                    TextBoxEjendomKælderAreal.Text, TextBoxEjendomBoligAreal.Text, TextBoxEjendomByggeår.Text, ComboBoxEjendomGarageCarport.Text, DataGridEjendom);
             }
         }
 
@@ -337,7 +338,7 @@ namespace Main
                 ControllerCrudEjendom.OpdaterEjendom(TextBoxEjendomSagsnr.Text, TextBoxEjendomMæglerID.Text, TextBoxEjendomHusejerID.Text, TextBoxEjendomOmrådeNavn.Text,
                     TextBoxEjendomPostnr.Text, TextBoxEjendomEnergiMærke.Text, TextBoxEjendomStartDato.Text, TextBoxEjendomSalgsDato.Text,
                     TextBoxEjendomAdresse.Text, TextBoxEjendomStartPris.Text, TextBoxEjendomNuværendePris.Text, TextBoxEjendomGrundAreal.Text,
-                    TextBoxEjendomKælderAreal.Text, TextBoxEjendomBoligAreal.Text, TextBoxEjendomByggeår.Text, TextBoxEjendomGarageCarport.Text);
+                    TextBoxEjendomKælderAreal.Text, TextBoxEjendomBoligAreal.Text, TextBoxEjendomByggeår.Text, ComboBoxEjendomGarageCarport.Text);
 
                 ControllerCrudEjendom.LæsEjendom(DataGridEjendom);
 
@@ -355,7 +356,7 @@ namespace Main
                 TextBoxEjendomKælderAreal.Text = "Kælderareal";
                 TextBoxEjendomBoligAreal.Text = "Boligareal";
                 TextBoxEjendomByggeår.Text = "Byggeår";
-                TextBoxEjendomGarageCarport.Text = "Garage/carport";
+                ComboBoxEjendomGarageCarport.SelectedIndex = 2;
             }
         }
 
@@ -404,7 +405,7 @@ namespace Main
                 TextBoxEjendomKælderAreal.Text = "Kælderareal";
                 TextBoxEjendomBoligAreal.Text = "Boligareal";
                 TextBoxEjendomByggeår.Text = "Byggeår";
-                TextBoxEjendomGarageCarport.Text = "Garage/carport";
+                ComboBoxEjendomGarageCarport.SelectedIndex = 2;
             }
 
         }
@@ -620,14 +621,6 @@ namespace Main
             }
         }
 
-        private void TextBoxEjendomGarageCarport_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (TextBoxEjendomGarageCarport.Text == "")
-            {
-                TextBoxEjendomGarageCarport.Text = "Garage/carport";
-            }
-        }
-
         private void TextBoxEjendomSagsnr_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
@@ -676,12 +669,6 @@ namespace Main
         private void TextBoxEjendomByggeår_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
-        }
-
-        private void TextBoxEjendomGarageCarport_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = new Regex("[^0-1]").IsMatch(e.Text);
-            TextBoxEjendomGarageCarport.MaxLength = (1);
         }
     }
 }
