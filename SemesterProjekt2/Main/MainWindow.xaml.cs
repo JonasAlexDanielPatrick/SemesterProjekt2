@@ -211,10 +211,28 @@ namespace Main
 
         private void ButtonÅbentHusUdskriv_Click(object sender, RoutedEventArgs e)
         {
-            //ControllerÅbentHus.GenererListe(DataGridÅbentHusMægler, "");
 
-            ControllerÅbentHus.TagCheckedMæglere(DataGridÅbentHusMægler);
+            if (ControllerÅbentHus.antalMæglereValgt == 6 && ControllerÅbentHus.antalEjendommeValgt == 30)
+            {
+                string udfil = "";
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.FileName = "ÅbentHus Lise";
+                sfd.DefaultExt = ".txt";
+                sfd.Filter = "Text documents (.txt)|*.txt";
 
+                bool? isClosed = sfd.ShowDialog();
+
+                if (isClosed == true)
+                {
+                    udfil = sfd.FileName;
+                }
+
+                ControllerÅbentHus.GenererListe(DataGridÅbentHusMægler, udfil);
+            }
+            else
+            {
+                MessageBox.Show(string.Format("Du skal vælge 6 mæglere og 30 ejendomme." + Environment.NewLine + "Du har valgt {0} mæglere og {1} ejendomme", ControllerÅbentHus.antalMæglereValgt, ControllerÅbentHus.antalEjendommeValgt));
+            }
         }
 
         private void ButtonOpretData_Click(object sender, RoutedEventArgs e)
