@@ -12,6 +12,8 @@ namespace Main
     {
         public static List<ModelÅbentHusMægler> mæglere = new List<ModelÅbentHusMægler>();
         public static List<ModelÅbentHusEjendom> ejendomme = new List<ModelÅbentHusEjendom>();
+        public static List<ModelÅbentHusMægler> valgteMæglere = new List<ModelÅbentHusMægler>();
+        public static List<ModelÅbentHusEjendom> valgteEjendomme = new List<ModelÅbentHusEjendom>();
 
         public static void FyldMæglerDatagrid(DataGrid dg)
         {
@@ -81,16 +83,24 @@ namespace Main
 
         public static void TælAntalValgteMæglere(DataGrid dg)
         {
-            DataTable dt = new DataTable();
-            dt = ((DataView)dg.ItemsSource).ToTable();
 
-            foreach (DataRow row in dt.Rows)
+        }
+
+        public static void TagCheckedMæglere(DataGrid dg)
+        {
+            foreach (ModelÅbentHusMægler mægler in mæglere)
             {
-                Debug.WriteLine(row.Table.Columns.Count);
-                object[] array = row.ItemArray;
-
-                Debug.WriteLine(array[0] + " | " + array[1]);
+                if (mægler.IsChecked == false)
+                {
+                    Debug.Write("NO!");
+                }
+                else
+                {
+                    Debug.Write("WOOOOW!");
+                }
             }
+
+
         }
 
     }

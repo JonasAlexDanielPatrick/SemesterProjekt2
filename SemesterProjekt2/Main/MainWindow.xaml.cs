@@ -212,13 +212,7 @@ namespace Main
         {
             //ControllerÅbentHus.GenererListe(DataGridÅbentHusMægler, "");
 
-            foreach (ModelÅbentHusEjendom ejendom in ControllerÅbentHus.ejendomme)
-            {
-                if (ejendom.IsChecked)
-                {
-                    Debug.WriteLine(ejendom.Sagsnr + " is true!");
-                }
-            }
+            ControllerÅbentHus.TagCheckedMæglere(DataGridÅbentHusMægler);
 
         }
 
