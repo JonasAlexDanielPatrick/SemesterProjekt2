@@ -163,7 +163,7 @@ namespace Main
             {
                 textboxPrisBeregner_Vurdering.Text = Convert.ToString(ControllerPrisBeregner.BeregnPris(Convert.ToInt32(comboboxPrisBeregner_Postnr.Text), comboboxPrisBeregner_Navn.Text, Convert.ToInt32(textbox_PrisBeregnerKVM.Text)));
             }
-            catch (Exception x)
+            catch (Exception)
             {
                 Debug.WriteLine("Tager ikke imod string!");
                 textbox_PrisBeregnerKVM.Clear();
