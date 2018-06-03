@@ -84,6 +84,11 @@ namespace Main
             CanvasÅbentHus.Visibility = System.Windows.Visibility.Hidden;
             WrapPanelHusejer.Visibility = Visibility.Visible;
             DataGridHusejer.Visibility = Visibility.Visible;
+            WrapPanelMægler.Visibility = Visibility.Hidden;
+            DataGridMægler.Visibility = Visibility.Hidden;
+            WrapPanelEjendom.Visibility = Visibility.Hidden;
+            DataGridEjendom.Visibility = Visibility.Hidden;
+
             ControllerCrudHusejer.LæsHusejer(DataGridHusejer);
             instance.Title = "SweetHome - CRUD";
         }
@@ -265,8 +270,8 @@ namespace Main
                 TextBoxEjendomOmrådeNavn.Text = "Områdenavn";
                 TextBoxEjendomPostnr.Text = "Postnr";
                 TextBoxEjendomEnergiMærke.Text = "Energimærke";
-                TextBoxEjendomStartDato.Text = "Startdato";
-                TextBoxEjendomSalgsDato.Text = "Salgsdato";
+                TextBoxEjendomStartDato.Text = "Startdato (åååå-mm-dd)";
+                TextBoxEjendomSalgsDato.Text = "Salgsdato (åååå-mm-dd)";
                 TextBoxEjendomAdresse.Text = "Adresse";
                 TextBoxEjendomStartPris.Text = "Startpris";
                 TextBoxEjendomNuværendePris.Text = "Nuværendepris";
@@ -286,17 +291,27 @@ namespace Main
                 (TextBoxHusejerTelefon.Text != "Telefon" && TextBoxHusejerTelefon.Text != ""))
             {
                 ControllerCrudHusejer.SøgHusejer(TextBoxHusejerID.Text, TextBoxHusejerNavn.Text, TextBoxHusejerEmail.Text, TextBoxHusejerTelefon.Text, DataGridHusejer);
+
+                TextBoxHusejerID.Text = "ID (Autogenereres)";
+                TextBoxHusejerNavn.Text = "Navn";
+                TextBoxHusejerEmail.Text = "Email";
+                TextBoxHusejerTelefon.Text = "Telefon";
             }
             if(WrapPanelMægler.IsVisible && (TextBoxMæglerID.Text != "ID (Autogenereres)" && TextBoxMæglerID.Text != "") ||
                 (TextBoxMæglerNavn.Text != "Navn" && TextBoxMæglerNavn.Text != "") || (TextBoxMæglerTelefon.Text != "Telefon" && TextBoxMæglerTelefon.Text != "") || 
                 (TextBoxMæglerEmail.Text != "Email" && TextBoxMæglerEmail.Text != ""))
             {
                 ControllerCrudMægler.SøgMægler(TextBoxMæglerID.Text, TextBoxMæglerNavn.Text, TextBoxMæglerTelefon.Text, TextBoxMæglerEmail.Text, DataGridMægler);
+
+                TextBoxMæglerID.Text = "ID (Autogenereres)";
+                TextBoxMæglerNavn.Text = "Navn";
+                TextBoxMæglerTelefon.Text = "Telefon";
+                TextBoxMæglerEmail.Text = "Email";
             }
-            if(WrapPanelEjendom.IsVisible && (TextBoxEjendomMæglerID.Text != "Mægler ID (Påkrævet)" && TextBoxEjendomMæglerID.Text != "") || 
+            if(WrapPanelEjendom.IsVisible && (TextBoxEjendomSagsnr.Text != "Sagsnr (Autogenereres)" && TextBoxEjendomSagsnr.Text != "") || (TextBoxEjendomMæglerID.Text != "Mægler ID (Påkrævet)" && TextBoxEjendomMæglerID.Text != "") || 
                 (TextBoxEjendomHusejerID.Text != "Husejer ID (Påkrævet)" && TextBoxEjendomHusejerID.Text != "") || (TextBoxEjendomOmrådeNavn.Text != "Områdenavn" && TextBoxEjendomOmrådeNavn.Text != "") ||
                 (TextBoxEjendomPostnr.Text != "Postnr" && TextBoxEjendomPostnr.Text != "") || (TextBoxEjendomEnergiMærke.Text != "Energimærke" && TextBoxEjendomEnergiMærke.Text != "") || 
-                (TextBoxEjendomStartDato.Text != "Startdato" && TextBoxEjendomStartDato.Text != "") || (TextBoxEjendomSalgsDato.Text != "Salgsdato" && TextBoxEjendomSalgsDato.Text != "") ||
+                (TextBoxEjendomStartDato.Text != "Startdato (åååå-mm-dd)" && TextBoxEjendomStartDato.Text != "") || (TextBoxEjendomSalgsDato.Text != "Salgsdato (åååå-mm-dd)" && TextBoxEjendomSalgsDato.Text != "") ||
                 (TextBoxEjendomAdresse.Text != "Adresse" && TextBoxEjendomAdresse.Text != "") || (TextBoxEjendomStartPris.Text != "Startpris" && TextBoxEjendomStartPris.Text != "") || 
                 (TextBoxEjendomNuværendePris.Text != "Nuværende pris" && TextBoxEjendomNuværendePris.Text != "") || (TextBoxEjendomGrundAreal.Text != "Grundareal" && TextBoxEjendomGrundAreal.Text != "") ||
                 (TextBoxEjendomKælderAreal.Text != "Kælderareal" && TextBoxEjendomKælderAreal.Text != "") || (TextBoxEjendomBoligAreal.Text != "Boligareal" && TextBoxEjendomBoligAreal.Text != "") || 
@@ -306,6 +321,22 @@ namespace Main
                     TextBoxEjendomPostnr.Text, TextBoxEjendomEnergiMærke.Text, TextBoxEjendomStartDato.Text, TextBoxEjendomSalgsDato.Text,
                     TextBoxEjendomAdresse.Text, TextBoxEjendomStartPris.Text, TextBoxEjendomNuværendePris.Text, TextBoxEjendomGrundAreal.Text,
                     TextBoxEjendomKælderAreal.Text, TextBoxEjendomBoligAreal.Text, TextBoxEjendomByggeår.Text, ComboBoxEjendomGarageCarport.Text, DataGridEjendom);
+
+                TextBoxEjendomMæglerID.Text = "Mægler ID (Påkrævet)";
+                TextBoxEjendomHusejerID.Text = "Husejer ID (Påkrævet)";
+                TextBoxEjendomOmrådeNavn.Text = "Områdenavn";
+                TextBoxEjendomPostnr.Text = "Postnr";
+                TextBoxEjendomEnergiMærke.Text = "Energimærke";
+                TextBoxEjendomStartDato.Text = "Startdato (åååå-mm-dd)";
+                TextBoxEjendomSalgsDato.Text = "Salgsdato (åååå-mm-dd)";
+                TextBoxEjendomAdresse.Text = "Adresse";
+                TextBoxEjendomStartPris.Text = "Startpris";
+                TextBoxEjendomNuværendePris.Text = "Nuværendepris";
+                TextBoxEjendomGrundAreal.Text = "Grundareal";
+                TextBoxEjendomKælderAreal.Text = "Kælderareal";
+                TextBoxEjendomBoligAreal.Text = "Boligareal";
+                TextBoxEjendomByggeår.Text = "Byggeår";
+                ComboBoxEjendomGarageCarport.SelectedIndex = 2;
             }
         }
 
@@ -347,8 +378,8 @@ namespace Main
                 TextBoxEjendomOmrådeNavn.Text = "Områdenavn";
                 TextBoxEjendomPostnr.Text = "Postnr";
                 TextBoxEjendomEnergiMærke.Text = "Energimærke";
-                TextBoxEjendomStartDato.Text = "Startdato";
-                TextBoxEjendomSalgsDato.Text = "Salgsdato";
+                TextBoxEjendomStartDato.Text = "Startdato (åååå-mm-dd)";
+                TextBoxEjendomSalgsDato.Text = "Salgsdato (åååå-mm-dd)";
                 TextBoxEjendomAdresse.Text = "Adresse";
                 TextBoxEjendomStartPris.Text = "Startpris";
                 TextBoxEjendomNuværendePris.Text = "Nuværendepris";
@@ -375,7 +406,7 @@ namespace Main
             }
             if (WrapPanelMægler.IsVisible && TextBoxMæglerID.Text != "ID(Autogenereres)" && TextBoxMæglerID.Text != "")
             {
-                ControllerCrudMægler.SletMægler(Convert.ToInt32(TextBoxHusejerID.Text));
+                ControllerCrudMægler.SletMægler(Convert.ToInt32(TextBoxMæglerID.Text));
 
                 ControllerCrudMægler.LæsMægler(DataGridMægler);
 
@@ -387,7 +418,7 @@ namespace Main
 
             if (WrapPanelEjendom.IsVisible && TextBoxEjendomSagsnr.Text != "Sagsnr (Autogenereres)" && TextBoxEjendomSagsnr.Text != "")
             {
-                ControllerCrudEjendom.SletEjendom(Convert.ToInt32(TextBoxHusejerID.Text));
+                ControllerCrudEjendom.SletEjendom(Convert.ToInt32(TextBoxEjendomSagsnr.Text));
 
                 ControllerCrudEjendom.LæsEjendom(DataGridEjendom);
 
@@ -396,8 +427,8 @@ namespace Main
                 TextBoxEjendomOmrådeNavn.Text = "Områdenavn";
                 TextBoxEjendomPostnr.Text = "Postnr";
                 TextBoxEjendomEnergiMærke.Text = "Energimærke";
-                TextBoxEjendomStartDato.Text = "Startdato";
-                TextBoxEjendomSalgsDato.Text = "Salgsdato";
+                TextBoxEjendomStartDato.Text = "Startdato (åååå-mm-dd)";
+                TextBoxEjendomSalgsDato.Text = "Salgsdato (åååå-mm-dd)";
                 TextBoxEjendomAdresse.Text = "Adresse";
                 TextBoxEjendomStartPris.Text = "Startpris";
                 TextBoxEjendomNuværendePris.Text = "Nuværendepris";
@@ -505,7 +536,7 @@ namespace Main
         {
             if (TextBoxEjendomSagsnr.Text == "")
             {
-                TextBoxEjendomSagsnr.Text = "Sagsnr";
+                TextBoxEjendomSagsnr.Text = "Sagsnr (Autogenereres)";
             }
         }
 
@@ -513,7 +544,7 @@ namespace Main
         {
             if (TextBoxEjendomMæglerID.Text == "")
             {
-                TextBoxEjendomMæglerID.Text = "Mægler ID";
+                TextBoxEjendomMæglerID.Text = "Mægler ID (Påkrævet)";
             }
         }
 
@@ -521,7 +552,7 @@ namespace Main
         {
             if (TextBoxEjendomHusejerID.Text == "")
             {
-                TextBoxEjendomHusejerID.Text = "Husejer ID";
+                TextBoxEjendomHusejerID.Text = "Husejer ID (Påkrævet)";
             }
         }
 
@@ -553,7 +584,7 @@ namespace Main
         {
             if (TextBoxEjendomStartDato.Text == "")
             {
-                TextBoxEjendomStartDato.Text = "Startdato";
+                TextBoxEjendomStartDato.Text = "Startdato (åååå-mm-dd)";
             }
         }
 
@@ -561,7 +592,7 @@ namespace Main
         {
             if (TextBoxEjendomSalgsDato.Text == "")
             {
-                TextBoxEjendomSalgsDato.Text = "Salgsdato";
+                TextBoxEjendomSalgsDato.Text = "Salgsdato (åååå-mm-dd)";
             }
         }
 

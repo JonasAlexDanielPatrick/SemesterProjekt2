@@ -395,7 +395,7 @@ namespace Main
                 }
             }
 
-            if (startDato != "Startdato" && startDato != "")
+            if (startDato != "Startdato (åååå-mm-dd)" && startDato != "")
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
@@ -407,7 +407,7 @@ namespace Main
                 }
             }
 
-            if (salgsDato != "Salgsdato" && salgsDato != "")
+            if (salgsDato != "Salgsdato (åååå-mm-dd)" && salgsDato != "")
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
@@ -479,7 +479,7 @@ namespace Main
                 }
             }
 
-            if (boligAreal != "Boligareal)" && boligAreal != "")
+            if (boligAreal != "Boligareal" && boligAreal != "")
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
@@ -503,7 +503,7 @@ namespace Main
                 }
             }
 
-            if (garageCarport != "Garage/carport" && garageCarport != "")
+            if (garageCarport != "Ligegyldig")
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
