@@ -8,11 +8,15 @@ namespace Main
 {
     class ControllerCrudEjendom
     {
-        public static void AddItem(ComboBox comboBoxEjendomGarageCarport)
+        public static void AddItem(ComboBox comboBoxEjendomGarageCarport, ComboBox comboBoxEjendomStartPris, ComboBox comboBoxEjendomNuværendePris)
         {
             comboBoxEjendomGarageCarport.Items.Add("True");
             comboBoxEjendomGarageCarport.Items.Add("False");
             comboBoxEjendomGarageCarport.Items.Add("Ligegyldig");
+            comboBoxEjendomStartPris.Items.Add(">=");
+            comboBoxEjendomStartPris.Items.Add("<=");
+            comboBoxEjendomNuværendePris.Items.Add(">=");
+            comboBoxEjendomNuværendePris.Items.Add("<=");
         }
         public static void LæsEjendom(DataGrid dg) //
         {
@@ -120,14 +124,14 @@ namespace Main
             command.ExecuteNonQuery();
         }
 
-        public static void OpdaterEjendom(string id, string mæglerID, string husejerID, string områdeNavn, string postnr, string energiMærke,
+        public static void OpdaterEjendom(string sagsnr, string mæglerID, string husejerID, string områdeNavn, string postnr, string energiMærke,
                                           string startDato, string salgsDato, string adresse, string startPris, string nuværendePris, string grundAreal,
-                                          string kælderAreal, string boligAreal, string byggeår, string garageCarport) // 
+                                          string kælderAreal, string boligAreal, string byggeår, string comboBoxGarageCarport) // 
         {
             string[] CheckIfContains = { "MæglerID", "HusejerID", "OmrådeNavn", "Postnr", "EnergiMærke", "StartDato",
                                          "SalgsDato", "Adresse", "StartPris", "NuværendePris", "GrundAreal", "KælderAreal",
-                                         "BoligAreal","Byggeår", "GarageCarport" };
-
+                                         "BoligAreal","Byggeår", "GarageCarport"};
+            
             string tempSSQL = "SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;" +
                               "BEGIN TRANSACTION;" +
                               "UPDATE Ejendom SET";
@@ -293,19 +297,19 @@ namespace Main
                 }
             }
 
-            if (garageCarport != "Garage/carport" && garageCarport != "")
+            if (comboBoxGarageCarport != "Garage/carport" && comboBoxGarageCarport != "")
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
-                    tempSSQL += ", GarageCarport = '" + garageCarport + "'";
+                    tempSSQL += ", GarageCarport = '" + comboBoxGarageCarport + "'";
                 }
                 else
                 {
-                    tempSSQL += " GarageCarport = '" + garageCarport + "'";
+                    tempSSQL += " GarageCarport = '" + comboBoxGarageCarport + "'";
                 }
             }
-            
-            tempSSQL += "Where ID = '" + id + "' COMMIT TRANSACTION;";
+
+            tempSSQL += "Where ID = '" + sagsnr + "' COMMIT TRANSACTION;";
 
             string sSQL = tempSSQL;
             SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
@@ -313,20 +317,21 @@ namespace Main
 
         }
 
-        public static void SletEjendom(int id)  //
+        public static void SletEjendom(int sagsnr)  //
         {
-            string sSQL = "DELETE FROM Ejendom WHERE ID = '" + id + "';";
+            string sSQL = "DELETE FROM Ejendom WHERE Sagsnr = '" + sagsnr + "';";
             SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
             command.ExecuteNonQuery();
         }
 
         public static void SøgEjendom(string sagsnr, string mæglerID, string husejerID, string områdeNavn, string postnr, string energiMærke,
                                           string startDato, string salgsDato, string adresse, string startPris, string nuværendePris, string grundAreal,
-                                          string kælderAreal, string boligAreal, string byggeår, string garageCarport, DataGrid dg)
+                                          string kælderAreal, string boligAreal, string byggeår, int garageCarport, int comboBoxEjendomStartPris,
+                                          int comboBoxEjendomNuværendePris, DataGrid dg)
         {
-            string[] CheckIfContains = { "MæglerID", "HusejerID", "OmrådeNavn", "Postnr", "EnergiMærke", "StartDato",
+            string[] CheckIfContains = {"Sagsnr", "MæglerID", "HusejerID", "OmrådeNavn", "Postnr", "EnergiMærke", "StartDato",
                                          "SalgsDato", "Adresse", "StartPris", "NuværendePris", "GrundAreal", "KælderAreal",
-                                         "BoligAreal","Byggeår", "GarageCarport" };
+                                         "BoligAreal","Byggeår", "GarageCarport", "StartPris", "NuværendePris"};
 
             string tempSSQL = "SELECT * FROM Ejendom WHERE";
 
@@ -339,11 +344,11 @@ namespace Main
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
-                    tempSSQL += " AND MæglerID LIKE '" + mæglerID + "'";
+                    tempSSQL += " AND MæglerID = '" + mæglerID + "'";
                 }
                 else
                 {
-                    tempSSQL += " MæglerID LIKE '" + mæglerID + "'";
+                    tempSSQL += " MæglerID = '" + mæglerID + "'";
                 }
             }
 
@@ -351,11 +356,11 @@ namespace Main
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
-                    tempSSQL += " AND HusejerID LIKE '" + husejerID + "'";
+                    tempSSQL += " AND HusejerID = '" + husejerID + "'";
                 }
                 else
                 {
-                    tempSSQL += " HusejerID LIKE '" + husejerID + "'";
+                    tempSSQL += " HusejerID = '" + husejerID + "'";
                 }
             }
 
@@ -363,11 +368,11 @@ namespace Main
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
-                    tempSSQL += " AND OmrådeNavn LIKE '" + områdeNavn + "'";
+                    tempSSQL += " AND OmrådeNavn LIKE '" + områdeNavn + "%'";
                 }
                 else
                 {
-                    tempSSQL += " OmrådeNavn LIKE '" + områdeNavn + "'";
+                    tempSSQL += " OmrådeNavn LIKE '" + områdeNavn + "%'";
                 }
             }
 
@@ -375,11 +380,11 @@ namespace Main
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
-                    tempSSQL += " AND Postnr LIKE '" + postnr + "'";
+                    tempSSQL += " AND Postnr LIKE '" + postnr + "%'";
                 }
                 else
                 {
-                    tempSSQL += " Postnr LIKE '" + postnr + "'";
+                    tempSSQL += " Postnr LIKE '" + postnr + "%'";
                 }
             }
 
@@ -387,11 +392,11 @@ namespace Main
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
-                    tempSSQL += " AND EnergiMærke LIKE '" + energiMærke + "'";
+                    tempSSQL += " AND EnergiMærke LIKE '" + energiMærke + "%'";
                 }
                 else
                 {
-                    tempSSQL += " EnergiMærke LIKE '" + energiMærke + "'";
+                    tempSSQL += " EnergiMærke LIKE '" + energiMærke + "%'";
                 }
             }
 
@@ -399,11 +404,11 @@ namespace Main
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
-                    tempSSQL += " AND StartDato LIKE '" + startDato + "'";
+                    tempSSQL += " AND StartDato LIKE '" + startDato + "%'";
                 }
                 else
                 {
-                    tempSSQL += " StartDato LIKE '" + startDato + "'";
+                    tempSSQL += " StartDato LIKE '" + startDato + "%'";
                 }
             }
 
@@ -411,11 +416,11 @@ namespace Main
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
-                    tempSSQL += " AND SalgsDato LIKE '" + salgsDato + "'";
+                    tempSSQL += " AND SalgsDato LIKE '" + salgsDato + "%'";
                 }
                 else
                 {
-                    tempSSQL += " SalgsDato LIKE '" + salgsDato + "'";
+                    tempSSQL += " SalgsDato LIKE '" + salgsDato + "%'";
                 }
             }
 
@@ -423,35 +428,62 @@ namespace Main
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
-                    tempSSQL += " AND Adresse LIKE '" + adresse + "'";
+                    tempSSQL += " AND Adresse LIKE '%" + adresse + "%'";
                 }
                 else
                 {
-                    tempSSQL += " Adresse LIKE '" + adresse + "'";
+                    tempSSQL += " Adresse LIKE '%" + adresse + "%'";
                 }
             }
 
             if (startPris != "Startpris" && startPris != "")
             {
-                if ((CheckIfContains.Any(tempSSQL.Contains)))
+                if(comboBoxEjendomStartPris == 0)
                 {
-                    tempSSQL += " AND StartPris LIKE '" + startPris + "'";
+                    if ((CheckIfContains.Any(tempSSQL.Contains)))
+                    {
+                        tempSSQL += " AND StartPris >= '" + startPris + "'";
+                    }
+                    else
+                    {
+                        tempSSQL += " StartPris >= '" + startPris + "'";
+                    }
                 }
-                else
+                if(comboBoxEjendomStartPris == 1)
                 {
-                    tempSSQL += " StartPris LIKE '" + startPris + "'";
+                    if ((CheckIfContains.Any(tempSSQL.Contains)))
+                    {
+                        tempSSQL += " AND StartPris <= '" + startPris + "'";
+                    }
+                    else
+                    {
+                        tempSSQL += " StartPris <= '" + startPris + "'";
+                    }
                 }
             }
-
             if (nuværendePris != "Nuværende pris" && nuværendePris != "")
             {
-                if ((CheckIfContains.Any(tempSSQL.Contains)))
+                if (comboBoxEjendomNuværendePris == 0)
                 {
-                    tempSSQL += " AND NuværendePris LIKE '" + nuværendePris + "'";
+                    if ((CheckIfContains.Any(tempSSQL.Contains)))
+                    {
+                        tempSSQL += " AND NuværendePris >= '" + nuværendePris + "'";
+                    }
+                    else
+                    {
+                        tempSSQL += " NuværendePris >= '" + nuværendePris + "'";
+                    }
                 }
-                else
+                if (comboBoxEjendomNuværendePris == 1)
                 {
-                    tempSSQL += " NuværendePris LIKE '" + nuværendePris + "'";
+                    if ((CheckIfContains.Any(tempSSQL.Contains)))
+                    {
+                        tempSSQL += " AND NuværendePris <= '" + nuværendePris + "'";
+                    }
+                    else
+                    {
+                        tempSSQL += " NuværendePris <= '" + nuværendePris + "'";
+                    }
                 }
             }
 
@@ -459,11 +491,11 @@ namespace Main
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
-                    tempSSQL += " AND GrundAreal LIKE '" + grundAreal + "'";
+                    tempSSQL += " AND GrundAreal LIKE '" + grundAreal + "%'";
                 }
                 else
                 {
-                    tempSSQL += " Grundareal LIKE '" + grundAreal + "'";
+                    tempSSQL += " GrundAreal LIKE '" + grundAreal + "%'";
                 }
             }
 
@@ -471,11 +503,11 @@ namespace Main
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
-                    tempSSQL += " AND KælderAreal LIKE '" + kælderAreal + "'";
+                    tempSSQL += " AND KælderAreal LIKE '" + kælderAreal + "%'";
                 }
                 else
                 {
-                    tempSSQL += " KælderAreal LIKE '" + kælderAreal + "'";
+                    tempSSQL += " KælderAreal LIKE '" + kælderAreal + "%'";
                 }
             }
 
@@ -483,11 +515,11 @@ namespace Main
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
-                    tempSSQL += " AND BoligAreal LIKE '" + boligAreal + "'";
+                    tempSSQL += " AND BoligAreal LIKE '" + boligAreal + "%'";
                 }
                 else
                 {
-                    tempSSQL += " BoligAreal LIKE '" + boligAreal + "'";
+                    tempSSQL += " BoligAreal LIKE '" + boligAreal + "%'";
                 }
             }
 
@@ -495,23 +527,47 @@ namespace Main
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
-                    tempSSQL += " AND Byggeår LIKE '" + byggeår + "'";
+                    tempSSQL += " AND Byggeår LIKE '" + byggeår + "%'";
                 }
                 else
                 {
-                    tempSSQL += " Byggeår LIKE '" + byggeår + "'";
+                    tempSSQL += " Byggeår LIKE '" + byggeår + "%'";
                 }
             }
 
-            if (garageCarport != "Ligegyldig")
+            if (garageCarport == 0) // ComboBoxEjendomGarageCarport index
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
-                    tempSSQL += " AND GarageCarport LIKE '" + garageCarport + "'";
+                    tempSSQL += " AND GarageCarport = 1";
                 }
                 else
                 {
-                    tempSSQL += " GarageCarport LIKE '" + garageCarport + "'";
+                    tempSSQL += " GarageCarport = 1";
+                }
+            }
+
+            if (garageCarport == 1) // ComboBoxEjendomGarageCarport index
+            {
+                if ((CheckIfContains.Any(tempSSQL.Contains)))
+                {
+                    tempSSQL += " AND GarageCarport = 0";
+                }
+                else
+                {
+                    tempSSQL += " GarageCarport = 0";
+                }
+            }
+
+            if (garageCarport == 2) // ComboBoxEjendomGarageCarport index
+            {
+                if ((CheckIfContains.Any(tempSSQL.Contains)))
+                {
+                    tempSSQL += " AND GarageCarport IN (0, 1)";
+                }
+                else
+                {
+                    tempSSQL += " GarageCarport IN (0, 1)";
                 }
             }
 

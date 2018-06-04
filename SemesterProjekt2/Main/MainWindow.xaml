@@ -116,22 +116,19 @@
         </Canvas>
 
         <Canvas x:Name="CanvasCRUD" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Visible">
-
-
-
             <Button x:Name="ButtonHusejer" Content="Husejer" Canvas.Left="10" Canvas.Top="10" Width="50" Click="ButtonHusejer_Click"/>
             <Button x:Name="ButtonMægler" Content="Mægler" Canvas.Left="62" Canvas.Top="10" Width="50" Click="ButtonMægler_Click"/>
             <Button x:Name="ButtonEjendom" Content="Ejendom" Canvas.Left="114" Canvas.Top="10" Width="50" Click="ButtonEjendom_Click"/>
-            <Button x:Name="ButtonOpret" Content="Opret" Canvas.Left="10" Canvas.Top="324" Width="75" Click="ButtonOpret_Click"/>
-            <Button x:Name="ButtonSøg" Content="Søg" Canvas.Left="90" Canvas.Top="324" Width="75" Click="ButtonSøg_Click"/>
-            <Button x:Name="ButtonOpdater" Content="Opdatér" Canvas.Left="10" Canvas.Top="349" Width="75" Click="ButtonOpdater_Click"/>
-            <Button x:Name="ButtonSlet" Content="Slet" Canvas.Left="90" Canvas.Top="349" Width="75" Click="ButtonSlet_Click"/>
+            <Button x:Name="ButtonOpret" Content="Opret" Canvas.Left="10" Canvas.Top="327" Width="76" Click="ButtonOpret_Click"/>
+            <Button x:Name="ButtonSøg" Content="Søg" Canvas.Left="89" Canvas.Top="327" Width="76" Click="ButtonSøg_Click"/>
+            <Button x:Name="ButtonOpdater" Content="Opdatér" Canvas.Left="10" Canvas.Top="349" Width="76" Click="ButtonOpdater_Click"/>
+            <Button x:Name="ButtonSlet" Content="Slet" Canvas.Left="89" Canvas.Top="349" Width="76" Click="ButtonSlet_Click"/>
             <DataGrid x:Name="DataGridHusejer" Height="329" Canvas.Left="175" Canvas.Top="40" Width="607" Visibility="Hidden" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True" ItemsSource="{Binding}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding ID}" Width="*" MinWidth="80" Header="ID"/>
-                    <DataGridTextColumn Binding="{Binding Navn}" Width="*" MinWidth="80" Header="Navn"/>
-                    <DataGridTextColumn Binding="{Binding Email}" Width="*" MinWidth="80" Header="Email"/>
-                    <DataGridTextColumn Binding="{Binding Telefon}" Width="*" MinWidth="80" Header="Telefon"/>
+                    <DataGridTextColumn Binding="{Binding ID}" MinWidth="80" Header="ID"/>
+                    <DataGridTextColumn Binding="{Binding Navn}" Width="*" Header="Navn"/>
+                    <DataGridTextColumn Binding="{Binding Email}" Width="*" Header="Email"/>
+                    <DataGridTextColumn Binding="{Binding Telefon}" MinWidth="100" Header="Telefon"/>
                 </DataGrid.Columns>
             </DataGrid>
             <WrapPanel x:Name="WrapPanelHusejer" Height="279" Canvas.Left="10" Canvas.Top="40" Width="155" Visibility="Hidden">
@@ -142,10 +139,10 @@
             </WrapPanel>
             <DataGrid x:Name="DataGridMægler" Height="329" Canvas.Left="175" Canvas.Top="40" Width="607" Visibility="Hidden" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True" ItemsSource="{Binding}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding ID}" Width="*" MinWidth="80" Header="ID"/>
-                    <DataGridTextColumn Binding="{Binding Navn}" Width="*" MinWidth="80" Header="Navn"/>
-                    <DataGridTextColumn Binding="{Binding Telefon}" Width="*" MinWidth="80" Header="Telefon"/>
-                    <DataGridTextColumn Binding="{Binding Email}" Width="*" MinWidth="80" Header="Email"/>
+                    <DataGridTextColumn Binding="{Binding ID}" MinWidth="80" Header="ID"/>
+                    <DataGridTextColumn Binding="{Binding Navn}" Width="*" Header="Navn"/>
+                    <DataGridTextColumn Binding="{Binding Telefon}" Width="*" Header="Telefon"/>
+                    <DataGridTextColumn Binding="{Binding Email}" Width="*" Header="Email"/>
                 </DataGrid.Columns>
             </DataGrid>
             <WrapPanel x:Name="WrapPanelMægler" Height="279" Canvas.Left="10" Canvas.Top="40" Width="155" Visibility="Hidden">
@@ -155,18 +152,18 @@
                 <TextBox x:Name="TextBoxMæglerEmail" Height="17" TextWrapping="Wrap" Text="Email" Width="155" LostFocus="TextBoxMæglerEmail_LostFocus"/>
             </WrapPanel>
 
-            <DataGrid x:Name="DataGridEjendom" Height="329" Canvas.Left="175" Canvas.Top="40" Width="607" Visibility="Visible" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True" ItemsSource="{Binding}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" Grid.ColumnSpan="6" Grid.Row="1">
+            <DataGrid x:Name="DataGridEjendom" Height="329" Canvas.Left="175" Canvas.Top="40" Width="607" Visibility="Visible" AutoGenerateColumns="False" AlternatingRowBackground="#D3D3D3" IsReadOnly="True" ItemsSource="{Binding}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Sagsnr}" Width="*" MinWidth="80" Header="Sagsnr"/>
-                    <DataGridTextColumn Binding="{Binding MæglerID}" Width="*" MinWidth="80" Header="MæglerID"/>
-                    <DataGridTextColumn Binding="{Binding HusejerID}" Width="*" MinWidth="80" Header="HusejerID"/>
-                    <DataGridTextColumn Binding="{Binding OmrådeNavn}" Width="*" MinWidth="80" Header="Områdenavn"/>
+                    <DataGridTextColumn Binding="{Binding Sagsnr}" MinWidth="80" Header="Sagsnr"/>
+                    <DataGridTextColumn Binding="{Binding MæglerID}" MinWidth="80" Header="MæglerID"/>
+                    <DataGridTextColumn Binding="{Binding HusejerID}" MinWidth="80" Header="HusejerID"/>
+                    <DataGridTextColumn Binding="{Binding OmrådeNavn}" MinWidth="100" Header="Områdenavn"/>
                     <DataGridTextColumn Binding="{Binding Postnr}" Width="*" MinWidth="80" Header="Postnr"/>
                     <DataGridTextColumn Binding="{Binding EnergiMærke}" Width="*" MinWidth="80" Header="Energimærke"/>
                     <DataGridTextColumn Binding="{Binding StartDato}" Width="*" MinWidth="80" Header="Startdato"/>
                     <DataGridTextColumn Binding="{Binding SalgsDato}" Width="*" MinWidth="80" Header="Salgsdato"/>
-                    <DataGridTextColumn Binding="{Binding Adresse}" Width="*" MinWidth="80" Header="Adresse"/>
-                    <DataGridTextColumn Binding="{Binding StartPris}" Width="*" MinWidth="80" Header="Startpris"/>
+                    <DataGridTextColumn Binding="{Binding Adresse}" MinWidth="150" Header="Adresse"/>
+                    <DataGridTextColumn Binding="{Binding StartPris}" Width="*" MinWidth="100" Header="Startpris"/>
                     <DataGridTextColumn Binding="{Binding NuværendePris}" Width="*" MinWidth="100" Header="Nuværende pris"/>
                     <DataGridTextColumn Binding="{Binding GrundAreal}" Width="*" MinWidth="80" Header="Grundareal"/>
                     <DataGridTextColumn Binding="{Binding KælderAreal}" Width="*" MinWidth="80" Header="Kælderareal"/>
@@ -186,14 +183,16 @@
                 <TextBox x:Name="TextBoxEjendomStartDato" TextWrapping="Wrap" Text="Startdato (åååå-mm-dd)" Width="155" LostFocus="TextBoxEjendomStartDato_LostFocus" Height="17" />
                 <TextBox x:Name="TextBoxEjendomSalgsDato" TextWrapping="Wrap" Text="Salgsdato (åååå-mm-dd)" Width="155" LostFocus="TextBoxEjendomSalgsDato_LostFocus" Height="17" />
                 <TextBox x:Name="TextBoxEjendomAdresse" TextWrapping="Wrap" Text="Adresse" Width="155" LostFocus="TextBoxEjendomAdresse_LostFocus" Height="17" />
-                <TextBox x:Name="TextBoxEjendomStartPris" TextWrapping="Wrap" Text="Startpris" Width="155" LostFocus="TextBoxEjendomStartPris_LostFocus" PreviewTextInput="TextBoxEjendomStartPris_PreviewTextInput" Height="17" />
-                <TextBox x:Name="TextBoxEjendomNuværendePris" TextWrapping="Wrap" Text="Nuværende pris" Width="155" LostFocus="TextBoxEjendomNuværendePris_LostFocus" PreviewTextInput="TextBoxEjendomNuværendePris_PreviewTextInput" Height="17" />
+                <TextBox x:Name="TextBoxEjendomStartPris" TextWrapping="Wrap" Text="Startpris" Width="91" LostFocus="TextBoxEjendomStartPris_LostFocus" PreviewTextInput="TextBoxEjendomStartPris_PreviewTextInput" Height="21" />
+                <ComboBox x:Name="ComboBoxEjendomStartPris" Width="64" Height="21" SelectedIndex="0"/>
+                <TextBox x:Name="TextBoxEjendomNuværendePris" TextWrapping="Wrap" Text="Nuværende pris" Width="91" LostFocus="TextBoxEjendomNuværendePris_LostFocus" PreviewTextInput="TextBoxEjendomNuværendePris_PreviewTextInput" Height="21" />
+                <ComboBox x:Name="ComboBoxEjendomNuværendePris" Width="64" Height="21" SelectedIndex="0"/>
                 <TextBox x:Name="TextBoxEjendomGrundAreal" TextWrapping="Wrap" Text="Grundareal" Width="155" LostFocus="TextBoxEjendomGrundAreal_LostFocus" PreviewTextInput="TextBoxEjendomGrundAreal_PreviewTextInput" Height="17" />
                 <TextBox x:Name="TextBoxEjendomKælderAreal" TextWrapping="Wrap" Text="Kælderareal" Width="155" LostFocus="TextBoxEjendomKælderAreal_LostFocus" PreviewTextInput="TextBoxEjendomKælderAreal_PreviewTextInput" Height="17" />
                 <TextBox x:Name="TextBoxEjendomBoligAreal" TextWrapping="Wrap" Text="Boligareal" Width="155" LostFocus="TextBoxEjendomBoligAreal_LostFocus" PreviewTextInput="TextBoxEjendomBoligAreal_PreviewTextInput" Height="17" />
                 <TextBox x:Name="TextBoxEjendomByggeår" TextWrapping="Wrap" Text="Byggeår" Width="155" LostFocus="TextBoxEjendomByggeår_LostFocus" PreviewTextInput="TextBoxEjendomByggeår_PreviewTextInput" Height="17" />
-                <Label Content="Garage/Carport" Height="26" BorderBrush="#FFABADB3" Background="White" BorderThickness="1" Width="93" TextOptions.TextFormattingMode="Display" FontSize="11"/>
-                <ComboBox x:Name="ComboBoxEjendomGarageCarport" SelectedIndex="2" Width="62"/>
+                <TextBox Height="21" TextWrapping="Wrap" Text="Garage/carport" Width="91" IsReadOnly="True"/>
+                <ComboBox x:Name="ComboBoxEjendomGarageCarport" SelectedIndex="2" Width="64" Height="21"/>
             </WrapPanel>
         </Canvas>
 
