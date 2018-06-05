@@ -2,27 +2,29 @@
 using System;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Windows.Controls;
 
 namespace Main
 {
     class ControllerPrisBeregner
     {
-        public static object BeregnPris(int postnummer, string område, int kvm)
+      
+        public static object BeregnPris(int postnr, string navn, int antalKvm)
         {
 
-            double prisFaktor = FindPrisFaktor(postnummer, område);
+            double prisFaktor = FindPrisFaktor(postnr, navn);
             double kvmPris = 22000;
             //Udregning
-            double pris = (kvm * kvmPris) * prisFaktor;
-            return pris;
+            double vurderingsPris = (antalKvm * kvmPris) * prisFaktor;
+            return vurderingsPris;
 
         }
 
-        private static double FindPrisFaktor(int postnummer, string område)
+        private static double FindPrisFaktor(int postnr, string navn)
         {
 
             //SQL code here
-            SqlCommand cmd = new SqlCommand("SELECT PrisFaktor FROM Område WHERE Navn = '" + område + "' AND Postnr = " + postnummer + ";", ControllerConnection.conn);
+            SqlCommand cmd = new SqlCommand("SELECT PrisFaktor FROM Område WHERE Navn = '" + navn + "' AND Postnr = " + postnr + ";", ControllerConnection.conn);
             double prisFaktor = 0;
             try
             {
@@ -48,6 +50,62 @@ namespace Main
 
         }
 
+        public static void ComboBoxOpretPostnr(ComboBox comboboxPrisBeregner_Postnr)
+        {
+            SqlDataReader reader = null;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT Postnr FROM Område;", ControllerConnection.conn);
+                reader = cmd.ExecuteReader();
 
+                while (reader.Read())
+                {
+                    int sPostnr = reader.GetInt32(0);
+                    bool hasItem = comboboxPrisBeregner_Postnr.Items.Contains(sPostnr);
+
+                    if (hasItem)
+                    {
+                        Debug.WriteLine("Postnummer findes allerede!");
+                    }
+                    else
+                    {
+                        comboboxPrisBeregner_Postnr.Items.Add(sPostnr);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine("Could not find database/table" + "\n");
+            }
+            finally
+            {
+                reader.Close();
+            }
+
+        }
+
+        public static void ComboBoxOpretNavn(ComboBox comboboxPrisBeregner_Navn, ComboBox comboboxPrisBeregner_Postnr)
+        {
+            comboboxPrisBeregner_Navn.Items.Clear();
+            SqlCommand cmd = new SqlCommand("SELECT Navn FROM Område WHERE Postnr = " + comboboxPrisBeregner_Postnr.Text + ";", ControllerConnection.conn);
+            SqlDataReader reader;
+            try
+            {
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    string sName = reader.GetString(reader.GetOrdinal("Navn"));
+                    comboboxPrisBeregner_Navn.Items.Add(sName);
+
+                }
+                reader.Close();
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine("Could not find database/table - CLOSE");
+            }
+        }
     }
 }

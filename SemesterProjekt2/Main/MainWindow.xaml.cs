@@ -4,6 +4,10 @@ using System.Windows.Controls;
 using System.Threading;
 using Microsoft.Win32;
 using System.Diagnostics;
+using System.Data.SqlClient;
+using System.Data;
+using Models;
+using System.Windows.Input;
 using System.Windows.Input;
 using System.Text.RegularExpressions;
 
@@ -29,6 +33,8 @@ namespace Main
             threadKøbenhavnUr.Start();
 
             ButtonSalgsstatistik_Click(null, null);
+            ControllerPrisBeregner.ComboBoxOpretPostnr(comboboxPrisBeregner_Postnr);
+
 
             ControllerCrudEjendom.AddItem(ComboBoxEjendomGarageCarport, ComboBoxEjendomStartPris, ComboBoxEjendomNuværendePris);
         }
@@ -38,6 +44,7 @@ namespace Main
             get { return LabelLondon.Content.ToString(); }
             set { Dispatcher.Invoke(new Action(() => { LabelLondon.Content = value; })); }
         }
+
 
         internal string KøbenhavnUr
         {
@@ -52,6 +59,7 @@ namespace Main
             CanvasPrisBeregner.Visibility = System.Windows.Visibility.Hidden;
             CanvasCRUD.Visibility = System.Windows.Visibility.Hidden;
             CanvasÅbentHus.Visibility = System.Windows.Visibility.Hidden;
+            CanvasTestData.Visibility = Visibility.Hidden;
             instance.Title = "SweetHome - Salgsstatistik";
         }
 
@@ -62,6 +70,7 @@ namespace Main
             CanvasPrisBeregner.Visibility = System.Windows.Visibility.Hidden;
             CanvasCRUD.Visibility = System.Windows.Visibility.Hidden;
             CanvasÅbentHus.Visibility = System.Windows.Visibility.Hidden;
+            CanvasTestData.Visibility = Visibility.Hidden;
             instance.Title = "SweetHome - Kvm. Pris";
         }
 
@@ -72,6 +81,7 @@ namespace Main
             CanvasPrisBeregner.Visibility = System.Windows.Visibility.Visible;
             CanvasCRUD.Visibility = System.Windows.Visibility.Hidden;
             CanvasÅbentHus.Visibility = System.Windows.Visibility.Hidden;
+            CanvasTestData.Visibility = Visibility.Hidden;
             instance.Title = "SweetHome - Pris Beregner";
         }
 
@@ -90,6 +100,7 @@ namespace Main
             DataGridEjendom.Visibility = Visibility.Hidden;
 
             ControllerCrudHusejer.LæsHusejer(DataGridHusejer);
+            CanvasTestData.Visibility = Visibility.Hidden;
             instance.Title = "SweetHome - CRUD";
         }
 
@@ -100,7 +111,21 @@ namespace Main
             CanvasPrisBeregner.Visibility = System.Windows.Visibility.Hidden;
             CanvasCRUD.Visibility = System.Windows.Visibility.Hidden;
             CanvasÅbentHus.Visibility = System.Windows.Visibility.Visible;
+            CanvasTestData.Visibility = Visibility.Hidden;
+            ControllerÅbentHus.FyldEjendomDatagrid(DataGridÅbentHusEjendom);
+            ControllerÅbentHus.FyldMæglerDatagrid(DataGridÅbentHusMægler);
             instance.Title = "SweetHome - Åbent Hus";
+        }
+
+        private void LabelKøbenhavn_Click(object sender, RoutedEventArgs e)
+        {
+            CanvasSalgstatistik.Visibility = System.Windows.Visibility.Hidden;
+            CanvasKvmPris.Visibility = System.Windows.Visibility.Hidden;
+            CanvasPrisBeregner.Visibility = System.Windows.Visibility.Hidden;
+            CanvasCRUD.Visibility = System.Windows.Visibility.Hidden;
+            CanvasÅbentHus.Visibility = System.Windows.Visibility.Hidden;
+            CanvasTestData.Visibility = Visibility.Visible;
+            instance.Title = "SweetHome - Test Data";
         }
 
         private void ButtonSalgsstatistikSøg_Click(object sender, RoutedEventArgs e)
@@ -136,7 +161,7 @@ namespace Main
 
                 bool? isClosed = sfd.ShowDialog();
 
-                if(isClosed == true)
+                if (isClosed == true)
                 {
                     udfil = sfd.FileName;
                 }
@@ -145,11 +170,20 @@ namespace Main
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void ButtonPrisBeregner_BeregnPrisClick(object sender, RoutedEventArgs e)
         {
-            textbox4.Text = Convert.ToString(ControllerPrisBeregner.BeregnPris(Convert.ToInt32(textbox1.Text), textbox2.Text, Convert.ToInt32(textbox3.Text)));
-        }
+            try
+            {
+                textboxPrisBeregner_Vurdering.Text = Convert.ToString(ControllerPrisBeregner.BeregnPris(Convert.ToInt32(comboboxPrisBeregner_Postnr.Text), comboboxPrisBeregner_Navn.Text, Convert.ToInt32(textbox_PrisBeregnerKVM.Text)));
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine("Tager ikke imod string!");
+                textbox_PrisBeregnerKVM.Clear();
+            }
 
+           
+        }
 
         private void ButtonKvmPrisSøg_Click(object sender, RoutedEventArgs e)
         {
@@ -158,7 +192,7 @@ namespace Main
             string slutDato = ((ComboBoxItem)ComboboxKvmPriserÅr.SelectedItem).Tag.ToString() + "-" + ((ComboBoxItem)ComboboxKvmPriserMåned.SelectedItem).Tag.ToString() + "-31";
 
             ControllerKvmPris.Vis(DataGridKvmPriser, startDato, slutDato);
- 
+
         }
 
         private void ButtonKvmPrisUdskriv_Click(object sender, RoutedEventArgs e)
@@ -186,6 +220,24 @@ namespace Main
                 ControllerKvmPris.Udskriv(DataGridKvmPriser, startDato, slutDato, udfil);
             }
         }
+
+        private void ButtonÅbentHusUdskriv_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (ControllerÅbentHus.antalMæglereValgt == 6 && ControllerÅbentHus.antalEjendommeValgt == 30)
+            {
+                string udfil = "";
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.FileName = "ÅbentHus Lise";
+                sfd.DefaultExt = ".txt";
+                sfd.Filter = "Text documents (.txt)|*.txt";
+
+                bool? isClosed = sfd.ShowDialog();
+
+                if (isClosed == true)
+                {
+                    udfil = sfd.FileName;
+                }
 
         //
         // CRUD
@@ -668,6 +720,31 @@ namespace Main
             e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
         }
 
+        private void ButtonOpretData_Click(object sender, RoutedEventArgs e)
+        {
+            ControllerTestData.OpretData();
+        }
+        
+
+
+        private void ComboBox_PrisBeregner_Postnummer_Close(object sender, EventArgs e)
+        {
+            ControllerPrisBeregner.ComboBoxOpretNavn(comboboxPrisBeregner_Navn, comboboxPrisBeregner_Postnr);
+        }
+
+        private void CheckBoxÅbentHusEjendom_Click(object sender, RoutedEventArgs e)
+        {
+            ModelÅbentHusEjendom ejendom = (ModelÅbentHusEjendom)DataGridÅbentHusEjendom.SelectedItem;
+
+            ControllerÅbentHus.EjendomClicked(ejendom);
+        }
+
+        private void CheckBoxÅbentHusMægler_Click(object sender, RoutedEventArgs e)
+        {
+            ModelÅbentHusMægler mægler = (ModelÅbentHusMægler)DataGridÅbentHusMægler.SelectedItem;
+
+            ControllerÅbentHus.MæglerClicked(mægler);
+        }
         private void TextBoxEjendomPostnr_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);

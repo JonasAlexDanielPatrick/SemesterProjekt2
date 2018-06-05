@@ -21,7 +21,6 @@ namespace Main
         public static void Udskriv(DataGrid dg, string startDato, string slutDato, string udfil)
         {
             StreamWriter stream = null;
-            //string udfil = "c:\\Log\\test.txt";
 
             try
             {

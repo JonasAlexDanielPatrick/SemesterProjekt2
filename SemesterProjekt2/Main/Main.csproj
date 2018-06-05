@@ -60,6 +60,7 @@
     <Compile Include="ControllerKvmPris.cs" />
     <Compile Include="ControllerPrisBeregner.cs" />
     <Compile Include="ControllerSalgsstatistik.cs" />
+    <Compile Include="ControllerTestData.cs" />
     <Compile Include="ControllerUr.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -70,16 +71,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ControllerConnection.cs" />
+    <Compile Include="ControllerÅbentHus.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModelEjendom.cs" />
-    <Compile Include="ModelHusejer.cs" />
-    <Compile Include="ModelMægler.cs" />
-    <Compile Include="ModelOmråde.cs" />
+    <Compile Include="ModelTestDataEjendom.cs" />
+    <Compile Include="ModelÅbentHusEjendom.cs" />
+    <Compile Include="ModelÅbentHusMægler.cs" />
+    <Compile Include="ModelTestDataOmråde.cs" />
+    <Compile Include="ModelÅbentHus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    class ModelEjendom
+    class ModelTestDataEjendom
     {
         public int Sagsnr { get; }
         public int MæglerID { get; }
         public int HusejerID { get; }
-        public ModelOmråde Område { get; }
+        public ModelTestDataOmråde Område { get; }
         public string EnergiMærke { get; }
         public string StartDato { get; }
         public string SlutDato { get; }
@@ -25,7 +25,7 @@ namespace Models
         public bool GarageCarport { get; }
 
 
-        public ModelEjendom(int sagsnr, int mæglerId, int husejerId, ModelOmråde område, string energimærke, string startdato, string slutdato, string adresse, int startpris, int nuværendepris, int grundareal, int kælderareal, int boligareal, int byggeår, bool garageCarport)
+        public ModelTestDataEjendom(int sagsnr, int mæglerId, int husejerId, ModelTestDataOmråde område, string energimærke, string startdato, string slutdato, string adresse, int startpris, int nuværendepris, int grundareal, int kælderareal, int boligareal, int byggeår, bool garageCarport)
         {
             Sagsnr = sagsnr;
             MæglerID = mæglerId;

@@ -22,7 +22,7 @@ namespace Main
 
                 MainWindow.instance.LondonUr = london;
 
-                Thread.Sleep(1000);
+                Thread.Sleep(60000);
             }
         }
 
@@ -37,7 +37,7 @@ namespace Main
 
                 MainWindow.instance.KøbenhavnUr = københavn;
 
-                Thread.Sleep(1000);
+                Thread.Sleep(60000);
             }
         }
 
