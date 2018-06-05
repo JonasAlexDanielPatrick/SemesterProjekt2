@@ -8,7 +8,6 @@ using System.Data.SqlClient;
 using System.Data;
 using Models;
 using System.Windows.Input;
-using System.Windows.Input;
 using System.Text.RegularExpressions;
 
 namespace Main
@@ -182,7 +181,7 @@ namespace Main
                 textbox_PrisBeregnerKVM.Clear();
             }
 
-           
+
         }
 
         private void ButtonKvmPrisSøg_Click(object sender, RoutedEventArgs e)
@@ -238,13 +237,15 @@ namespace Main
                 {
                     udfil = sfd.FileName;
                 }
+            }
+        }
 
         //
         // CRUD
         //
         private void ButtonHusejer_Click(object sender, RoutedEventArgs e)
         {
-            
+
             WrapPanelMægler.Visibility = Visibility.Hidden;
             DataGridMægler.Visibility = Visibility.Hidden;
             WrapPanelEjendom.Visibility = Visibility.Hidden;
@@ -256,7 +257,7 @@ namespace Main
 
         private void ButtonMægler_Click(object sender, RoutedEventArgs e)
         {
-            
+
             WrapPanelEjendom.Visibility = Visibility.Hidden;
             DataGridEjendom.Visibility = Visibility.Hidden;
             WrapPanelHusejer.Visibility = Visibility.Hidden;
@@ -268,7 +269,7 @@ namespace Main
 
         private void ButtonEjendom_Click(object sender, RoutedEventArgs e)
         {
-            
+
             WrapPanelHusejer.Visibility = Visibility.Hidden;
             DataGridHusejer.Visibility = Visibility.Hidden;
             WrapPanelMægler.Visibility = Visibility.Hidden;
@@ -280,9 +281,9 @@ namespace Main
 
         private void ButtonOpret_Click(object sender, RoutedEventArgs e)
         {
-            if (WrapPanelHusejer.IsVisible && TextBoxHusejerNavn.Text != "Navn" && TextBoxHusejerNavn.Text != "" && 
-                TextBoxHusejerEmail.Text != "Email" && TextBoxHusejerEmail.Text != "" && TextBoxHusejerTelefon.Text != "Telefon" && 
-                TextBoxHusejerTelefon.Text != "") 
+            if (WrapPanelHusejer.IsVisible && TextBoxHusejerNavn.Text != "Navn" && TextBoxHusejerNavn.Text != "" &&
+                TextBoxHusejerEmail.Text != "Email" && TextBoxHusejerEmail.Text != "" && TextBoxHusejerTelefon.Text != "Telefon" &&
+                TextBoxHusejerTelefon.Text != "")
             {
                 ControllerCrudHusejer.OpretHusejer(TextBoxHusejerNavn.Text, TextBoxHusejerEmail.Text, TextBoxHusejerTelefon.Text);
 
@@ -305,9 +306,9 @@ namespace Main
                 TextBoxMæglerNavn.Text = "Navn";
                 TextBoxMæglerTelefon.Text = "Telefon";
                 TextBoxMæglerEmail.Text = "Email";
-                
+
             }
-            if(WrapPanelEjendom.IsVisible && TextBoxEjendomMæglerID.Text != "Mægler ID (Påkrævet)" && TextBoxEjendomMæglerID.Text != "" && 
+            if (WrapPanelEjendom.IsVisible && TextBoxEjendomMæglerID.Text != "Mægler ID (Påkrævet)" && TextBoxEjendomMæglerID.Text != "" &&
                 TextBoxEjendomHusejerID.Text != "Husejer ID (Påkrævet)" && TextBoxHusejerID.Text != "")
             {
                 ControllerCrudEjendom.OpretEjendom(TextBoxEjendomMæglerID.Text, TextBoxEjendomHusejerID.Text, TextBoxEjendomOmrådeNavn.Text,
@@ -338,8 +339,8 @@ namespace Main
 
         private void ButtonSøg_Click(object sender, RoutedEventArgs e)
         {
-            if (WrapPanelHusejer.IsVisible && (TextBoxHusejerID.Text != "ID (Autogenereres)" && TextBoxHusejerID.Text != "") || 
-                (TextBoxHusejerNavn.Text != "Navn" && TextBoxHusejerNavn.Text != "") || (TextBoxHusejerEmail.Text != "Email" && TextBoxHusejerEmail.Text != "") || 
+            if (WrapPanelHusejer.IsVisible && (TextBoxHusejerID.Text != "ID (Autogenereres)" && TextBoxHusejerID.Text != "") ||
+                (TextBoxHusejerNavn.Text != "Navn" && TextBoxHusejerNavn.Text != "") || (TextBoxHusejerEmail.Text != "Email" && TextBoxHusejerEmail.Text != "") ||
                 (TextBoxHusejerTelefon.Text != "Telefon" && TextBoxHusejerTelefon.Text != ""))
             {
                 ControllerCrudHusejer.SøgHusejer(TextBoxHusejerID.Text, TextBoxHusejerNavn.Text, TextBoxHusejerEmail.Text, TextBoxHusejerTelefon.Text, DataGridHusejer);
@@ -349,8 +350,8 @@ namespace Main
                 TextBoxHusejerEmail.Text = "Email";
                 TextBoxHusejerTelefon.Text = "Telefon";
             }
-            if(WrapPanelMægler.IsVisible && (TextBoxMæglerID.Text != "ID (Autogenereres)" && TextBoxMæglerID.Text != "") ||
-                (TextBoxMæglerNavn.Text != "Navn" && TextBoxMæglerNavn.Text != "") || (TextBoxMæglerTelefon.Text != "Telefon" && TextBoxMæglerTelefon.Text != "") || 
+            if (WrapPanelMægler.IsVisible && (TextBoxMæglerID.Text != "ID (Autogenereres)" && TextBoxMæglerID.Text != "") ||
+                (TextBoxMæglerNavn.Text != "Navn" && TextBoxMæglerNavn.Text != "") || (TextBoxMæglerTelefon.Text != "Telefon" && TextBoxMæglerTelefon.Text != "") ||
                 (TextBoxMæglerEmail.Text != "Email" && TextBoxMæglerEmail.Text != ""))
             {
                 ControllerCrudMægler.SøgMægler(TextBoxMæglerID.Text, TextBoxMæglerNavn.Text, TextBoxMæglerTelefon.Text, TextBoxMæglerEmail.Text, DataGridMægler);
@@ -360,13 +361,13 @@ namespace Main
                 TextBoxMæglerTelefon.Text = "Telefon";
                 TextBoxMæglerEmail.Text = "Email";
             }
-            if(WrapPanelEjendom.IsVisible && (TextBoxEjendomSagsnr.Text != "Sagsnr (Autogenereres)" && TextBoxEjendomSagsnr.Text != "") || (TextBoxEjendomMæglerID.Text != "Mægler ID (Påkrævet)" && TextBoxEjendomMæglerID.Text != "") || 
+            if (WrapPanelEjendom.IsVisible && (TextBoxEjendomSagsnr.Text != "Sagsnr (Autogenereres)" && TextBoxEjendomSagsnr.Text != "") || (TextBoxEjendomMæglerID.Text != "Mægler ID (Påkrævet)" && TextBoxEjendomMæglerID.Text != "") ||
                 (TextBoxEjendomHusejerID.Text != "Husejer ID (Påkrævet)" && TextBoxEjendomHusejerID.Text != "") || (TextBoxEjendomOmrådeNavn.Text != "Områdenavn" && TextBoxEjendomOmrådeNavn.Text != "") ||
-                (TextBoxEjendomPostnr.Text != "Postnr" && TextBoxEjendomPostnr.Text != "") || (TextBoxEjendomEnergiMærke.Text != "Energimærke" && TextBoxEjendomEnergiMærke.Text != "") || 
+                (TextBoxEjendomPostnr.Text != "Postnr" && TextBoxEjendomPostnr.Text != "") || (TextBoxEjendomEnergiMærke.Text != "Energimærke" && TextBoxEjendomEnergiMærke.Text != "") ||
                 (TextBoxEjendomStartDato.Text != "Startdato (åååå-mm-dd)" && TextBoxEjendomStartDato.Text != "") || (TextBoxEjendomSalgsDato.Text != "Salgsdato (åååå-mm-dd)" && TextBoxEjendomSalgsDato.Text != "") ||
-                (TextBoxEjendomAdresse.Text != "Adresse" && TextBoxEjendomAdresse.Text != "") || (TextBoxEjendomStartPris.Text != "Startpris" && TextBoxEjendomStartPris.Text != "") || 
+                (TextBoxEjendomAdresse.Text != "Adresse" && TextBoxEjendomAdresse.Text != "") || (TextBoxEjendomStartPris.Text != "Startpris" && TextBoxEjendomStartPris.Text != "") ||
                 (TextBoxEjendomNuværendePris.Text != "Nuværende pris" && TextBoxEjendomNuværendePris.Text != "") || (TextBoxEjendomGrundAreal.Text != "Grundareal" && TextBoxEjendomGrundAreal.Text != "") ||
-                (TextBoxEjendomKælderAreal.Text != "Kælderareal" && TextBoxEjendomKælderAreal.Text != "") || (TextBoxEjendomBoligAreal.Text != "Boligareal" && TextBoxEjendomBoligAreal.Text != "") || 
+                (TextBoxEjendomKælderAreal.Text != "Kælderareal" && TextBoxEjendomKælderAreal.Text != "") || (TextBoxEjendomBoligAreal.Text != "Boligareal" && TextBoxEjendomBoligAreal.Text != "") ||
                 (TextBoxEjendomByggeår.Text != "Byggeår" && TextBoxEjendomByggeår.Text != "") || ComboBoxEjendomGarageCarport.SelectedIndex == 0 || ComboBoxEjendomGarageCarport.SelectedIndex == 1 || ComboBoxEjendomGarageCarport.SelectedIndex == 2)
             {
                 ControllerCrudEjendom.SøgEjendom(TextBoxEjendomSagsnr.Text, TextBoxEjendomMæglerID.Text, TextBoxEjendomHusejerID.Text, TextBoxEjendomOmrådeNavn.Text,
@@ -446,7 +447,7 @@ namespace Main
 
         private void ButtonSlet_Click(object sender, RoutedEventArgs e)
         {
-            if(WrapPanelHusejer.IsVisible && TextBoxHusejerID.Text != "ID (Autogenereres)" && TextBoxHusejerID.Text != "")
+            if (WrapPanelHusejer.IsVisible && TextBoxHusejerID.Text != "ID (Autogenereres)" && TextBoxHusejerID.Text != "")
             {
                 ControllerCrudHusejer.SletHusEjer(Convert.ToInt32(TextBoxHusejerID.Text));
 
@@ -724,7 +725,7 @@ namespace Main
         {
             ControllerTestData.OpretData();
         }
-        
+
 
 
         private void ComboBox_PrisBeregner_Postnummer_Close(object sender, EventArgs e)
