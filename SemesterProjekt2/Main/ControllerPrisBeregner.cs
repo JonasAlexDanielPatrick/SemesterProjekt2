@@ -26,13 +26,14 @@ namespace Main
             //SQL code here
             SqlCommand cmd = new SqlCommand("SELECT PrisFaktor FROM Område WHERE Navn = '" + navn + "' AND Postnr = " + postnr + ";", ControllerConnection.conn);
             double prisFaktor = 0;
+            SqlDataReader reader = null;
             try
             {
-                using (SqlDataReader read = cmd.ExecuteReader())
+                using (reader = cmd.ExecuteReader())
                 {
-                    while (read.Read())
+                    while (reader.Read())
                     {
-                        prisFaktor = Convert.ToDouble((read["PrisFaktor"]));
+                        prisFaktor = Convert.ToDouble((reader["PrisFaktor"]));
 
                     }
                 }
@@ -43,6 +44,10 @@ namespace Main
             {
                 Debug.WriteLine("Failed to connect to the database" + "\n");
                 return 0;
+            }
+            finally
+            {
+                reader.Close();
             }
 
 
@@ -88,7 +93,7 @@ namespace Main
         {
             comboboxPrisBeregner_Navn.Items.Clear();
             SqlCommand cmd = new SqlCommand("SELECT Navn FROM Område WHERE Postnr = " + comboboxPrisBeregner_Postnr.Text + ";", ControllerConnection.conn);
-            SqlDataReader reader;
+            SqlDataReader reader = null;
             try
             {
                 reader = cmd.ExecuteReader();
@@ -100,11 +105,15 @@ namespace Main
                     comboboxPrisBeregner_Navn.Items.Add(sName);
 
                 }
-                reader.Close();
+               
             }
             catch (Exception)
             {
                 Debug.WriteLine("Could not find database/table - CLOSE");
+            }
+            finally
+            {
+                reader.Close();
             }
         }
     }
