@@ -7,6 +7,7 @@ using System.Linq;
 namespace Main
 {
     class ControllerCrudEjendom
+
     {
         public static void AddItem(ComboBox comboBoxEjendomGarageCarport, ComboBox comboBoxEjendomStartPris, ComboBox comboBoxEjendomNuværendePris)
         {
@@ -30,9 +31,9 @@ namespace Main
 
         public static void OpretEjendom(string mæglerID, string husejerID, string områdeNavn, string postnr, string energiMærke, 
                                         string startDato, string salgsDato, string adresse, string startPris, string nuværendePris, string grundAreal,  
-                                        string kælderAreal, string boligAreal, string byggeår, string garageCarport) 
+                                        string kælderAreal, string boligAreal, string byggeår, int garageCarport) 
         {
-            string tempSSQLOne = "INSERT INTO Mægler (";
+            string tempSSQLOne = "INSERT INTO Ejendom ("; 
             string tempSSQLTwo = ") VALUES (";
 
             tempSSQLOne += "MæglerID";
@@ -58,13 +59,13 @@ namespace Main
                 tempSSQLTwo += ", " + energiMærke;
             }
 
-            if (startDato != "Startdato" && startDato != "")
+            if (startDato != "Startdato (åååå-mm-dd)" && startDato != "")
             {
                 tempSSQLOne += ", StartDato";
                 tempSSQLTwo += ", " + startDato;
             }
 
-            if (salgsDato != "Salgsdato" && salgsDato != "")
+            if (salgsDato != "Salgsdato (åååå-mm-dd)" && salgsDato != "")
             {
                 tempSSQLOne += ", SalgsDato";
                 tempSSQLTwo += ", " + salgsDato;
@@ -112,10 +113,16 @@ namespace Main
                 tempSSQLTwo += ", " + byggeår;
             }
 
-            if (garageCarport != "Garage/carport" && garageCarport != "")
+            if (garageCarport == 0) // ComboBoxEjendomGarageCarport index
             {
                 tempSSQLOne += ", GarageCarport";
-                tempSSQLTwo += ", " + garageCarport;
+                tempSSQLTwo += "," + 1;
+            }
+
+            if (garageCarport == 1) // ComboBoxEjendomGarageCarport index
+            {
+                tempSSQLOne += ", GarageCarport";
+                tempSSQLTwo += "," + 0;
             }
 
             string sSQL = tempSSQLOne + tempSSQLTwo + ");";
@@ -126,7 +133,7 @@ namespace Main
 
         public static void OpdaterEjendom(string sagsnr, string mæglerID, string husejerID, string områdeNavn, string postnr, string energiMærke,
                                           string startDato, string salgsDato, string adresse, string startPris, string nuværendePris, string grundAreal,
-                                          string kælderAreal, string boligAreal, string byggeår, string comboBoxGarageCarport) // 
+                                          string kælderAreal, string boligAreal, string byggeår, int garageCarport) // 
         {
             string[] CheckIfContains = { "MæglerID", "HusejerID", "OmrådeNavn", "Postnr", "EnergiMærke", "StartDato",
                                          "SalgsDato", "Adresse", "StartPris", "NuværendePris", "GrundAreal", "KælderAreal",
@@ -189,7 +196,7 @@ namespace Main
                 }
             }
 
-            if (startDato != "Startdato" && startDato != "")
+            if (startDato != "Startdato (åååå-mm-dd)" && startDato != "")
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
@@ -201,7 +208,7 @@ namespace Main
                 }
             }
 
-            if (salgsDato != "Salgsdato" && salgsDato != "")
+            if (salgsDato != "Salgsdato (åååå-mm-dd)" && salgsDato != "")
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
@@ -297,19 +304,31 @@ namespace Main
                 }
             }
 
-            if (comboBoxGarageCarport != "Garage/carport" && comboBoxGarageCarport != "")
+            if (garageCarport == 0) // ComboBoxEjendomGarageCarport index
             {
                 if ((CheckIfContains.Any(tempSSQL.Contains)))
                 {
-                    tempSSQL += ", GarageCarport = '" + comboBoxGarageCarport + "'";
+                    tempSSQL += ", GarageCarport = 1";
                 }
                 else
                 {
-                    tempSSQL += " GarageCarport = '" + comboBoxGarageCarport + "'";
+                    tempSSQL += " GarageCarport = 1";
                 }
             }
 
-            tempSSQL += "Where ID = '" + sagsnr + "' COMMIT TRANSACTION;";
+            if (garageCarport == 1) // ComboBoxEjendomGarageCarport index
+            {
+                if ((CheckIfContains.Any(tempSSQL.Contains)))
+                {
+                    tempSSQL += ", GarageCarport = 0";
+                }
+                else
+                {
+                    tempSSQL += " GarageCarport = 0";
+                }
+            }
+
+            tempSSQL += "Where Sagsnr = '" + sagsnr + "' COMMIT TRANSACTION;";
 
             string sSQL = tempSSQL;
             SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);

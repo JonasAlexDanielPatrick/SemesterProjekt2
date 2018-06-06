@@ -119,7 +119,6 @@ namespace Main
                 {
                     tempSSQL += " Telefon LIKE '" + telefon + "%'";
                 }
-
             }
 
             string sSQL = tempSSQL + ";";
