@@ -7,6 +7,7 @@ using Models;
 namespace Main
 {
     class ControllerTestData
+    // Skrevet af Jonas og Alex
     {
         static int kvmPris = 15000;
         static int antalHusejer = 50;
