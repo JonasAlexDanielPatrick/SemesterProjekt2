@@ -7,6 +7,7 @@ using System.IO;
 namespace Main
 {
     class ControllerSalgsstatistik
+    // Skrevet af Jonas og Alex
     {
         public static void Vis(DataGrid dg, string startDato, string slutDato)
         {

@@ -5,6 +5,7 @@ using System.Threading;
 namespace Main
 {
     class ControllerUr
+    // Skrevet af Jonas og Alex
     {
 
         public static string london = "";

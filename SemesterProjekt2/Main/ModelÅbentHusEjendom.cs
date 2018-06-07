@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Models
+﻿namespace Models
 {
     class ModelÅbentHusEjendom
+    // Skrevet af Jonas
     {
         public int Sagsnr { get; }
         public string Adresse { get; }

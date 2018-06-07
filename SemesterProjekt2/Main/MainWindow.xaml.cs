@@ -236,7 +236,13 @@ namespace Main
                 if (isClosed == true)
                 {
                     udfil = sfd.FileName;
+                    ControllerÅbentHus.GenererListe(udfil);
                 }
+
+            }
+            else
+            {
+                MessageBox.Show("Du skal vælge 6 mæglere og 30 ejendomme." + Environment.NewLine + "Du har valgt " + ControllerÅbentHus.antalMæglereValgt + " mæglere og " + ControllerÅbentHus.antalEjendommeValgt + " ejendomme.");
             }
         }
 

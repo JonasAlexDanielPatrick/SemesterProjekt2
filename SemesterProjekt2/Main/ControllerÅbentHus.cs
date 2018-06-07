@@ -10,6 +10,7 @@ using System.Linq;
 namespace Main
 {
     class ControllerÅbentHus
+    // Skrevet af Jonas og Alex
     {
         public static int antalMæglereValgt = 0;
         public static int antalEjendommeValgt = 0;
@@ -56,7 +57,7 @@ namespace Main
 
         }
 
-        public static void GenererListe(DataGrid dg, string udfil)
+        public static void GenererListe(string udfil)
         {
             TagCheckedMæglereOgEjendomme();
 
@@ -75,10 +76,10 @@ namespace Main
             }
             List<ModelÅbentHus> sorteretÅbentHusListe = åbentHusListe.OrderBy(sag => sag.MæglerId).ToList();
 
-            Udskriv(dg, udfil, sorteretÅbentHusListe);
+            Udskriv(udfil, sorteretÅbentHusListe);
         }
 
-        public static void Udskriv(DataGrid dg, string udfil, List<ModelÅbentHus> liste)
+        public static void Udskriv(string udfil, List<ModelÅbentHus> liste)
         {
             StreamWriter stream = null;
 
