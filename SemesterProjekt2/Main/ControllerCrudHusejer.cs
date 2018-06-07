@@ -11,7 +11,7 @@ namespace Main
     {
         public static void LæsHusejer(DataGrid dg) // virker
         {
-            string sSQL = "SELECT * FROM Husejer";
+            string sSQL = "SELECT * FROM Husejer;";
             SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
             SqlDataAdapter sda = new SqlDataAdapter(command);
             DataTable dt = new DataTable("Husejer");
