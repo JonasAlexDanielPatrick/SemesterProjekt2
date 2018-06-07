@@ -7,6 +7,7 @@ using System.Linq;
 namespace Main
 {
     class ControllerCrudMægler
+    // Skrevet af Daniel
     {
         public static void LæsMægler(DataGrid dg) //
         {

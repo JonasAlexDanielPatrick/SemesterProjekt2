@@ -241,7 +241,7 @@ namespace Main
         }
 
         //
-        // CRUD
+        // CRUD Skrevet af Daniel
         //
         private void ButtonHusejer_Click(object sender, RoutedEventArgs e)
         {
@@ -581,12 +581,6 @@ namespace Main
             e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
         }
 
-        //Hjælp til at kunne se den horisontale scroll bar i datagrid'et, ved at fylde objekter ind i kolonnerne
-        //private void DataGridEjendom_Loaded(object sender, RoutedEventArgs e)
-        //{
-        //    DataGridEjendom.Items.Add(new object());
-        //}
-
         private void TextBoxEjendomSagsnr_LostFocus(object sender, RoutedEventArgs e)
         {
             if (TextBoxEjendomSagsnr.Text == "")
@@ -781,5 +775,8 @@ namespace Main
         {
             e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
         }
+        //
+        // CRUD slut
+        //
     }
 }

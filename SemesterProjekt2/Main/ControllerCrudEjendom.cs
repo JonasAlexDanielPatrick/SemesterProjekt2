@@ -7,7 +7,7 @@ using System.Linq;
 namespace Main
 {
     class ControllerCrudEjendom
-
+    // Skrevet af Daniel
     {
         public static void AddItem(ComboBox comboBoxEjendomGarageCarport, ComboBox comboBoxEjendomStartPris, ComboBox comboBoxEjendomNuværendePris)
         {
@@ -21,7 +21,7 @@ namespace Main
         }
         public static void LæsEjendom(DataGrid dg) //
         {
-            string sSQL = "SELECT * FROM Ejendom";
+            string sSQL = "SELECT * FROM Ejendom;";
             SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
             SqlDataAdapter sda = new SqlDataAdapter(command);
             DataTable dt = new DataTable("Ejendom");
