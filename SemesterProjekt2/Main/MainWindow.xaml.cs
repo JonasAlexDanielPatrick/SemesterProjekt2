@@ -320,7 +320,7 @@ namespace Main
                 ControllerCrudEjendom.OpretEjendom(TextBoxEjendomMæglerID.Text, TextBoxEjendomHusejerID.Text, TextBoxEjendomOmrådeNavn.Text,
                     TextBoxEjendomPostnr.Text, TextBoxEjendomEnergiMærke.Text, TextBoxEjendomStartDato.Text, TextBoxEjendomSalgsDato.Text,
                     TextBoxEjendomAdresse.Text, TextBoxEjendomStartPris.Text, TextBoxEjendomNuværendePris.Text, TextBoxEjendomGrundAreal.Text,
-                    TextBoxEjendomKælderAreal.Text, TextBoxEjendomBoligAreal.Text, TextBoxEjendomByggeår.Text, ComboBoxEjendomGarageCarport.Text);
+                    TextBoxEjendomKælderAreal.Text, TextBoxEjendomBoligAreal.Text, TextBoxEjendomByggeår.Text, ComboBoxEjendomGarageCarport.SelectedIndex);
 
                 ControllerCrudEjendom.LæsEjendom(DataGridEjendom);
 
@@ -429,7 +429,7 @@ namespace Main
                 ControllerCrudEjendom.OpdaterEjendom(TextBoxEjendomSagsnr.Text, TextBoxEjendomMæglerID.Text, TextBoxEjendomHusejerID.Text, TextBoxEjendomOmrådeNavn.Text,
                     TextBoxEjendomPostnr.Text, TextBoxEjendomEnergiMærke.Text, TextBoxEjendomStartDato.Text, TextBoxEjendomSalgsDato.Text,
                     TextBoxEjendomAdresse.Text, TextBoxEjendomStartPris.Text, TextBoxEjendomNuværendePris.Text, TextBoxEjendomGrundAreal.Text,
-                    TextBoxEjendomKælderAreal.Text, TextBoxEjendomBoligAreal.Text, TextBoxEjendomByggeår.Text, ComboBoxEjendomGarageCarport.Text);
+                    TextBoxEjendomKælderAreal.Text, TextBoxEjendomBoligAreal.Text, TextBoxEjendomByggeår.Text, ComboBoxEjendomGarageCarport.SelectedIndex);
 
                 ControllerCrudEjendom.LæsEjendom(DataGridEjendom);
 
@@ -482,6 +482,7 @@ namespace Main
 
                 ControllerCrudEjendom.LæsEjendom(DataGridEjendom);
 
+                TextBoxEjendomSagsnr.Text = "Sagsnr (Autogenereres)";
                 TextBoxEjendomMæglerID.Text = "Mægler ID (Påkrævet)";
                 TextBoxEjendomHusejerID.Text = "Husejer ID (Påkrævet)";
                 TextBoxEjendomOmrådeNavn.Text = "Områdenavn";
