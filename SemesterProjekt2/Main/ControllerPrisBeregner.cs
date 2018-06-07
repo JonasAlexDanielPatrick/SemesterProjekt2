@@ -1,14 +1,13 @@
-﻿
-using System;
+﻿using System;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Windows.Controls;
 
-namespace Main
+namespace Controllers
 {
     class ControllerPrisBeregner
-    {
-      
+    // Skrevet af Patrick
+    {      
         public static object BeregnPris(int postnr, string navn, int antalKvm)
         {
 

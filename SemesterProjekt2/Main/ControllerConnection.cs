@@ -2,14 +2,13 @@
 using System.Data.SqlClient;
 using System.Diagnostics;
 
-namespace Main
+namespace Controllers
 {
     class ControllerConnection
     // Skrevet Af Jonas
     {
 
         static string strconn = "Server=den1.mssql1.gear.host;Database=sweethome;Uid=sweethome;Pwd=sweethome123!;";
-
 
         public static SqlConnection conn = new SqlConnection(strconn);
 

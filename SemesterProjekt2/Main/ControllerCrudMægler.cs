@@ -2,9 +2,8 @@
 using System.Data.SqlClient;
 using System.Windows.Controls;
 using System.Data;
-using System.Linq;
 
-namespace Main
+namespace Controllers
 {
     class ControllerCrudMægler
     // Skrevet af Daniel

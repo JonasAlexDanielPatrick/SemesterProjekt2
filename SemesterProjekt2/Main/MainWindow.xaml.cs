@@ -4,15 +4,13 @@ using System.Windows.Controls;
 using System.Threading;
 using Microsoft.Win32;
 using System.Diagnostics;
-using System.Data.SqlClient;
-using System.Data;
 using Models;
 using System.Windows.Input;
 using System.Text.RegularExpressions;
+using Controllers;
 
 namespace Main
 {
-
     public partial class MainWindow : Window
     {
         public static MainWindow instance;
@@ -33,7 +31,6 @@ namespace Main
 
             ButtonSalgsstatistik_Click(null, null);
             ControllerPrisBeregner.ComboBoxOpretPostnr(comboboxPrisBeregner_Postnr);
-
 
             ControllerCrudEjendom.AddItem(ComboBoxEjendomGarageCarport, ComboBoxEjendomStartPris, ComboBoxEjendomNuværendePris);
         }
