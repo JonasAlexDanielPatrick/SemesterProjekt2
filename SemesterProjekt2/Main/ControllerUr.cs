@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading;
+using Main;
 
-namespace Main
+namespace Controllers
 {
     class ControllerUr
     // Skrevet af Jonas og Alex

@@ -104,7 +104,7 @@
         </Canvas>
 
         <Canvas x:Name="CanvasPrisBeregner" Grid.ColumnSpan="6" Visibility="Hidden" Margin="0,36,0,4" Grid.RowSpan="2">
-            <TextBox Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1" Name="textbox_PrisBeregnerKVM" Height="32" Canvas.Left="336" Canvas.Top="56" Width="120" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+            <TextBox Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1" Name="textbox_PrisBeregnerKVM" Height="32" Canvas.Left="336" Canvas.Top="56" Width="120" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
             <Label Grid.ColumnSpan="2" Grid.Row="1" Height="30" Canvas.Left="29" Canvas.Top="26" Width="120" Content="Postnummer" FontSize="14" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
             <Label Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" Canvas.Left="182" Canvas.Top="26" Height="30" Width="120" FontSize="14" Content="Område Navn" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
             <Label Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1" Canvas.Left="336" Canvas.Top="26" Height="30" Width="120" RenderTransformOrigin="0.5,0.5" Content="Antal Kvm" FontSize="14" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
@@ -115,7 +115,7 @@
             <ComboBox Canvas.Left="29" Canvas.Top="56" Width="120" Height="32" Name="comboboxPrisBeregner_Postnr"  DropDownClosed="ComboBox_PrisBeregner_Postnummer_Close" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         </Canvas>
 
-        <Canvas x:Name="CanvasCRUD" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Visible">
+        <Canvas x:Name="CanvasCRUD" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
             <Button x:Name="ButtonHusejer" Content="Husejer" Canvas.Left="10" Canvas.Top="10" Width="50" Click="ButtonHusejer_Click"/>
             <Button x:Name="ButtonMægler" Content="Mægler" Canvas.Left="62" Canvas.Top="10" Width="50" Click="ButtonMægler_Click"/>
             <Button x:Name="ButtonEjendom" Content="Ejendom" Canvas.Left="114" Canvas.Top="10" Width="50" Click="ButtonEjendom_Click"/>
@@ -244,7 +244,7 @@
             </Grid>
         </Canvas>
 
-        <Canvas x:Name="CanvasTestData" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Hidden">
+        <Canvas x:Name="CanvasTestData" Grid.ColumnSpan="6" Grid.Row="1" Visibility="Visible">
             <Button x:Name="ButtonOpretData" Content="Opret Data" Width="300" Height="100" Margin="250,120,10,10" Click="ButtonOpretData_Click"/>
         </Canvas>
 

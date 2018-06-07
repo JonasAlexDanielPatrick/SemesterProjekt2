@@ -4,10 +4,10 @@ using System.Windows.Controls;
 using System.Data;
 using System.Linq;
 
-namespace Main
+namespace Controllers
 {
     class ControllerCrudEjendom
-
+    // Skrevet af Daniel
     {
         public static void AddItem(ComboBox comboBoxEjendomGarageCarport, ComboBox comboBoxEjendomStartPris, ComboBox comboBoxEjendomNuværendePris)
         {

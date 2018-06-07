@@ -7,7 +7,7 @@ using Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Main
+namespace Controllers
 {
     class ControllerÅbentHus
     // Skrevet af Jonas og Alex

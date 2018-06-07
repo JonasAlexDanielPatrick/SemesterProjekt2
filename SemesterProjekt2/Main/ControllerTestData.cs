@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using Models;
 
-namespace Main
+namespace Controllers
 {
     class ControllerTestData
     // Skrevet af Jonas og Alex

@@ -1,10 +1,9 @@
-﻿using System.Diagnostics;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 
-namespace Main
+namespace Controllers
 {
     class ControllerSalgsstatistik
     // Skrevet af Jonas og Alex
