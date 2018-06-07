@@ -21,7 +21,7 @@ namespace Controllers
         }
         public static void LæsEjendom(DataGrid dg) //
         {
-            string sSQL = "SELECT * FROM Ejendom";
+            string sSQL = "SELECT * FROM Ejendom;";
             SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
             SqlDataAdapter sda = new SqlDataAdapter(command);
             DataTable dt = new DataTable("Ejendom");
