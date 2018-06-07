@@ -62,7 +62,7 @@ namespace Main
                 
             }
 
-            tempSSQL += "Where ID = '" + id + "' COMMIT TRANSACTION;";
+            tempSSQL += " Where ID = '" + id + "' COMMIT TRANSACTION;";
 
             string sSQL = tempSSQL;
             SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);

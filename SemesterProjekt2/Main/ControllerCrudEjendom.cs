@@ -328,7 +328,7 @@ namespace Main
                 }
             }
 
-            tempSSQL += "Where Sagsnr = '" + sagsnr + "' COMMIT TRANSACTION;";
+            tempSSQL += " Where Sagsnr = '" + sagsnr + "' COMMIT TRANSACTION;";
 
             string sSQL = tempSSQL;
             SqlCommand command = new SqlCommand(sSQL, ControllerConnection.conn);
